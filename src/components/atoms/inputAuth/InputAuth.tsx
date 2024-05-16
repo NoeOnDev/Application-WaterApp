@@ -1,10 +1,10 @@
-import {TextInput} from 'react-native';
-import {styles} from './StylesInputStyles';
+import {TextInput} from 'react-native'
+import {styles} from './StylesInputStyles'
 
 interface InputProps {
-  value: string;
-  onChangeText: (text: string) => void;
-  placeholder?: string;
+  value: string
+  onChangeText: (text: string) => void
+  placeholder?: string
 }
 
 export const Input: React.FC<InputProps> = ({
@@ -19,5 +19,5 @@ export const Input: React.FC<InputProps> = ({
       value={value}
       placeholder={placeholder}
     />
-  );
-};
+  )
+}

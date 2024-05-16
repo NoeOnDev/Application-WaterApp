@@ -1,6 +1,6 @@
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {LoginPage} from '../components/pages/LoginPage';
-import {HomePage} from '../components/pages/HomePage';
+import {createNativeStackNavigator} from '@react-navigation/native-stack'
+import {LoginPage} from '../components/pages/LoginPage'
+import {HomePage} from '../components/pages/HomePage'
 
 const Stack = createNativeStackNavigator();
 
@@ -10,5 +10,5 @@ export function AppNavigation() {
       <Stack.Screen name="Login" component={LoginPage} />
       <Stack.Screen name="Home" component={HomePage} />
     </Stack.Navigator>
-  );
+  )
 }

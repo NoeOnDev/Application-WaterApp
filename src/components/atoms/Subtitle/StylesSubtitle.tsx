@@ -4,5 +4,6 @@ export const styles = StyleSheet.create({
   subtitle: {
     fontSize: 18,
     fontWeight: 'bold',
+    color: 'black',
   },
 });

@@ -2,15 +2,17 @@ import {TextInput} from 'react-native'
 import {styles} from './StylesInputStyles'
 
 interface InputProps {
-  value: string
+  value: string;
   onChangeText: (text: string) => void
   placeholder?: string
+  secureTextEntry?: boolean
 }
 
 export const Input: React.FC<InputProps> = ({
   value,
   onChangeText,
   placeholder,
+  secureTextEntry = false,
 }) => {
   return (
     <TextInput
@@ -18,6 +20,7 @@ export const Input: React.FC<InputProps> = ({
       onChangeText={onChangeText}
       value={value}
       placeholder={placeholder}
+      secureTextEntry={secureTextEntry}
     />
   )
 }

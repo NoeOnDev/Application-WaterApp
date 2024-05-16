@@ -1,11 +1,11 @@
-import {TextInput} from 'react-native'
-import {styles} from './StylesInputStyles'
+import {TextInput} from 'react-native';
+import {styles} from './StylesInputStyles';
 
 interface InputProps {
   value: string;
-  onChangeText: (text: string) => void
-  placeholder?: string
-  secureTextEntry?: boolean
+  onChangeText: (text: string) => void;
+  placeholder?: string;
+  secureTextEntry?: boolean;
 }
 
 export const Input: React.FC<InputProps> = ({
@@ -22,5 +22,5 @@ export const Input: React.FC<InputProps> = ({
       placeholder={placeholder}
       secureTextEntry={secureTextEntry}
     />
-  )
-}
+  );
+};

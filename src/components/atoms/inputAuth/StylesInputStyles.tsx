@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native'
+import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
   input: {
@@ -6,6 +6,6 @@ export const styles = StyleSheet.create({
     borderColor: 'gray',
     borderWidth: 1,
     borderRadius: 12,
-    padding: 10
-  }
-})
+    padding: 10,
+  },
+});

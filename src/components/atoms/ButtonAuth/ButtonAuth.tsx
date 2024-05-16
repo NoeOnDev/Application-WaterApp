@@ -1,9 +1,9 @@
-import {TouchableOpacity, Text} from 'react-native'
-import {styles} from './StylesButtonAuth'
+import {TouchableOpacity, Text} from 'react-native';
+import {styles} from './StylesButtonAuth';
 
 interface ButtonAuthProps {
-  title: string
-  onPress: () => void
+  title: string;
+  onPress: () => void;
 }
 
 export const ButtonAuth: React.FC<ButtonAuthProps> = ({title, onPress}) => {
@@ -14,5 +14,5 @@ export const ButtonAuth: React.FC<ButtonAuthProps> = ({title, onPress}) => {
       onPress={onPress}>
       <Text style={styles.text}>{title}</Text>
     </TouchableOpacity>
-  )
-}
+  );
+};

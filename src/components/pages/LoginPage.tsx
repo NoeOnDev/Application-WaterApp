@@ -1,5 +1,5 @@
 import {View} from 'react-native';
-import { LoginForm } from '../organism/LoginForm/LoginForm';
+import { LoginForm } from '../organism';
 
 export function LoginPage() {
   return (

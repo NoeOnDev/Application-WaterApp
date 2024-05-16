@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {View} from 'react-native';
 import {ButtonAuth, Input} from '../../atoms';
+import {styles} from './StylesLoginForm';
 
 interface LoginFormProps {
   onSubmit: (username: string, password: string) => void;
@@ -11,7 +12,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({onSubmit}) => {
   const [password, setPassword] = useState('');
 
   return (
-    <View>
+    <View style={styles.container}>
       <Input
         value={username}
         onChangeText={setUsername}

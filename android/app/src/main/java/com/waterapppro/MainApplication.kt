@@ -1,4 +1,4 @@
-package com.waterapp
+package com.waterapppro
 
 import android.app.Application
 import com.facebook.react.PackageList

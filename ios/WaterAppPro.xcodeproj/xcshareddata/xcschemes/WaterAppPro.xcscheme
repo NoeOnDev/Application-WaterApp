@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "WaterApp.app"
-               BlueprintName = "WaterApp"
-               ReferencedContainer = "container:WaterApp.xcodeproj">
+               BuildableName = "WaterAppPro.app"
+               BlueprintName = "WaterAppPro"
+               ReferencedContainer = "container:WaterAppPro.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "WaterAppTests.xctest"
-               BlueprintName = "WaterAppTests"
-               ReferencedContainer = "container:WaterApp.xcodeproj">
+               BuildableName = "WaterAppProTests.xctest"
+               BlueprintName = "WaterAppProTests"
+               ReferencedContainer = "container:WaterAppPro.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "WaterApp.app"
-            BlueprintName = "WaterApp"
-            ReferencedContainer = "container:WaterApp.xcodeproj">
+            BuildableName = "WaterAppPro.app"
+            BlueprintName = "WaterAppPro"
+            ReferencedContainer = "container:WaterAppPro.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "WaterApp.app"
-            BlueprintName = "WaterApp"
-            ReferencedContainer = "container:WaterApp.xcodeproj">
+            BuildableName = "WaterAppPro.app"
+            BlueprintName = "WaterAppPro"
+            ReferencedContainer = "container:WaterAppPro.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

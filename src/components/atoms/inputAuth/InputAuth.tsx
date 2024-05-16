@@ -8,7 +8,7 @@ interface InputProps {
   secureTextEntry?: boolean;
 }
 
-export const Input: React.FC<InputProps> = ({
+export const InputAuth: React.FC<InputProps> = ({
   value,
   onChangeText,
   placeholder,

@@ -7,8 +7,8 @@ const Stack = createNativeStackNavigator();
 export function AppNavigation() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Home" component={HomePage} />
       <Stack.Screen name="Login" component={LoginPage} />
+      <Stack.Screen name="Home" component={HomePage} />
     </Stack.Navigator>
   );
 }

@@ -2,7 +2,7 @@ import {View} from 'react-native';
 import {LabelAuth, InputAuth} from '../../atoms';
 import {styles} from './StylesLabelAndInput';
 
-interface LabelledInputProps {
+interface LabelAndInputProps {
   label: string;
   value: string;
   onChangeText: (text: string) => void;
@@ -10,7 +10,7 @@ interface LabelledInputProps {
   secureTextEntry?: boolean;
 }
 
-export const LabelAndInput: React.FC<LabelledInputProps> = ({
+export const LabelAndInput: React.FC<LabelAndInputProps> = ({
   label,
   value,
   onChangeText,

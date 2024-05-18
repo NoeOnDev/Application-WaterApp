@@ -16,8 +16,14 @@ interface AuthFormProps {
   buttonText: string;
 }
 
-export const LoginForm: React.FC<AuthFormProps> = ({fields, onSubmit, buttonText}) => {
-  const [values, setValues] = useState<string[]>(new Array(fields.length).fill(''));
+export const AuthForm: React.FC<AuthFormProps> = ({
+  fields,
+  onSubmit,
+  buttonText,
+}) => {
+  const [values, setValues] = useState<string[]>(
+    new Array(fields.length).fill(''),
+  );
 
   const handleChangeText = (index: number, text: string) => {
     const newValues = [...values];
@@ -32,7 +38,7 @@ export const LoginForm: React.FC<AuthFormProps> = ({fields, onSubmit, buttonText
           key={index}
           label={field.label}
           value={values[index]}
-          onChangeText={(text) => handleChangeText(index, text)}
+          onChangeText={text => handleChangeText(index, text)}
           placeholder={field.placeholder}
           secureTextEntry={field.secureTextEntry}
         />

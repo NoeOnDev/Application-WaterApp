@@ -1,6 +1,7 @@
 import {View} from 'react-native';
 import {LabelAndInput} from '../../molecules';
 import {ButtonAuth} from '../../atoms';
+import {styles} from './StylesAuthForm';
 
 interface FormField {
   label: string;
@@ -22,7 +23,7 @@ export const AuthForm: React.FC<AuthFormProps> = ({
   buttonOnPress,
 }) => {
   return (
-    <View>
+    <View style={styles.container}>
       {fields.map((field, index) => (
         <LabelAndInput
           key={index}

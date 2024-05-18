@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { AuthForm } from '../organism/AuthForm/AuthForm';
+import {AuthForm} from '../organism/AuthForm/AuthForm';
 
 export const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -9,13 +9,13 @@ export const LoginPage = () => {
     {
       label: 'Correo electrónico',
       value: email,
-      onChangeText: (text: string) => setEmail(() => text),
+      onChangeText: setEmail,
       placeholder: 'Introduce tu correo electrónico',
     },
     {
       label: 'Contraseña',
       value: password,
-      onChangeText: (text: string) => setPassword(() => text),
+      onChangeText: setPassword,
       placeholder: 'Introduce tu contraseña',
       secureTextEntry: true,
     },

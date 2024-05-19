@@ -3,7 +3,7 @@ import {LabelAndInput} from '../../molecules';
 import {ButtonAuth} from '../../atoms';
 import {styles} from './StylesAuthForm';
 
-interface FormField {
+export interface FormField {
   label: string;
   value: string;
   onChangeText: (text: string) => void;

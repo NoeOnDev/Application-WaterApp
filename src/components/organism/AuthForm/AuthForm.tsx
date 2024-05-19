@@ -1,6 +1,7 @@
+import React from 'react';
 import {View} from 'react-native';
 import {LabelAndInput} from '../../molecules';
-import {ButtonAuth} from '../../atoms';
+import {ButtonAuth, LinkButton} from '../../atoms';
 import {styles} from './StylesAuthForm';
 
 export interface FormField {
@@ -15,12 +16,16 @@ interface AuthFormProps {
   fields: FormField[];
   buttonTitle: string;
   buttonOnPress: () => void;
+  linkText: string;
+  linkOnPress: () => void;
 }
 
 export const AuthForm: React.FC<AuthFormProps> = ({
   fields,
   buttonTitle,
   buttonOnPress,
+  linkText,
+  linkOnPress,
 }) => {
   return (
     <View style={styles.container}>
@@ -35,6 +40,7 @@ export const AuthForm: React.FC<AuthFormProps> = ({
         />
       ))}
       <ButtonAuth title={buttonTitle} onPress={buttonOnPress} />
+      <LinkButton text={linkText} onPress={linkOnPress} />
     </View>
   );
 };

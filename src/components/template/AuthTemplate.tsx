@@ -8,12 +8,16 @@ interface AuthTemplateProps {
   fields: FormField[];
   buttonTitle: string;
   buttonOnPress: () => void;
+  linkText: string;
+  linkOnPress: () => void;
 }
 
 export const AuthTemplate: React.FC<AuthTemplateProps> = ({
   fields,
   buttonTitle,
   buttonOnPress,
+  linkText,
+  linkOnPress,
 }) => {
   return (
     <View>
@@ -22,6 +26,8 @@ export const AuthTemplate: React.FC<AuthTemplateProps> = ({
         fields={fields}
         buttonTitle={buttonTitle}
         buttonOnPress={buttonOnPress}
+        linkText={linkText}
+        linkOnPress={linkOnPress}
       />
     </View>
   );

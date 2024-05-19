@@ -1,9 +1,11 @@
 import {useState} from 'react';
 import {AuthTemplate} from '../template/AuthTemplate';
+import {useNavigation} from '@react-navigation/native';
 
 export const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigation = useNavigation();
 
   const fields = [
     {
@@ -26,11 +28,17 @@ export const LoginScreen = () => {
     console.log('Password:', password);
   };
 
+  const handleForgotPassword = () => {
+    navigation.navigate('Home');
+  };
+
   return (
     <AuthTemplate
       fields={fields}
       buttonTitle="Iniciar sesión"
       buttonOnPress={handleLogin}
+      linkText="¿Olvidaste tu contraseña?"
+      linkOnPress={handleForgotPassword}
     />
   );
 };

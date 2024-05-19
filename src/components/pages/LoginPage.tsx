@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import {AuthForm} from '../organism/AuthForm/AuthForm';
 
 export const LoginPage = () => {

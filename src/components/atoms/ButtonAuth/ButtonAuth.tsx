@@ -9,7 +9,7 @@ interface ButtonAuthProps {
 export const ButtonAuth: React.FC<ButtonAuthProps> = ({title, onPress}) => {
   return (
     <TouchableOpacity
-      activeOpacity={0.8}
+      activeOpacity={0.9}
       style={styles.button}
       onPress={onPress}>
       <Text style={styles.text}>{title}</Text>

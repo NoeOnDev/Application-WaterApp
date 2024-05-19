@@ -1,5 +1,6 @@
-import {TextInput} from 'react-native';
-import {styles} from './StylesInputStyles';
+import { useState } from 'react';
+import { TextInput } from 'react-native';
+import { styles } from './StylesInputStyles';
 
 interface InputProps {
   value: string;
@@ -14,13 +15,21 @@ export const InputAuth: React.FC<InputProps> = ({
   placeholder,
   secureTextEntry = false,
 }) => {
+  const [isFocused, setIsFocused] = useState(false);
+
+  const handleFocus = () => setIsFocused(true);
+  const handleBlur = () => setIsFocused(false);
+
   return (
     <TextInput
-      style={styles.input}
+      style={isFocused ? styles.inputFocused : styles.input}
       onChangeText={onChangeText}
       value={value}
       placeholder={placeholder}
+      placeholderTextColor='gray'
       secureTextEntry={secureTextEntry}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
     />
   );
 };

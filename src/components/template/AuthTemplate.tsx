@@ -1,7 +1,8 @@
 import React from 'react';
 import {View} from 'react-native';
 import {Logo} from '../atoms';
-import {AuthForm, FormField} from '../organism';
+import {AuthForm} from '../organism';
+import type {FormField} from '../organism';
 
 interface AuthTemplateProps {
   fields: FormField[];

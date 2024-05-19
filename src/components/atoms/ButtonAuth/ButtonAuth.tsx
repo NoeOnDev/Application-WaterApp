@@ -1,4 +1,5 @@
-import {TouchableOpacity, Text} from 'react-native';
+import React, {useRef} from 'react';
+import {TouchableOpacity, Text, Animated} from 'react-native';
 import {styles} from './StylesButtonAuth';
 
 interface ButtonAuthProps {
@@ -7,12 +8,32 @@ interface ButtonAuthProps {
 }
 
 export const ButtonAuth: React.FC<ButtonAuthProps> = ({title, onPress}) => {
+  const scaleValue = useRef(new Animated.Value(1)).current;
+
+  const handlePressIn = () => {
+    Animated.spring(scaleValue, {
+      toValue: 0.95,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const handlePressOut = () => {
+    Animated.spring(scaleValue, {
+      toValue: 1,
+      useNativeDriver: true,
+    }).start();
+  };
+
   return (
-    <TouchableOpacity
-      activeOpacity={0.7}
-      style={styles.button}
-      onPress={onPress}>
-      <Text style={styles.text}>{title}</Text>
-    </TouchableOpacity>
+    <Animated.View style={{transform: [{scale: scaleValue}]}}>
+      <TouchableOpacity
+        activeOpacity={0.7}
+        style={styles.button}
+        onPressIn={handlePressIn}
+        onPressOut={handlePressOut}
+        onPress={onPress}>
+        <Text style={styles.text}>{title}</Text>
+      </TouchableOpacity>
+    </Animated.View>
   );
 };

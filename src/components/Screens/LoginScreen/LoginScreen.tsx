@@ -1,5 +1,7 @@
 import {useState} from 'react';
-import {AuthForm} from '../organism/AuthForm/AuthForm';
+import {View} from 'react-native';
+import {AuthForm} from '../../organism/AuthForm/AuthForm';
+import {Logo} from '../../atoms';
 
 export const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -27,10 +29,13 @@ export const LoginPage = () => {
   };
 
   return (
-    <AuthForm
-      fields={fields}
-      buttonTitle="Iniciar sesión"
-      buttonOnPress={handleLogin}
-    />
+    <View>
+      <Logo />
+      <AuthForm
+        fields={fields}
+        buttonTitle="Iniciar sesión"
+        buttonOnPress={handleLogin}
+      />
+    </View>
   );
 };

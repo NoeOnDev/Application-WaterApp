@@ -4,3 +4,4 @@ export {LabelAuth} from './LabelAuth/LabelAuth';
 export {Title} from './Title/Title';
 export {Subtitle} from './Subtitle/Subtitle';
 export {Paragraph} from './Paragraph/Paragraph';
+export {Logo} from './Logo/Logo';

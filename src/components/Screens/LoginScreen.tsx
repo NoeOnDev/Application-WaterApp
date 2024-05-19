@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import {View} from 'react-native';
-import {AuthForm} from '../../organism/AuthForm/AuthForm';
-import {Logo} from '../../atoms';
+import {AuthForm} from '../organism/AuthForm/AuthForm';
+import {Logo} from '../atoms';
 
 export const LoginPage = () => {
   const [email, setEmail] = useState('');

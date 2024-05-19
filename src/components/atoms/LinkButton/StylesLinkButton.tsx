@@ -2,8 +2,10 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
     text: {
-      color: 'blue',
-      textDecorationLine: 'underline',
-      marginTop: 10,
+      color: 'black',
+      marginTop: 12,
+      textAlign: 'center',
+      fontSize: 18,
+      fontWeight: '500',
     },
   });

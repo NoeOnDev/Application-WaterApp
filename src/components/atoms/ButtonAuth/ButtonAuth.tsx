@@ -12,7 +12,7 @@ export const ButtonAuth: React.FC<ButtonAuthProps> = ({title, onPress}) => {
 
   const handlePressIn = () => {
     Animated.spring(scaleValue, {
-      toValue: 0.95,
+      toValue: 0.98,
       useNativeDriver: true,
     }).start();
   };
@@ -27,7 +27,7 @@ export const ButtonAuth: React.FC<ButtonAuthProps> = ({title, onPress}) => {
   return (
     <Animated.View style={{transform: [{scale: scaleValue}]}}>
       <TouchableOpacity
-        activeOpacity={0.7}
+        activeOpacity={0.8}
         style={styles.button}
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}

@@ -29,7 +29,7 @@ export const LoginScreen = () => {
   };
 
   const handleForgotPassword = () => {
-    navigation.navigate('Home');
+    navigation.navigate('Recuperar contraseña');
   };
 
   return (

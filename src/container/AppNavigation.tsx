@@ -14,7 +14,7 @@ export function AppNavigation() {
       <Stack.Screen
         name="Inicio de sesión"
         component={LoginScreen}
-        options={{headerShadowVisible: false, headerTitle: ''}}
+        options={{headerShown: false, headerShadowVisible: false}}
       />
       <Stack.Screen
         name="Recuperar contraseña"

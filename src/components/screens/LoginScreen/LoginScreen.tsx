@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
 import {AuthTemplate} from '../../template/AuthTemplate';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, NavigationProp} from '@react-navigation/native';
 import {SafeArea} from '../../organism';
+import {RootStackParamList} from '../../../types/types';
 
 export const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   const fields = [
     {

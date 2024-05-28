@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {AuthTemplate} from '../template/AuthTemplate';
 import {useNavigation} from '@react-navigation/native';
+import {SafeArea} from '../organism';
 
 export const LoginScreen = () => {
   const [email, setEmail] = useState('');
@@ -33,12 +34,14 @@ export const LoginScreen = () => {
   };
 
   return (
-    <AuthTemplate
-      fields={fields}
-      buttonTitle="Iniciar sesión"
-      buttonOnPress={handleLogin}
-      linkText="¿Olvidaste tu contraseña?"
-      linkOnPress={handleForgotPassword}
-    />
+    <SafeArea backgroundColor="#FFFFFF">
+      <AuthTemplate
+        fields={fields}
+        buttonTitle="Iniciar sesión"
+        buttonOnPress={handleLogin}
+        linkText="¿Olvidaste tu contraseña?"
+        linkOnPress={handleForgotPassword}
+      />
+    </SafeArea>
   );
 };

@@ -6,7 +6,7 @@ import {styles} from './StylesLogo';
 export const Logo: React.FC = () => {
   return (
     <View style={styles.container}>
-      <LogoSVG width={150} height={250} />
+      <LogoSVG width={150} height={200} />
     </View>
   );
 };

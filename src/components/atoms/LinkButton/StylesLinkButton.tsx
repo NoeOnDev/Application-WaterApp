@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
     color: 'black',
     marginTop: 16,
     textAlign: 'center',
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: '500',
   },
 });

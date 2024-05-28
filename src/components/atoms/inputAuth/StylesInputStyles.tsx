@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: 'darkgray',
     marginVertical: 10,
-    fontSize: 18,
+    fontSize: 16,
     color: 'black',
   },
   inputFocused: {
@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: 'black',
     marginVertical: 10,
-    fontSize: 18,
+    fontSize: 16,
     color: 'black',
   },
 });

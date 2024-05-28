@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { TextInput } from 'react-native';
-import { styles } from './StylesInputStyles';
+import React, {useState} from 'react';
+import {TextInput} from 'react-native';
+import {styles} from './StylesInputStyles';
 
 interface InputProps {
   value: string;
@@ -26,7 +26,7 @@ export const InputAuth: React.FC<InputProps> = ({
       onChangeText={onChangeText}
       value={value}
       placeholder={placeholder}
-      placeholderTextColor='gray'
+      placeholderTextColor="gray"
       secureTextEntry={secureTextEntry}
       onFocus={handleFocus}
       onBlur={handleBlur}

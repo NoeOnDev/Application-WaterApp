@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import React, {useState} from 'react';
 import {AuthTemplate} from '../template/AuthTemplate';
 import {useNavigation} from '@react-navigation/native';
 

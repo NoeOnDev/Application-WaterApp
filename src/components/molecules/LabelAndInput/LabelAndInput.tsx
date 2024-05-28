@@ -1,3 +1,4 @@
+import React from 'react';
 import {View} from 'react-native';
 import {LabelAuth, InputAuth} from '../../atoms';
 import {styles} from './StylesLabelAndInput';

@@ -1,5 +1,6 @@
+import React from 'react';
 import {View} from 'react-native';
 
 export function HomeScreen() {
-  return <View></View>;
+  return <View>Home</View>;
 }

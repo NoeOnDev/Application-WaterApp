@@ -1,8 +1,11 @@
 import React, {useState} from 'react';
+import {View, StyleSheet} from 'react-native';
 import {AuthTemplate} from '../../template/AuthTemplate';
+import {ButtonAuth} from '../../atoms';
 import {useNavigation, NavigationProp} from '@react-navigation/native';
 import {SafeArea} from '../../organism';
 import {RootStackParamList} from '../../../types/types';
+import { styles } from './StylesLoginScreen';
 
 export const LoginScreen = () => {
   const [email, setEmail] = useState('');
@@ -34,15 +37,28 @@ export const LoginScreen = () => {
     navigation.navigate('Recuperar contraseña');
   };
 
+  const handleCreateAccount = () => {
+    navigation.navigate('Home');
+  };
+
   return (
     <SafeArea backgroundColor="#FFFFFF">
-      <AuthTemplate
-        fields={fields}
-        buttonTitle="Iniciar sesión"
-        buttonOnPress={handleLogin}
-        linkText="¿Olvidaste tu contraseña?"
-        linkOnPress={handleForgotPassword}
-      />
+      <View style={styles.container}>
+        <AuthTemplate
+          fields={fields}
+          buttonTitle="Iniciar sesión"
+          buttonOnPress={handleLogin}
+          linkText="¿Olvidaste tu contraseña?"
+          linkOnPress={handleForgotPassword}
+        />
+        <ButtonAuth
+          title="Crear nueva cuenta"
+          onPress={handleCreateAccount}
+          buttonStyle={styles.createAccountButton}
+          textStyle={styles.createAccountButtonText}
+        />
+      </View>
     </SafeArea>
   );
 };
+

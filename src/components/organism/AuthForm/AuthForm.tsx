@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, ViewStyle, TextStyle} from 'react-native';
 import {LabelAndInput} from '../../molecules';
 import {ButtonAuth, LinkButton} from '../../atoms';
 import {styles} from './StylesAuthForm';
@@ -16,6 +16,8 @@ interface AuthFormProps {
   fields: FormField[];
   buttonTitle: string;
   buttonOnPress: () => void;
+  buttonStyle?: ViewStyle;
+  buttonTextStyle?: TextStyle;
   linkText: string;
   linkOnPress: () => void;
 }
@@ -24,6 +26,8 @@ export const AuthForm: React.FC<AuthFormProps> = ({
   fields,
   buttonTitle,
   buttonOnPress,
+  buttonStyle,
+  buttonTextStyle,
   linkText,
   linkOnPress,
 }) => {
@@ -39,7 +43,12 @@ export const AuthForm: React.FC<AuthFormProps> = ({
           secureTextEntry={field.secureTextEntry}
         />
       ))}
-      <ButtonAuth title={buttonTitle} onPress={buttonOnPress} />
+      <ButtonAuth
+        title={buttonTitle}
+        onPress={buttonOnPress}
+        buttonStyle={buttonStyle}
+        textStyle={buttonTextStyle}
+      />
       <LinkButton text={linkText} onPress={linkOnPress} />
     </View>
   );

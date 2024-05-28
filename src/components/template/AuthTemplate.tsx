@@ -1,6 +1,5 @@
 import React from 'react';
 import {TextStyle, View, ViewStyle} from 'react-native';
-import {Logo} from '../atoms';
 import {AuthForm} from '../organism';
 import type {FormField} from '../organism';
 
@@ -24,17 +23,14 @@ export const AuthTemplate: React.FC<AuthTemplateProps> = ({
   linkOnPress,
 }) => {
   return (
-    <View>
-      <Logo />
-      <AuthForm
-        fields={fields}
-        buttonTitle={buttonTitle}
-        buttonOnPress={buttonOnPress}
-        buttonStyle={buttonStyle}
-        buttonTextStyle={buttonTextStyle}
-        linkText={linkText}
-        linkOnPress={linkOnPress}
-      />
-    </View>
+    <AuthForm
+      fields={fields}
+      buttonTitle={buttonTitle}
+      buttonOnPress={buttonOnPress}
+      buttonStyle={buttonStyle}
+      buttonTextStyle={buttonTextStyle}
+      linkText={linkText}
+      linkOnPress={linkOnPress}
+    />
   );
 };

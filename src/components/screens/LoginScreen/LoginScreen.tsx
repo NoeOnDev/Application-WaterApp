@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import {AuthTemplate} from '../template/AuthTemplate';
+import {AuthTemplate} from '../../template/AuthTemplate';
 import {useNavigation} from '@react-navigation/native';
-import {SafeArea} from '../organism';
+import {SafeArea} from '../../organism';
 
 export const LoginScreen = () => {
   const [email, setEmail] = useState('');

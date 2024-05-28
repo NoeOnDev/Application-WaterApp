@@ -1,7 +1,7 @@
 import React from 'react';
 import {SafeAreaView} from 'react-native';
 import {CustomStatusBar} from '../../atoms';
-import { styles } from './StylesSafeArea';
+import {styles} from './StylesSafeArea';
 
 interface SafeAreaProps {
   children: React.ReactNode;

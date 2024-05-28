@@ -11,10 +11,15 @@ const Stack = createNativeStackNavigator();
 export function AppNavigation() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Inicio de sesión" component={LoginScreen} />
+      <Stack.Screen
+        name="Inicio de sesión"
+        component={LoginScreen}
+        options={{headerShadowVisible: false, headerTitle: ''}}
+      />
       <Stack.Screen
         name="Recuperar contraseña"
         component={ForgotPasswordScreen}
+        options={{headerShadowVisible: false, headerTitle: ''}}
       />
       <Stack.Screen name="Home" component={HomeScreen} />
     </Stack.Navigator>

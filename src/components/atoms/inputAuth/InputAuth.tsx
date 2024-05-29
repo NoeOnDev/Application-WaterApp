@@ -22,6 +22,7 @@ export const InputAuth: React.FC<InputProps> = ({
   const handleFocus = () => setIsFocused(true);
   const handleBlur = () => setIsFocused(false);
   const toggleShowPassword = () => setShowPassword(!showPassword);
+  const clearText = () => onChangeText('');
 
   return (
     <View
@@ -36,7 +37,7 @@ export const InputAuth: React.FC<InputProps> = ({
         onFocus={handleFocus}
         onBlur={handleBlur}
       />
-      {secureTextEntry && (isFocused || value) && (
+      {secureTextEntry && (isFocused || value) ? (
         <TouchableOpacity onPress={toggleShowPassword} style={styles.icon}>
           <Icon
             name={showPassword ? 'visibility' : 'visibility-off'}
@@ -44,6 +45,12 @@ export const InputAuth: React.FC<InputProps> = ({
             color="gray"
           />
         </TouchableOpacity>
+      ) : (
+        value && (
+          <TouchableOpacity onPress={clearText} style={styles.icon}>
+            <Icon name="close" size={24} color="gray" />
+          </TouchableOpacity>
+        )
       )}
     </View>
   );

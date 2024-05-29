@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {View, KeyboardAvoidingView, Platform} from 'react-native';
 import {AuthTemplate} from '../../template/AuthTemplate';
-import {ButtonAuth} from '../../atoms';
+import {ButtonAuth, AppName} from '../../atoms';
 import {useNavigation, NavigationProp} from '@react-navigation/native';
 import {SafeArea} from '../../organism';
 import {RootStackParamList} from '../../../types/types';
@@ -62,6 +62,7 @@ export const LoginScreen = () => {
             buttonStyle={styles.createAccountButton}
             textStyle={styles.createAccountButtonText}
           />
+          <AppName style={{}} />
         </View>
       </KeyboardAvoidingView>
     </SafeArea>

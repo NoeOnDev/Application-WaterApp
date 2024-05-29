@@ -3,7 +3,5 @@ export {CustomStatusBar} from './CustomStatusBar/CustomStatusBar';
 export {LinkButton} from './LinkButton/LinkButton';
 export {InputAuth} from './inputAuth/InputAuth';
 export {LabelAuth} from './LabelAuth/LabelAuth';
-export {Title} from './Title/Title';
-export {Subtitle} from './Subtitle/Subtitle';
-export {Paragraph} from './Paragraph/Paragraph';
 export {Logo} from './Logo/Logo';
+export {AppName} from './AppName/AppName';

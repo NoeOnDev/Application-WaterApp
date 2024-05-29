@@ -11,7 +11,6 @@ interface AuthTemplateProps {
   buttonTextStyle?: TextStyle;
   linkText: string;
   linkOnPress: () => void;
-  logoStyle?: ViewStyle;
 }
 
 export const AuthTemplate: React.FC<AuthTemplateProps> = ({
@@ -22,7 +21,6 @@ export const AuthTemplate: React.FC<AuthTemplateProps> = ({
   buttonTextStyle,
   linkText,
   linkOnPress,
-  logoStyle,
 }) => {
   return (
     <View>

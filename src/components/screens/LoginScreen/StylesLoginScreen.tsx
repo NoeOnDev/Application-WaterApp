@@ -3,7 +3,8 @@ import {StyleSheet} from 'react-native';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
+    paddingHorizontal: 20,
+    paddingVertical: 15,
     justifyContent: 'space-between',
   },
   logo: {
@@ -14,6 +15,7 @@ export const styles = StyleSheet.create({
   },
   bottomContainer: {
     justifyContent: 'flex-end',
+    gap: 15,
   },
   createAccountButton: {
     backgroundColor: '#FFFFFF',

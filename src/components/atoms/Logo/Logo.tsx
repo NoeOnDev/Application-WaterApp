@@ -1,12 +1,16 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, ViewStyle} from 'react-native';
 import LogoSVG from '../../../assets/logo.svg';
 import {styles} from './StylesLogo';
 
-export const Logo: React.FC = () => {
+interface LogoProps {
+  style?: ViewStyle;
+}
+
+export const Logo: React.FC<LogoProps> = ({style}) => {
   return (
-    <View style={styles.container}>
-      <LogoSVG width={150} height={200} />
+    <View style={[styles.container, style]}>
+      <LogoSVG width="100%" height="100%" />
     </View>
   );
 };

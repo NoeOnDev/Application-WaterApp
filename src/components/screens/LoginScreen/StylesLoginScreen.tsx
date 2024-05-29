@@ -6,6 +6,12 @@ export const styles = StyleSheet.create({
     padding: 20,
     justifyContent: 'space-between',
   },
+  logo: {
+    width: 150,
+    height: 200,
+    alignSelf: 'center',
+    marginBottom: 20,
+  },
   bottomContainer: {
     justifyContent: 'flex-end',
   },

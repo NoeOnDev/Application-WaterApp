@@ -53,6 +53,7 @@ export const LoginScreen = () => {
           buttonOnPress={handleLogin}
           linkText="¿Olvidaste tu contraseña?"
           linkOnPress={handleForgotPassword}
+          logoStyle={styles.logo}
         />
         <View style={styles.bottomContainer}>
           <ButtonAuth

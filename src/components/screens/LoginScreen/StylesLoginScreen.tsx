@@ -19,6 +19,7 @@ export const styles = StyleSheet.create({
   createAccountButtonText: {
     color: '#0071CE',
     textAlign: 'center',
-    fontSize: 18,
+    fontSize: 16,
+    fontWeight: '500',
   },
 });

@@ -10,6 +10,6 @@ export const styles = StyleSheet.create({
     color: 'white',
     textAlign: 'center',
     fontSize: 16,
-    fontWeight: '500',
+    fontWeight: '700',
   },
 });

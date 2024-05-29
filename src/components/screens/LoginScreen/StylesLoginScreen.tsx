@@ -9,13 +9,13 @@ export const styles = StyleSheet.create({
   },
   logo: {
     width: 150,
-    height: 185,
+    height: 140,
     alignSelf: 'center',
     marginBottom: 20,
   },
   bottomContainer: {
     justifyContent: 'flex-end',
-    gap: 20,
+    gap: 10,
   },
   createAccountButton: {
     backgroundColor: '#FFFFFF',
@@ -28,6 +28,6 @@ export const styles = StyleSheet.create({
     color: '#0071CE',
     textAlign: 'center',
     fontSize: 16,
-    fontWeight: '500',
+    fontWeight: '600',
   },
 });

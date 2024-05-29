@@ -38,7 +38,7 @@ export const LoginScreen = () => {
   };
 
   const handleCreateAccount = () => {
-    navigation.navigate('Home');
+    navigation.navigate('Register');
   };
 
   return (

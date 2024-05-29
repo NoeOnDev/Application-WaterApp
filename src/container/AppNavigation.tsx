@@ -2,7 +2,7 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {
   LoginScreen,
-  HomeScreen,
+  RegisterScreen,
   ForgotPasswordScreen,
 } from '../components/screens';
 
@@ -21,7 +21,11 @@ export function AppNavigation() {
         component={ForgotPasswordScreen}
         options={{headerShadowVisible: false, headerTitle: ''}}
       />
-      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen
+        name="Register"
+        component={RegisterScreen}
+        options={{headerShadowVisible: false, headerTitle: ''}}
+      />
     </Stack.Navigator>
   );
 }

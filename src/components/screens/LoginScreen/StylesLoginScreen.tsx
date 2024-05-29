@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
   },
   bottomContainer: {
     justifyContent: 'flex-end',
-    gap: 15,
+    gap: 20,
   },
   createAccountButton: {
     backgroundColor: '#FFFFFF',

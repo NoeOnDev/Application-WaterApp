@@ -1,7 +1,6 @@
 import React from 'react';
 import {TextStyle, View, ViewStyle} from 'react-native';
 import {AuthForm} from '../organism';
-import {Logo} from '../atoms';
 import type {FormField} from '../organism';
 
 interface AuthTemplateProps {
@@ -27,7 +26,6 @@ export const AuthTemplate: React.FC<AuthTemplateProps> = ({
 }) => {
   return (
     <View>
-      <Logo style={logoStyle} />
       <AuthForm
         fields={fields}
         buttonTitle={buttonTitle}

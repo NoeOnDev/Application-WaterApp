@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {View, KeyboardAvoidingView, Platform} from 'react-native';
 import {AuthTemplate} from '../../template/AuthTemplate';
-import {ButtonAuth, AppName} from '../../atoms';
+import {ButtonAuth, Logo, AppName} from '../../atoms';
 import {useNavigation, NavigationProp} from '@react-navigation/native';
 import {SafeArea} from '../../organism';
 import {RootStackParamList} from '../../../types/types';
@@ -43,6 +43,7 @@ export const LoginScreen = () => {
 
   return (
     <SafeArea backgroundColor="#FFFFFF">
+      <Logo style={styles.logo} />
       <KeyboardAvoidingView
         style={styles.container}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -53,7 +54,6 @@ export const LoginScreen = () => {
           buttonOnPress={handleLogin}
           linkText="¿Olvidaste tu contraseña?"
           linkOnPress={handleForgotPassword}
-          logoStyle={styles.logo}
         />
         <View style={styles.bottomContainer}>
           <ButtonAuth
@@ -62,7 +62,7 @@ export const LoginScreen = () => {
             buttonStyle={styles.createAccountButton}
             textStyle={styles.createAccountButtonText}
           />
-          <AppName style={{}} />
+          <AppName />
         </View>
       </KeyboardAvoidingView>
     </SafeArea>

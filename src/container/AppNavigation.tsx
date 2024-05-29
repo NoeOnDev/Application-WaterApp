@@ -12,12 +12,12 @@ export function AppNavigation() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Inicio de sesión"
+        name="Login"
         component={LoginScreen}
         options={{headerShown: false, headerShadowVisible: false}}
       />
       <Stack.Screen
-        name="Recuperar contraseña"
+        name="ForgotPassword"
         component={ForgotPasswordScreen}
         options={{headerShadowVisible: false, headerTitle: ''}}
       />

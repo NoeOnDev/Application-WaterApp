@@ -9,7 +9,6 @@ export const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderTopStartRadius: 20,
     borderTopEndRadius: 20,
-    zIndex: 1,
   },
   logo: {
     width: 160,

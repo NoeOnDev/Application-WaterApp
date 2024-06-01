@@ -38,7 +38,10 @@ export const InputAuth: React.FC<InputProps> = ({
         onBlur={handleBlur}
       />
       {secureTextEntry && (isFocused || value) ? (
-        <TouchableOpacity onPress={toggleShowPassword} style={styles.icon}>
+        <TouchableOpacity
+          onPress={toggleShowPassword}
+          activeOpacity={0.6}
+          style={styles.icon}>
           <Icon
             name={showPassword ? 'visibility' : 'visibility-off'}
             size={24}
@@ -47,7 +50,10 @@ export const InputAuth: React.FC<InputProps> = ({
         </TouchableOpacity>
       ) : (
         value && (
-          <TouchableOpacity onPress={clearText} style={styles.icon}>
+          <TouchableOpacity
+            onPress={clearText}
+            activeOpacity={0.6}
+            style={styles.icon}>
             <Icon name="close" size={24} color="gray" />
           </TouchableOpacity>
         )

@@ -12,8 +12,8 @@ export const styles = StyleSheet.create({
     zIndex: 1,
   },
   logo: {
-    width: 140,
-    height: 170,
+    width: 160,
+    height: 180,
     alignSelf: 'center',
     marginBottom: 20,
   },

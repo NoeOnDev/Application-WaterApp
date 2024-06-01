@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {View, KeyboardAvoidingView, Platform} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {View, KeyboardAvoidingView, Platform, Keyboard} from 'react-native';
 import {AuthTemplate} from '../../template/AuthTemplate';
 import {ButtonAuth, Logo, AppName} from '../../atoms';
 import {useNavigation, NavigationProp} from '@react-navigation/native';
@@ -10,6 +10,7 @@ import {styles} from './StylesLoginScreen';
 export const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isKeyboardVisible, setKeyboardVisible] = useState(false);
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   const fields = [
@@ -41,9 +42,29 @@ export const LoginScreen = () => {
     navigation.navigate('Register');
   };
 
+  useEffect(() => {
+    const keyboardDidShowListener = Keyboard.addListener(
+      'keyboardDidShow',
+      () => {
+        setKeyboardVisible(true);
+      },
+    );
+    const keyboardDidHideListener = Keyboard.addListener(
+      'keyboardDidHide',
+      () => {
+        setKeyboardVisible(false);
+      },
+    );
+
+    return () => {
+      keyboardDidHideListener.remove();
+      keyboardDidShowListener.remove();
+    };
+  }, []);
+
   return (
-    <SafeArea backgroundColor="#FFFFFF">
-      <Logo style={styles.logo} />
+    <SafeArea backgroundColor="#0071CE">
+      {!isKeyboardVisible && <Logo style={styles.logo} />}
       <KeyboardAvoidingView
         style={styles.container}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -55,15 +76,17 @@ export const LoginScreen = () => {
           linkText="¿Olvidaste tu contraseña?"
           linkOnPress={handleForgotPassword}
         />
-        <View style={styles.bottomContainer}>
-          <ButtonAuth
-            title="Crear nueva cuenta"
-            onPress={handleCreateAccount}
-            buttonStyle={styles.createAccountButton}
-            textStyle={styles.createAccountButtonText}
-          />
-          <AppName />
-        </View>
+        {!isKeyboardVisible && (
+          <View style={styles.bottomContainer}>
+            <ButtonAuth
+              title="Crear nueva cuenta"
+              onPress={handleCreateAccount}
+              buttonStyle={styles.createAccountButton}
+              textStyle={styles.createAccountButtonText}
+            />
+            <AppName />
+          </View>
+        )}
       </KeyboardAvoidingView>
     </SafeArea>
   );

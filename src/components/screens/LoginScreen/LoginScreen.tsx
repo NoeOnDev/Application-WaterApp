@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import {View, KeyboardAvoidingView, Platform, Keyboard} from 'react-native';
-import {AuthTemplate} from '../../template/AuthTemplate';
+import {AuthForm, FormField} from '../../organism';
 import {ButtonAuth, Logo, AppName} from '../../atoms';
 import {useNavigation, NavigationProp} from '@react-navigation/native';
-import {SafeArea, FormField} from '../../organism';
+import {SafeArea} from '../../organism';
 import {RootStackParamList} from '../../../types/types';
 import {styles} from './StylesLoginScreen';
 
@@ -71,7 +71,7 @@ export const LoginScreen = () => {
         style={styles.container}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 0}>
-        <AuthTemplate
+        <AuthForm
           fields={fields}
           buttonTitle="Iniciar sesión"
           buttonOnPress={handleLogin}

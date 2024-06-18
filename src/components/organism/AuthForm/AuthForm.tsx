@@ -15,7 +15,6 @@ export interface FormField {
   secureTextEntry?: boolean;
 }
 
-
 interface AuthFormProps {
   fields: FormField[];
   buttonTitle: string;

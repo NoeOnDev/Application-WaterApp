@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View} from 'react-native';
 import {Dropdown} from 'react-native-element-dropdown';
 import {styles} from './StylesDropdownAuth';
@@ -16,8 +16,13 @@ export const DropdownAuth: React.FC<DropdownProps> = ({
   options,
   placeholder,
 }) => {
+  const [isFocused, setIsFocused] = useState(false);
+
   return (
-    <View style={styles.dropdownContainer}>
+    <View
+      style={
+        isFocused ? styles.dropdownContainerFocused : styles.dropdownContainer
+      }>
       <Dropdown
         style={styles.dropdown}
         data={options}
@@ -27,7 +32,10 @@ export const DropdownAuth: React.FC<DropdownProps> = ({
         value={selectedValue}
         onChange={item => {
           onValueChange(item.value);
+          setIsFocused(false);
         }}
+        onFocus={() => setIsFocused(true)}
+        onBlur={() => setIsFocused(false)}
       />
     </View>
   );

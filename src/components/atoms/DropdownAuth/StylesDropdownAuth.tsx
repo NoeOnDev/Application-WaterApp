@@ -10,6 +10,15 @@ export const styles = StyleSheet.create({
     marginVertical: 8,
     marginBottom: -10,
   },
+  dropdownContainerFocused: {
+    height: 55,
+    borderWidth: 1.3,
+    padding: 5,
+    borderRadius: 10,
+    borderColor: '#353535',
+    marginVertical: 8,
+    marginBottom: -10,
+  },
   dropdown: {
     flex: 1,
     fontSize: 16,

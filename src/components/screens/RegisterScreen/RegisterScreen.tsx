@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {View, KeyboardAvoidingView, Platform, Keyboard} from 'react-native';
 import {AuthForm, FormField, SafeArea} from '../../organism';
+import { LinkButton } from '../../atoms';
 import {useNavigation, NavigationProp} from '@react-navigation/native';
 import {RootStackParamList} from '../../../types/types';
 import {styles} from './StylesRegisterScreen';
@@ -105,13 +106,22 @@ export const RegisterScreen = () => {
         style={styles.container}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 0}>
-        <AuthForm
-          fields={fields}
-          buttonTitle="Registrarse"
-          buttonOnPress={handleRegister}
-          linkText="¿Ya tienes una cuenta?"
-          linkOnPress={() => navigation.navigate('Login')}
-        />
+        <View style={styles.content}>
+          <AuthForm
+            fields={fields}
+            buttonTitle="Registrarse"
+            buttonOnPress={handleRegister}
+            linkText=""
+            linkOnPress={() => ({})}
+          />
+          {!isKeyboardVisible && (
+            <LinkButton
+              text="¿Ya tienes una cuenta?"
+              onPress={() => navigation.navigate('Login')}
+              style={styles.linkText}
+            />
+          )}
+        </View>
       </KeyboardAvoidingView>
     </SafeArea>
   );

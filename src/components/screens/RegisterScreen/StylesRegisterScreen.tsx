@@ -5,7 +5,15 @@ export const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 20,
     paddingVertical: 0,
-    justifyContent: 'space-between',
     backgroundColor: 'white',
+  },
+  content: {
+    flex: 1,
+    justifyContent: 'space-between',
+  },
+  linkText: {
+    textAlign: 'center',
+    color: '#0071CE',
+    marginVertical: 20,
   },
 });

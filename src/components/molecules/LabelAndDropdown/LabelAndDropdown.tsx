@@ -25,7 +25,7 @@ export const LabelAndDropdown: React.FC<LabelAndDropdownProps> = ({
       <DropdownAuth
         selectedValue={selectedValue}
         onValueChange={onValueChange}
-        options={options}
+        options={options ?? []}
         placeholder={placeholder}
       />
     </View>

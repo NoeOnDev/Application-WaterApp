@@ -3,7 +3,7 @@ import {View, KeyboardAvoidingView, Platform, Keyboard} from 'react-native';
 import {AuthTemplate} from '../../template/AuthTemplate';
 import {ButtonAuth, Logo, AppName} from '../../atoms';
 import {useNavigation, NavigationProp} from '@react-navigation/native';
-import {SafeArea} from '../../organism';
+import {SafeArea, FormField} from '../../organism';
 import {RootStackParamList} from '../../../types/types';
 import {styles} from './StylesLoginScreen';
 
@@ -13,14 +13,16 @@ export const LoginScreen = () => {
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
-  const fields = [
+  const fields: FormField[] = [
     {
+      type: 'input',
       label: 'Correo electrónico',
       value: email,
       onChangeText: setEmail,
       placeholder: 'Introduce tu correo electrónico',
     },
     {
+      type: 'input',
       label: 'Contraseña',
       value: password,
       onChangeText: setPassword,

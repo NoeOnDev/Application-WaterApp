@@ -1,16 +1,20 @@
 import React from 'react';
 import {View, ViewStyle, TextStyle} from 'react-native';
-import {LabelAndInput} from '../../molecules';
+import {LabelAndInput, LabelAndDropdown} from '../../molecules';
 import {ButtonAuth, LinkButton} from '../../atoms';
 import {styles} from './StylesAuthForm';
 
 export interface FormField {
+  type: 'input' | 'dropdown';
   label: string;
   value: string;
-  onChangeText: (text: string) => void;
+  onChangeText?: (text: string) => void;
+  onValueChange?: (itemValue: string) => void;
+  options?: {label: string, value: string}[];
   placeholder?: string;
   secureTextEntry?: boolean;
 }
+
 
 interface AuthFormProps {
   fields: FormField[];
@@ -33,16 +37,32 @@ export const AuthForm: React.FC<AuthFormProps> = ({
 }) => {
   return (
     <View style={styles.container}>
-      {fields.map((field, index) => (
-        <LabelAndInput
-          key={index}
-          label={field.label}
-          value={field.value}
-          onChangeText={field.onChangeText}
-          placeholder={field.placeholder}
-          secureTextEntry={field.secureTextEntry}
-        />
-      ))}
+      {fields.map((field, index) => {
+        if (field.type === 'input') {
+          return (
+            <LabelAndInput
+              key={index}
+              label={field.label}
+              value={field.value}
+              onChangeText={field.onChangeText ?? (() => {})}
+              placeholder={field.placeholder}
+              secureTextEntry={field.secureTextEntry}
+            />
+          );
+        } else if (field.type === 'dropdown') {
+          return (
+            <LabelAndDropdown
+              key={index}
+              label={field.label}
+              selectedValue={field.value}
+              onValueChange={field.onValueChange ?? (() => {})}
+              options={field.options ?? []}
+              placeholder={field.placeholder}
+            />
+          );
+        }
+        return null;
+      })}
       <ButtonAuth
         title={buttonTitle}
         onPress={buttonOnPress}

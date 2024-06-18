@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: '#cccccc',
     marginVertical: 8,
-    marginBottom: -10,
+    marginBottom: -8,
   },
   dropdownContainerFocused: {
     height: 55,

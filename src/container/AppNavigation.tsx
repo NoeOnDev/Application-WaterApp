@@ -24,7 +24,12 @@ export function AppNavigation() {
       <Stack.Screen
         name="Register"
         component={RegisterScreen}
-        options={{headerShadowVisible: false, headerTitle: ''}}
+        options={{
+          headerShadowVisible: false,
+          headerTitle: '',
+          headerStyle: {backgroundColor: '#0071CE'},
+          headerTintColor: 'white',
+        }}
       />
     </Stack.Navigator>
   );

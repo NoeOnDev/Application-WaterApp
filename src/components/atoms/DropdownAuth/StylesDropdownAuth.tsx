@@ -2,13 +2,17 @@ import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
   dropdownContainer: {
-    marginVertical: 10,
+    height: 55,
+    borderWidth: 1.3,
+    padding: 5,
+    borderRadius: 10,
+    borderColor: '#cccccc',
+    marginVertical: 8,
+    marginBottom: -10,
   },
   dropdown: {
-    height: 50,
-    borderColor: 'gray',
-    borderWidth: 1,
-    borderRadius: 8,
-    paddingHorizontal: 8,
+    flex: 1,
+    fontSize: 16,
+    color: 'black',
   },
 });

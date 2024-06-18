@@ -1,11 +1,12 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View} from 'react-native';
 import {Dropdown} from 'react-native-element-dropdown';
+import {styles} from './StylesDropdownAuth';
 
 interface DropdownProps {
   selectedValue: string;
   onValueChange: (itemValue: string) => void;
-  options: {label: string, value: string}[];
+  options: {label: string; value: string}[];
   placeholder?: string;
 }
 
@@ -31,16 +32,3 @@ export const DropdownAuth: React.FC<DropdownProps> = ({
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  dropdownContainer: {
-    marginVertical: 10,
-  },
-  dropdown: {
-    height: 50,
-    borderColor: 'gray',
-    borderWidth: 1,
-    borderRadius: 8,
-    paddingHorizontal: 8,
-  },
-});

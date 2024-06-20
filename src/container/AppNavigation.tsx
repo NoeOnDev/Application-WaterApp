@@ -33,7 +33,7 @@ export function AppNavigation() {
         }}
       />
       <Stack.Screen
-        name="Home"
+        name="HomeAdmin"
         component={HomeScreen}
         options={{headerShown: false, headerShadowVisible: false}}
       />

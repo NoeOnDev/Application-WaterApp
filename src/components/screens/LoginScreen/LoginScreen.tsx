@@ -34,10 +34,11 @@ export const LoginScreen = () => {
   const handleLogin = () => {
     console.log('Email:', email);
     console.log('Password:', password);
+    navigation.navigate('HomeAdmin');
   };
 
   const handleForgotPassword = () => {
-    navigation.navigate('Home');
+    navigation.navigate('ForgotPassword');
   };
 
   const handleCreateAccount = () => {

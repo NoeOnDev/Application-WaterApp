@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import {View} from 'react-native';
-import {ButtonAuth, InputMessage} from '../../atoms';
+import {View, ScrollView} from 'react-native';
+import {ButtonAuth, InputMessage, SuggestionBox} from '../../atoms';
 import {LabelAndMultiSelect} from '../../molecules';
 import {styles} from './StylesNotificationForm';
 
@@ -19,6 +19,14 @@ const streetOptions = [
   {label: 'ESMERALDA', value: 'esmeralda'},
 ];
 
+const messageSuggestions = [
+  'A tu calle se le suministrará agua el próximo lunes.',
+  'Por problemas de mantenimiento, se suspenderá el servicio de agua el día de mañana.',
+  'Se le esta suministrando agua a tu calle.',
+  'Se ha reportado un corte de agua para mañana en tu calle.',
+  'Se ha reportado un corte de agua para hoy en tu calle.',
+];
+
 export const NotificationForm = () => {
   const [selectedStreets, setSelectedStreets] = useState<string[]>([]);
   const [message, setMessage] = useState('');
@@ -28,14 +36,22 @@ export const NotificationForm = () => {
     console.log('Mensaje:', message);
   };
 
+  const handleSelectSuggestion = (suggestion: string) => {
+    setMessage(suggestion);
+  };
+
   return (
-    <View style={styles.formContainer}>
+    <ScrollView contentContainerStyle={styles.formContainer}>
       <LabelAndMultiSelect
         label="Calles"
         options={streetOptions}
         selectedValues={selectedStreets}
         onValueChange={setSelectedStreets}
         placeholder="Selecciona las calles"
+      />
+      <SuggestionBox
+        suggestions={messageSuggestions}
+        onSelectSuggestion={handleSelectSuggestion}
       />
       <InputMessage
         value={message}
@@ -46,6 +62,6 @@ export const NotificationForm = () => {
         title="Enviar Notificación"
         onPress={handleSendNotification}
       />
-    </View>
+    </ScrollView>
   );
 };

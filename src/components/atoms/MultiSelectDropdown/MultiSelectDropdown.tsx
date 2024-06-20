@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, TouchableOpacity, FlatList, Modal} from 'react-native';
 import {styles} from './StylesMultiSelectDropdown';
 
@@ -20,7 +20,8 @@ export const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
   onValueChange,
   placeholder,
 }) => {
-  const [modalVisible, setModalVisible] = React.useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
 
   const toggleSelect = (value: string) => {
     const newValue = selectedValues.includes(value)
@@ -33,13 +34,23 @@ export const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
     <View>
       <TouchableOpacity
         activeOpacity={0.8}
-        onPress={() => setModalVisible(true)}
-        style={styles.dropdown}>
-        <Text>
+        onPress={() => {
+          setModalVisible(true);
+          setIsFocused(true);
+        }}
+        style={isFocused ? styles.dropdownFocused : styles.dropdown}>
+        <Text style={styles.dropdownText}>
           {selectedValues.length > 0 ? selectedValues.join(', ') : placeholder}
         </Text>
       </TouchableOpacity>
-      <Modal visible={modalVisible} transparent={true} animationType="slide">
+      <Modal
+        visible={modalVisible}
+        transparent={true}
+        animationType="slide"
+        onRequestClose={() => {
+          setModalVisible(false);
+          setIsFocused(false);
+        }}>
         <View style={styles.modalOverlay}>
           <View style={styles.modalContent}>
             <FlatList
@@ -62,7 +73,11 @@ export const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
               )}
             />
             <TouchableOpacity
-              onPress={() => setModalVisible(false)}
+              activeOpacity={0.7}
+              onPress={() => {
+                setModalVisible(false);
+                setIsFocused(false);
+              }}
               style={styles.closeButton}>
               <Text style={styles.closeButtonText}>Cerrar</Text>
             </TouchableOpacity>

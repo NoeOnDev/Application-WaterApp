@@ -5,8 +5,22 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#ccc',
     padding: 10,
-    borderRadius: 5,
+    borderRadius: 10,
+    minHeight: 55,
+    justifyContent: 'center',
     marginVertical: 8,
+  },
+  dropdownFocused: {
+    borderWidth: 1.3,
+    borderColor: '#353535',
+    padding: 10,
+    borderRadius: 10,
+    minHeight: 55,
+    justifyContent: 'center',
+    marginVertical: 8,
+  },
+  dropdownText: {
+    fontSize: 16,
   },
   modalOverlay: {
     flex: 1,
@@ -25,9 +39,11 @@ export const styles = StyleSheet.create({
   closeButton: {
     marginTop: 20,
     alignItems: 'center',
+    fontSize: 16,
   },
   closeButtonText: {
     color: '#0071CE',
     fontWeight: 'bold',
+    fontSize: 16,
   },
 });

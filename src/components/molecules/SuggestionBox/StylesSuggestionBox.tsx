@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 10,
-    padding: 10,
+    padding: 15,
     maxHeight: 300,
   },
   newSuggestionInput: {

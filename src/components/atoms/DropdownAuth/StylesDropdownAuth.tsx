@@ -16,7 +16,6 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: '#353535',
     marginVertical: 8,
-    marginBottom: -10,
   },
   dropdown: {
     flex: 1,

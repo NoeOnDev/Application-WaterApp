@@ -24,7 +24,7 @@ export const RegisterScreen = () => {
     },
     {
       type: 'dropdown',
-      label: 'Calle',
+      label: 'Nombre de la Calle',
       value: street,
       onValueChange: setStreet,
       options: [
@@ -62,7 +62,7 @@ export const RegisterScreen = () => {
 
   const handleRegister = () => {
     console.log('Nombre Completo:', fullName);
-    console.log('Calle:', street);
+    console.log('Nombre de Calle:', street);
     console.log('Email:', email);
     console.log('Password:', password);
   };

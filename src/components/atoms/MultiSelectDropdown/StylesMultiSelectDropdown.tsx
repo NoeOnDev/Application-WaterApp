@@ -6,6 +6,7 @@ export const styles = StyleSheet.create({
     borderColor: '#ccc',
     padding: 10,
     borderRadius: 5,
+    marginVertical: 8,
   },
   modalOverlay: {
     flex: 1,

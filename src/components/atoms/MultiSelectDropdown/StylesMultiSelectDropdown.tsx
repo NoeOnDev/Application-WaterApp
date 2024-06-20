@@ -34,7 +34,19 @@ export const styles = StyleSheet.create({
     padding: 20,
   },
   option: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     paddingVertical: 10,
+  },
+  optionText: {
+    fontSize: 16,
+  },
+  optionTextSelected: {
+    fontWeight: 'bold',
+  },
+  optionIcon: {
+    marginLeft: 10,
   },
   closeButton: {
     marginTop: 20,

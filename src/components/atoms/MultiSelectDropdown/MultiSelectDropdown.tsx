@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {View, Text, TouchableOpacity, FlatList, Modal} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import {styles} from './StylesMultiSelectDropdown';
 
 type Option = {
@@ -62,13 +63,15 @@ export const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
                   onPress={() => toggleSelect(item.value)}
                   style={styles.option}>
                   <Text
-                    style={{
-                      fontWeight: selectedValues.includes(item.value)
-                        ? 'bold'
-                        : 'normal',
-                    }}>
+                    style={[
+                      styles.optionText,
+                      selectedValues.includes(item.value) && styles.optionTextSelected,
+                    ]}>
                     {item.label}
                   </Text>
+                  {selectedValues.includes(item.value) && (
+                    <Icon name="check-circle" size={20} color="green" style={styles.optionIcon} />
+                  )}
                 </TouchableOpacity>
               )}
             />

@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {View, Text, TouchableOpacity, ScrollView} from 'react-native';
 import {ButtonAuth, InputAuth} from '../../atoms';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import {styles} from './StylesSuggestionBox';
 
 interface SuggestionBoxProps {
@@ -50,7 +51,7 @@ export const SuggestionBox: React.FC<SuggestionBoxProps> = ({
             <TouchableOpacity
               style={styles.removeButton}
               onPress={() => onRemoveSuggestion(index)}>
-              <Text style={styles.removeButtonText}>X</Text>
+              <Icon name="close" size={24} color="red" />
             </TouchableOpacity>
           </View>
         ))}

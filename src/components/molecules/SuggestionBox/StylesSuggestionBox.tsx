@@ -52,9 +52,4 @@ export const styles = StyleSheet.create({
     marginLeft: 10,
     padding: 5,
   },
-  removeButtonText: {
-    color: '#ff0000',
-    fontWeight: 'bold',
-    fontSize: 18,
-  },
 });

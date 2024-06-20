@@ -37,7 +37,7 @@ export const LoginScreen = () => {
   };
 
   const handleForgotPassword = () => {
-    navigation.navigate('ForgotPassword');
+    navigation.navigate('Home');
   };
 
   const handleCreateAccount = () => {

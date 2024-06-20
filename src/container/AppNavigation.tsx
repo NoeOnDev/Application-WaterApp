@@ -4,6 +4,7 @@ import {
   LoginScreen,
   RegisterScreen,
   ForgotPasswordScreen,
+  HomeScreen,
 } from '../components/screens';
 
 const Stack = createNativeStackNavigator();
@@ -30,6 +31,11 @@ export function AppNavigation() {
           headerStyle: {backgroundColor: '#0071CE'},
           headerTintColor: 'white',
         }}
+      />
+      <Stack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{headerShown: false, headerShadowVisible: false}}
       />
     </Stack.Navigator>
   );

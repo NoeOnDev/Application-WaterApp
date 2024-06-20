@@ -1,6 +1,12 @@
 import React from 'react';
-import {View, Button} from 'react-native';
+import {View} from 'react-native';
+import {NotificationForm} from '../../organism';
+import {styles} from './StylesHomeScreen';
 
 export function HomeScreen() {
-  return <View />;
+  return (
+    <View style={styles.container}>
+      <NotificationForm />
+    </View>
+  );
 }

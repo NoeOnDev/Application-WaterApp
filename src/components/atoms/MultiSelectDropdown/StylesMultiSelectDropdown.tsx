@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
   modalContent: {
     backgroundColor: 'white',
     marginHorizontal: 20,
-    borderRadius: 5,
+    borderRadius: 20,
     padding: 20,
   },
   option: {

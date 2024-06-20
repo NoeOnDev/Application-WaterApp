@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import {View, Button} from 'react-native';
+import {View} from 'react-native';
+import {ButtonAuth, InputMessage} from '../../atoms';
 import {LabelAndMultiSelect} from '../../molecules';
 import {styles} from './StylesNotificationForm';
 
@@ -20,9 +21,11 @@ const streetOptions = [
 
 export const NotificationForm = () => {
   const [selectedStreets, setSelectedStreets] = useState<string[]>([]);
+  const [message, setMessage] = useState('');
 
   const handleSendNotification = () => {
     console.log('Calles seleccionadas:', selectedStreets);
+    console.log('Mensaje:', message);
   };
 
   return (
@@ -34,7 +37,15 @@ export const NotificationForm = () => {
         onValueChange={setSelectedStreets}
         placeholder="Selecciona las calles"
       />
-      <Button title="Enviar Notificación" onPress={handleSendNotification} />
+      <InputMessage
+        value={message}
+        onChangeText={setMessage}
+        placeholder="Introduce el mensaje"
+      />
+      <ButtonAuth
+        title="Enviar Notificación"
+        onPress={handleSendNotification}
+      />
     </View>
   );
-}
+};

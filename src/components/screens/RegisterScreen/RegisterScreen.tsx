@@ -11,7 +11,6 @@ export const RegisterScreen = () => {
   const [street, setStreet] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
@@ -59,21 +58,9 @@ export const RegisterScreen = () => {
       placeholder: 'Introduce tu contraseña',
       secureTextEntry: true,
     },
-    {
-      type: 'input',
-      label: 'Confirmar Contraseña',
-      value: confirmPassword,
-      onChangeText: setConfirmPassword,
-      placeholder: 'Confirma tu contraseña',
-      secureTextEntry: true,
-    },
   ];
 
   const handleRegister = () => {
-    if (password !== confirmPassword) {
-      console.log('Las contraseñas no coinciden');
-      return;
-    }
     console.log('Nombre Completo:', fullName);
     console.log('Calle:', street);
     console.log('Email:', email);

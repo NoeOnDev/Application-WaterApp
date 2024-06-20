@@ -20,13 +20,11 @@ export const styles = StyleSheet.create({
   dropdown: {
     flex: 1,
     fontSize: 16,
-    color: 'black',
   },
   dropdownMenu: {
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
     marginTop: 5,
-    backgroundColor: 'white',
     elevation: 3,
     shadowColor: '#000',
     shadowOffset: {width: 0, height: 2},
@@ -38,6 +36,7 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     paddingVertical: 10,
     paddingHorizontal: 15,
+    // color: '#353535',
   },
   selectedDropdownItemText: {
     fontSize: 16,

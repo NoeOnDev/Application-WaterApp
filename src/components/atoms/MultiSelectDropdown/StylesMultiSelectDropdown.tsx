@@ -21,6 +21,7 @@ export const styles = StyleSheet.create({
   },
   dropdownText: {
     fontSize: 16,
+    // color: '#353535',
   },
   modalOverlay: {
     flex: 1,
@@ -47,6 +48,7 @@ export const styles = StyleSheet.create({
   },
   optionText: {
     fontSize: 16,
+    // color: '#353535',
   },
   optionTextSelected: {
     fontWeight: 'bold',

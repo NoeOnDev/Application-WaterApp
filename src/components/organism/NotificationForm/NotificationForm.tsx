@@ -19,10 +19,10 @@ const streetOptions = [
   {label: 'ESMERALDA', value: 'esmeralda'},
 ];
 
-const messageSuggestions = [
+const initialMessageSuggestions = [
   'A tu calle se le suministrará agua el próximo lunes.',
   'Por problemas de mantenimiento, se suspenderá el servicio de agua el día de mañana.',
-  'Se le esta suministrando agua a tu calle.',
+  'Se le está suministrando agua a tu calle.',
   'Se ha reportado un corte de agua para mañana en tu calle.',
   'Se ha reportado un corte de agua para hoy en tu calle.',
 ];
@@ -30,6 +30,9 @@ const messageSuggestions = [
 export const NotificationForm = () => {
   const [selectedStreets, setSelectedStreets] = useState<string[]>([]);
   const [message, setMessage] = useState('');
+  const [messageSuggestions, setMessageSuggestions] = useState(
+    initialMessageSuggestions,
+  );
 
   const handleSendNotification = () => {
     console.log('Calles seleccionadas:', selectedStreets);
@@ -38,6 +41,16 @@ export const NotificationForm = () => {
 
   const handleSelectSuggestion = (suggestion: string) => {
     setMessage(suggestion);
+  };
+
+  const handleAddSuggestion = (suggestion: string) => {
+    setMessageSuggestions(prevSuggestions => [...prevSuggestions, suggestion]);
+  };
+
+  const handleRemoveSuggestion = (index: number) => {
+    setMessageSuggestions(prevSuggestions =>
+      prevSuggestions.filter((_, i) => i !== index),
+    );
   };
 
   return (
@@ -52,6 +65,8 @@ export const NotificationForm = () => {
       <SuggestionBox
         suggestions={messageSuggestions}
         onSelectSuggestion={handleSelectSuggestion}
+        onAddSuggestion={handleAddSuggestion}
+        onRemoveSuggestion={handleRemoveSuggestion}
       />
       <InputMessage
         value={message}

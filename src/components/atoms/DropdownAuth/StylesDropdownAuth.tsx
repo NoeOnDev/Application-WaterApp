@@ -22,4 +22,26 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     color: 'black',
   },
+  dropdownMenu: {
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
+    marginTop: 5,
+    backgroundColor: 'white',
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    zIndex: 1000,
+  },
+  dropdownItemText: {
+    fontSize: 16,
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+  },
+  selectedDropdownItemText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#0071CE',
+  },
 });

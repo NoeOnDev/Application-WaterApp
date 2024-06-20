@@ -25,6 +25,9 @@ export const DropdownAuth: React.FC<DropdownProps> = ({
       }>
       <Dropdown
         style={styles.dropdown}
+        containerStyle={styles.dropdownMenu}
+        itemTextStyle={styles.dropdownItemText}
+        selectedTextStyle={styles.selectedDropdownItemText}
         data={options}
         labelField="label"
         valueField="value"

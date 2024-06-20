@@ -25,6 +25,8 @@ export const styles = StyleSheet.create({
   modalOverlay: {
     flex: 1,
     justifyContent: 'center',
+    borderTopRightRadius: 20,
+    borderTopLeftRadius: 20,
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   modalContent: {

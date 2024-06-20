@@ -40,7 +40,11 @@ export const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
           setIsFocused(true);
         }}
         style={isFocused ? styles.dropdownFocused : styles.dropdown}>
-        <Text style={styles.dropdownText}>
+        <Text
+          style={[
+            styles.dropdownText,
+            selectedValues.length > 0 && styles.boldDropdownText,
+          ]}>
           {selectedValues.length > 0 ? selectedValues.join(', ') : placeholder}
         </Text>
       </TouchableOpacity>
@@ -65,12 +69,18 @@ export const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
                   <Text
                     style={[
                       styles.optionText,
-                      selectedValues.includes(item.value) && styles.optionTextSelected,
+                      selectedValues.includes(item.value) &&
+                        styles.optionTextSelected,
                     ]}>
                     {item.label}
                   </Text>
                   {selectedValues.includes(item.value) && (
-                    <Icon name="check-circle" size={20} color="green" style={styles.optionIcon} />
+                    <Icon
+                      name="check-circle"
+                      size={20}
+                      color="green"
+                      style={styles.optionIcon}
+                    />
                   )}
                 </TouchableOpacity>
               )}

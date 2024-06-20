@@ -29,6 +29,10 @@ export const styles = StyleSheet.create({
     borderTopLeftRadius: 20,
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
+  boldDropdownText: {
+    color: '#0071CE',
+    fontWeight: 'bold',
+  },
   modalContent: {
     backgroundColor: 'white',
     marginHorizontal: 20,

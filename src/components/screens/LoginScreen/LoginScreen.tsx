@@ -34,7 +34,7 @@ export const LoginScreen = () => {
   const handleLogin = () => {
     console.log('Email:', email);
     console.log('Password:', password);
-    navigation.navigate('HomeAdmin');
+    navigation.navigate('Home');
   };
 
   const handleForgotPassword = () => {

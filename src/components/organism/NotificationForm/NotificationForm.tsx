@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, ScrollView} from 'react-native';
+import {ScrollView} from 'react-native';
 import {ButtonAuth, InputMessage, SuggestionBox} from '../../atoms';
 import {LabelAndMultiSelect} from '../../molecules';
 import {styles} from './StylesNotificationForm';
@@ -27,7 +27,19 @@ const initialMessageSuggestions = [
   'Se ha reportado un corte de agua para hoy en tu calle.',
 ];
 
-export const NotificationForm = () => {
+interface Notification {
+  streets: string[];
+  message: string;
+  timestamp: Date;
+}
+
+interface NotificationFormProps {
+  addNotification: (notification: Notification) => void;
+}
+
+export const NotificationForm: React.FC<NotificationFormProps> = ({
+  addNotification,
+}) => {
   const [selectedStreets, setSelectedStreets] = useState<string[]>([]);
   const [message, setMessage] = useState('');
   const [messageSuggestions, setMessageSuggestions] = useState(
@@ -35,6 +47,12 @@ export const NotificationForm = () => {
   );
 
   const handleSendNotification = () => {
+    const notification = {
+      streets: selectedStreets,
+      message,
+      timestamp: new Date(),
+    };
+    addNotification(notification);
     console.log('Calles seleccionadas:', selectedStreets);
     console.log('Mensaje:', message);
   };

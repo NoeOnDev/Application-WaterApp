@@ -4,12 +4,24 @@ import {SafeArea} from '../../organism';
 import {NotificationForm} from '../../organism';
 import {styles} from './StylesSendNoticesScreen';
 
-export function SendNoticesScreen() {
+interface Notification {
+  streets: string[];
+  message: string;
+  timestamp: Date;
+}
+
+interface SendNoticesScreenProps {
+  addNotification: (notification: Notification) => void;
+}
+
+export const SendNoticesScreen: React.FC<SendNoticesScreenProps> = ({
+  addNotification,
+}) => {
   return (
     <SafeArea backgroundColor="#0071CE">
       <View style={styles.container}>
-        <NotificationForm />
+        <NotificationForm addNotification={addNotification} />
       </View>
     </SafeArea>
   );
-}
+};

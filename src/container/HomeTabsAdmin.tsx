@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {
@@ -10,7 +10,19 @@ import {
 
 const Tab = createBottomTabNavigator();
 
+interface Notification {
+  streets: string[];
+  message: string;
+  timestamp: Date;
+}
+
 function HomeTabsAdmin() {
+  const [notifications, setNotifications] = useState<Notification[]>([]);
+
+  const addNotification = (notification: Notification) => {
+    setNotifications(prevNotifications => [...prevNotifications, notification]);
+  };
+
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
@@ -37,14 +49,16 @@ function HomeTabsAdmin() {
       />
       <Tab.Screen
         name="SendNotices"
-        component={SendNoticesScreen}
-        options={{headerShown: false, tabBarLabel: 'Enviar Avisos'}}
-      />
+        options={{headerShown: false, tabBarLabel: 'Enviar Avisos'}}>
+        {props => (
+          <SendNoticesScreen {...props} addNotification={addNotification} />
+        )}
+      </Tab.Screen>
       <Tab.Screen
         name="History"
-        component={HistoryScreen}
-        options={{headerShown: false, tabBarLabel: 'Historial'}}
-      />
+        options={{headerShown: false, tabBarLabel: 'Historial'}}>
+        {props => <HistoryScreen {...props} notifications={notifications} />}
+      </Tab.Screen>
       <Tab.Screen
         name="Profile"
         component={ProfileScreen}

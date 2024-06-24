@@ -52,7 +52,7 @@ export const SuggestionBox: React.FC<SuggestionBoxProps> = ({
               activeOpacity={0.7}
               style={styles.removeButton}
               onPress={() => onRemoveSuggestion(index)}>
-              <Icon name="close" size={24} color="red" />
+              <Icon name="close" size={18} color="red" />
             </TouchableOpacity>
           </View>
         ))}

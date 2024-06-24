@@ -1,7 +1,12 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {HomeScreen, ProfileScreen, HistoryScreen} from '../components/screens';
+import {
+  HomeScreen,
+  ProfileScreen,
+  HistoryScreen,
+  SendNoticesScreen,
+} from '../components/screens';
 
 const Tab = createBottomTabNavigator();
 
@@ -18,6 +23,8 @@ function HomeTabsAdmin() {
             iconName = 'history';
           } else if (route.name === 'Profile') {
             iconName = 'person';
+          } else if (route.name === 'SendNotices') {
+            iconName = 'send';
           }
 
           return <Icon name={iconName} size={size} color={color} />;
@@ -27,6 +34,11 @@ function HomeTabsAdmin() {
         name="HomeAdmin"
         component={HomeScreen}
         options={{headerShown: false, tabBarLabel: 'Inicio'}}
+      />
+      <Tab.Screen
+        name="SendNotices"
+        component={SendNoticesScreen}
+        options={{headerShown: false, tabBarLabel: 'Enviar Avisos'}}
       />
       <Tab.Screen
         name="History"

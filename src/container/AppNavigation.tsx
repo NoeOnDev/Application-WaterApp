@@ -1,40 +1,14 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
 import {
   LoginScreen,
   RegisterScreen,
   ForgotPasswordScreen,
-  HomeScreen,
-  ProfileScreen,
-  HistoryScreen,
 } from '../components/screens';
+import HomeTabsAdmin from './HomeTabsAdmin';
 
 const Stack = createNativeStackNavigator();
-const Tab = createBottomTabNavigator();
-
-function HomeTabsAdmin() {
-  return (
-    <Tab.Navigator>
-      <Tab.Screen
-        name="HomeAdmin"
-        component={HomeScreen}
-        options={{headerShown: false}}
-      />
-      <Tab.Screen
-        name="History"
-        component={HistoryScreen}
-        options={{headerShown: false}}
-      />
-      <Tab.Screen
-        name="Profile"
-        component={ProfileScreen}
-        options={{headerShown: false}}
-      />
-    </Tab.Navigator>
-  );
-}
 
 export function AppNavigation() {
   return (

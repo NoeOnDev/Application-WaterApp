@@ -27,11 +27,17 @@ export const HistoryScreen: React.FC<HistoryScreenProps> = ({
   return (
     <SafeArea backgroundColor="#0071CE">
       <View style={styles.container}>
-        <FlatList
-          data={notifications}
-          renderItem={renderNotification}
-          keyExtractor={(item, index) => index.toString()}
-        />
+        {notifications.length === 0 ? (
+          <Text style={styles.noHistoryMessage}>
+            No hay historial de notificaciones
+          </Text>
+        ) : (
+          <FlatList
+            data={notifications}
+            renderItem={renderNotification}
+            keyExtractor={(item, index) => index.toString()}
+          />
+        )}
       </View>
     </SafeArea>
   );

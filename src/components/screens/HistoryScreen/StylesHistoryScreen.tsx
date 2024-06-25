@@ -10,21 +10,28 @@ export const styles = StyleSheet.create({
     borderTopLeftRadius: 20,
   },
   notificationContainer: {
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
+    marginBottom: 16,
+    padding: 16,
+    backgroundColor: '#f9f9f9',
+    borderRadius: 8,
   },
   timestamp: {
     fontSize: 12,
-    color: '#888',
-    marginTop: 5,
+    color: '#999',
   },
   message: {
     fontSize: 16,
     fontWeight: 'bold',
+    marginBottom: 8,
   },
   streets: {
     fontSize: 14,
     color: '#555',
-    marginBottom: 10,
+  },
+  noHistoryMessage: {
+    fontSize: 18,
+    textAlign: 'center',
+    marginTop: 20,
+    color: '#999',
   },
 });

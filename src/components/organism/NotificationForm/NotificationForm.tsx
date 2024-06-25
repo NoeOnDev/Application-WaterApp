@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {ScrollView} from 'react-native';
-import {ButtonAuth, InputMessage, SuggestionBox} from '../../atoms';
-import {LabelAndMultiSelect} from '../../molecules';
+import {ButtonAuth, InputMessage} from '../../atoms';
+import {LabelAndMultiSelect, SuggestionBox} from '../../molecules';
 import {styles} from './StylesNotificationForm';
 
 const streetOptions = [

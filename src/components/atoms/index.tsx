@@ -6,6 +6,5 @@ export {InputMessage} from './InputMessage/InputMessage';
 export {LabelAuth} from './LabelAuth/LabelAuth';
 export {DropdownAuth} from './DropdownAuth/DropdownAuth';
 export {MultiSelectDropdown} from './MultiSelectDropdown/MultiSelectDropdown';
-export {SuggestionBox} from '../molecules/SuggestionBox/SuggestionBox';
 export {Logo} from './Logo/Logo';
 export {AppName} from './AppName/AppName';

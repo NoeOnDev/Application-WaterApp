@@ -9,7 +9,6 @@ export const styles = StyleSheet.create({
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
     justifyContent: 'center',
-    alignItems: 'center',
   },
   title: {
     fontSize: 24,
@@ -17,12 +16,11 @@ export const styles = StyleSheet.create({
     marginBottom: 20,
   },
   email: {
-    fontSize: 18,
+    fontSize: 16,
     marginBottom: 20,
   },
   logoutButton: {
-    backgroundColor: '#ff5c5c',
-    padding: 10,
-    borderRadius: 5,
+    backgroundColor: '#f00',
+    alignItems: 'center',
   },
 });

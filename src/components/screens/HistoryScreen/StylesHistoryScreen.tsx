@@ -16,6 +16,7 @@ export const styles = StyleSheet.create({
   timestamp: {
     fontSize: 12,
     color: '#888',
+    marginTop: 5,
   },
   message: {
     fontSize: 16,
@@ -24,5 +25,6 @@ export const styles = StyleSheet.create({
   streets: {
     fontSize: 14,
     color: '#555',
+    marginBottom: 10,
   },
 });

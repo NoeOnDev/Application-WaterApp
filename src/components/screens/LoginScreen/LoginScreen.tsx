@@ -40,10 +40,12 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({setUserRole}) => {
     if (email === 'admin@gmail.com' && password === 'admin') {
       setUserRole('admin');
       await AsyncStorage.setItem('userRole', 'admin');
+      await AsyncStorage.setItem('userEmail', email);
       navigation.navigate('HomeAdmin');
     } else if (email === 'user@gmail.com' && password === 'user') {
       setUserRole('user');
       await AsyncStorage.setItem('userRole', 'user');
+      await AsyncStorage.setItem('userEmail', email);
       navigation.navigate('HomeUser');
     } else {
       console.log('Credenciales incorrectas');

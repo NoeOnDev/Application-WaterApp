@@ -14,6 +14,7 @@ const Stack = createNativeStackNavigator();
 
 export function AppNavigation() {
   const [userRole, setUserRole] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const retrieveUserRole = async () => {
@@ -21,10 +22,15 @@ export function AppNavigation() {
       if (role) {
         setUserRole(role);
       }
+      setIsLoading(false);
     };
 
     retrieveUserRole();
   }, []);
+
+  if (isLoading) {
+    return null;
+  }
 
   return (
     <NavigationContainer>
@@ -51,17 +57,57 @@ export function AppNavigation() {
             />
           </>
         ) : userRole === 'admin' ? (
-          <Stack.Screen
-            name="HomeAdmin"
-            component={HomeTabsAdmin}
-            options={{headerShown: false, headerShadowVisible: false}}
-          />
+          <>
+            <Stack.Screen
+              name="HomeAdmin"
+              component={HomeTabsAdmin}
+              options={{headerShown: false, headerShadowVisible: false}}
+            />
+            <Stack.Screen name="Login" options={{headerShown: false}}>
+              {props => <LoginScreen {...props} setUserRole={setUserRole} />}
+            </Stack.Screen>
+            <Stack.Screen
+              name="ForgotPassword"
+              component={ForgotPasswordScreen}
+              options={{headerShadowVisible: false}}
+            />
+            <Stack.Screen
+              name="Register"
+              component={RegisterScreen}
+              options={{
+                headerShadowVisible: false,
+                headerTitle: 'Registro de usuario',
+                headerStyle: {backgroundColor: '#0071CE'},
+                headerTintColor: 'white',
+              }}
+            />
+          </>
         ) : (
-          <Stack.Screen
-            name="HomeUser"
-            component={HomeTabsUser}
-            options={{headerShown: false, headerShadowVisible: false}}
-          />
+          <>
+            <Stack.Screen
+              name="HomeUser"
+              component={HomeTabsUser}
+              options={{headerShown: false, headerShadowVisible: false}}
+            />
+            <Stack.Screen name="Login" options={{headerShown: false}}>
+              {props => <LoginScreen {...props} setUserRole={setUserRole} />}
+            </Stack.Screen>
+            <Stack.Screen
+              name="ForgotPassword"
+              component={ForgotPasswordScreen}
+              options={{headerShadowVisible: false}}
+            />
+            <Stack.Screen
+              name="Register"
+              component={RegisterScreen}
+              options={{
+                headerShadowVisible: false,
+                headerTitle: 'Registro de usuario',
+                headerStyle: {backgroundColor: '#0071CE'},
+                headerTintColor: 'white',
+              }}
+            />
+          </>
         )}
       </Stack.Navigator>
     </NavigationContainer>

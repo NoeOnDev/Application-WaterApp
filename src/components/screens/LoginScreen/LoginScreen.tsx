@@ -6,8 +6,13 @@ import {useNavigation, NavigationProp} from '@react-navigation/native';
 import {SafeArea} from '../../organism';
 import {RootStackParamList} from '../../../types/types';
 import {styles} from './StylesLoginScreen';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export const LoginScreen = () => {
+interface LoginScreenProps {
+  setUserRole: (role: string) => void;
+}
+
+export const LoginScreen: React.FC<LoginScreenProps> = ({setUserRole}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
@@ -31,10 +36,18 @@ export const LoginScreen = () => {
     },
   ];
 
-  const handleLogin = () => {
-    console.log('Email:', email);
-    console.log('Password:', password);
-    navigation.navigate('Home');
+  const handleLogin = async () => {
+    if (email === 'admin@gmail.com' && password === 'admin') {
+      setUserRole('admin');
+      await AsyncStorage.setItem('userRole', 'admin');
+      navigation.navigate('HomeAdmin');
+    } else if (email === 'user@gmail.com' && password === 'user') {
+      setUserRole('user');
+      await AsyncStorage.setItem('userRole', 'user');
+      navigation.navigate('HomeUser');
+    } else {
+      console.log('Credenciales incorrectas');
+    }
   };
 
   const handleForgotPassword = () => {

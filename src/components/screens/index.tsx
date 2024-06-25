@@ -5,3 +5,4 @@ export {HomeScreen} from './HomeScreenAdmin/HomeScreenAdmin';
 export {ProfileScreen} from './ProfileScreen/ProfileScreen';
 export {HistoryScreen} from './HistoryScreen/HistoryScreen';
 export {SendNoticesScreen} from './SendNoticesScreen/SendNoticesScreen';
+export {NotificationUserScreen} from './NotificationUserScreen/NotificationUserScreen';

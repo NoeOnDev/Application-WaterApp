@@ -29,7 +29,7 @@ function HomeTabsAdmin() {
         tabBarIcon: ({color, size}) => {
           let iconName = 'help';
 
-          if (route.name === 'HomeAdmin') {
+          if (route.name === 'Home') {
             iconName = 'home';
           } else if (route.name === 'History') {
             iconName = 'history';
@@ -43,7 +43,7 @@ function HomeTabsAdmin() {
         },
       })}>
       <Tab.Screen
-        name="HomeAdmin"
+        name="Home"
         component={HomeScreen}
         options={{headerShown: false, tabBarLabel: 'Inicio'}}
       />

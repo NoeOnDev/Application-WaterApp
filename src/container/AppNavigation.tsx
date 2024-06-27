@@ -45,17 +45,32 @@ export function AppNavigation() {
             <Stack.Screen
               name="ForgotPassword"
               component={ForgotPasswordScreen}
-              options={{headerShadowVisible: false}}
+              options={{
+                headerShadowVisible: false,
+                headerTitle: 'Recuperar contraseña',
+                headerStyle: {backgroundColor: '#0071CE'},
+                headerTintColor: 'white',
+              }}
             />
             <Stack.Screen
               name="VerificationCode"
               component={VerificationCodeScreen}
-              options={{headerShadowVisible: false}}
+              options={{
+                headerShadowVisible: false,
+                headerTitle: 'Código de verificación',
+                headerStyle: {backgroundColor: '#0071CE'},
+                headerTintColor: 'white',
+              }}
             />
             <Stack.Screen
               name="ResetPassword"
               component={ResetPasswordScreen}
-              options={{headerShadowVisible: false}}
+              options={{
+                headerShadowVisible: false,
+                headerTitle: 'Restablecer contraseña',
+                headerStyle: {backgroundColor: '#0071CE'},
+                headerTintColor: 'white',
+              }}
             />
             <Stack.Screen
               name="Register"
@@ -81,17 +96,32 @@ export function AppNavigation() {
             <Stack.Screen
               name="ForgotPassword"
               component={ForgotPasswordScreen}
-              options={{headerShadowVisible: false}}
+              options={{
+                headerShadowVisible: false,
+                headerTitle: 'Recuperar contraseña',
+                headerStyle: {backgroundColor: '#0071CE'},
+                headerTintColor: 'white',
+              }}
             />
             <Stack.Screen
               name="VerificationCode"
               component={VerificationCodeScreen}
-              options={{headerShadowVisible: false}}
+              options={{
+                headerShadowVisible: false,
+                headerTitle: 'Código de verificación',
+                headerStyle: {backgroundColor: '#0071CE'},
+                headerTintColor: 'white',
+              }}
             />
             <Stack.Screen
               name="ResetPassword"
               component={ResetPasswordScreen}
-              options={{headerShadowVisible: false}}
+              options={{
+                headerShadowVisible: false,
+                headerTitle: 'Restablecer contraseña',
+                headerStyle: {backgroundColor: '#0071CE'},
+                headerTintColor: 'white',
+              }}
             />
             <Stack.Screen
               name="Register"
@@ -117,17 +147,32 @@ export function AppNavigation() {
             <Stack.Screen
               name="ForgotPassword"
               component={ForgotPasswordScreen}
-              options={{headerShadowVisible: false}}
+              options={{
+                headerShadowVisible: false,
+                headerTitle: 'Recuperar contraseña',
+                headerStyle: {backgroundColor: '#0071CE'},
+                headerTintColor: 'white',
+              }}
             />
             <Stack.Screen
               name="VerificationCode"
               component={VerificationCodeScreen}
-              options={{headerShadowVisible: false}}
+              options={{
+                headerShadowVisible: false,
+                headerTitle: 'Código de verificación',
+                headerStyle: {backgroundColor: '#0071CE'},
+                headerTintColor: 'white',
+              }}
             />
             <Stack.Screen
               name="ResetPassword"
               component={ResetPasswordScreen}
-              options={{headerShadowVisible: false}}
+              options={{
+                headerShadowVisible: false,
+                headerTitle: 'Restablecer contraseña',
+                headerStyle: {backgroundColor: '#0071CE'},
+                headerTintColor: 'white',
+              }}
             />
             <Stack.Screen
               name="Register"

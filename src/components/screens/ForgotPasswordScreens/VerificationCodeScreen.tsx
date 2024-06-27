@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
+import {View} from 'react-native';
 import {useNavigation, NavigationProp} from '@react-navigation/native';
 import {AuthForm, FormField, SafeArea} from '../../organism';
 import {RootStackParamList} from '../../../types/types';
+import { styles } from './StylesForgotPasswordScreens';
 
 export function VerificationCodeScreen() {
   const [verificationCode, setVerificationCode] = useState('');

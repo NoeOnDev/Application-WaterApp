@@ -3,7 +3,7 @@ import {View} from 'react-native';
 import {useNavigation, NavigationProp} from '@react-navigation/native';
 import {AuthForm, FormField, SafeArea} from '../../organism';
 import {RootStackParamList} from '../../../types/types';
-import { styles } from './StylesForgotPasswordScreens';
+import {styles} from './StylesForgotPasswordScreens';
 
 export function VerificationCodeScreen() {
   const [verificationCode, setVerificationCode] = useState('');
@@ -26,13 +26,15 @@ export function VerificationCodeScreen() {
 
   return (
     <SafeArea backgroundColor="#0071CE">
-      <AuthForm
-        fields={fields}
-        buttonTitle="Verificar código"
-        buttonOnPress={handleVerifyCode}
-        linkText="Volver al inicio de sesión"
-        linkOnPress={() => navigation.navigate('Login')}
-      />
+      <View style={styles.container}>
+        <AuthForm
+          fields={fields}
+          buttonTitle="Verificar código"
+          buttonOnPress={handleVerifyCode}
+          linkText="Volver al inicio de sesión"
+          linkOnPress={() => navigation.navigate('Login')}
+        />
+      </View>
     </SafeArea>
   );
 }

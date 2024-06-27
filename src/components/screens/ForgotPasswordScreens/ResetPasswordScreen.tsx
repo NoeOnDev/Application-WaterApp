@@ -40,13 +40,15 @@ export function ResetPasswordScreen() {
 
   return (
     <SafeArea backgroundColor="#0071CE">
-      <AuthForm
-        fields={fields}
-        buttonTitle="Restablecer contraseña"
-        buttonOnPress={handleResetPassword}
-        linkText="Volver al inicio de sesión"
-        linkOnPress={() => navigation.navigate('Login')}
-      />
+      <View style={styles.container}>
+        <AuthForm
+          fields={fields}
+          buttonTitle="Restablecer contraseña"
+          buttonOnPress={handleResetPassword}
+          linkText="Volver al inicio de sesión"
+          linkOnPress={() => navigation.navigate('Login')}
+        />
+      </View>
     </SafeArea>
   );
 }

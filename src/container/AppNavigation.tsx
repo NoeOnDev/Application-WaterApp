@@ -5,6 +5,8 @@ import {
   LoginScreen,
   RegisterScreen,
   ForgotPasswordScreen,
+  VerificationCodeScreen,
+  ResetPasswordScreen,
 } from '../components/screens';
 import HomeTabsAdmin from './HomeTabsAdmin';
 import HomeTabsUser from './HomeTabsUser';
@@ -46,6 +48,16 @@ export function AppNavigation() {
               options={{headerShadowVisible: false}}
             />
             <Stack.Screen
+              name="VerificationCode"
+              component={VerificationCodeScreen}
+              options={{headerShadowVisible: false}}
+            />
+            <Stack.Screen
+              name="ResetPassword"
+              component={ResetPasswordScreen}
+              options={{headerShadowVisible: false}}
+            />
+            <Stack.Screen
               name="Register"
               component={RegisterScreen}
               options={{
@@ -72,6 +84,16 @@ export function AppNavigation() {
               options={{headerShadowVisible: false}}
             />
             <Stack.Screen
+              name="VerificationCode"
+              component={VerificationCodeScreen}
+              options={{headerShadowVisible: false}}
+            />
+            <Stack.Screen
+              name="ResetPassword"
+              component={ResetPasswordScreen}
+              options={{headerShadowVisible: false}}
+            />
+            <Stack.Screen
               name="Register"
               component={RegisterScreen}
               options={{
@@ -95,6 +117,16 @@ export function AppNavigation() {
             <Stack.Screen
               name="ForgotPassword"
               component={ForgotPasswordScreen}
+              options={{headerShadowVisible: false}}
+            />
+            <Stack.Screen
+              name="VerificationCode"
+              component={VerificationCodeScreen}
+              options={{headerShadowVisible: false}}
+            />
+            <Stack.Screen
+              name="ResetPassword"
+              component={ResetPasswordScreen}
               options={{headerShadowVisible: false}}
             />
             <Stack.Screen

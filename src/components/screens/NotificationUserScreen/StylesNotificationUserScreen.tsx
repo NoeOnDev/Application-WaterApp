@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
   },
   timestamp: {
     fontSize: 12,
-    color: '#999',
+    // color: '#999',
   },
   message: {
     fontSize: 16,
@@ -26,12 +26,23 @@ export const styles = StyleSheet.create({
   },
   streets: {
     fontSize: 14,
-    color: '#555',
+    // color: '#555',
   },
   noNotificationsMessage: {
     fontSize: 18,
     textAlign: 'center',
     marginTop: 20,
     color: '#999',
+  },  greenText: {
+    // color: 'green',
+  },
+  redText: {
+    // color: 'red',
+  },
+  orangeText: {
+    // color: 'orange',
+  },
+  defaultText: {
+    // color: '#000',
   },
 });

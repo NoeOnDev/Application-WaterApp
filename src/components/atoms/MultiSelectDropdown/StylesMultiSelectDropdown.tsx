@@ -31,7 +31,7 @@ export const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   boldDropdownText: {
-    color: '#0071CE',
+    // color: '#0071CE',
     fontWeight: 'bold',
   },
   modalContent: {
@@ -62,7 +62,7 @@ export const styles = StyleSheet.create({
     fontSize: 16,
   },
   closeButtonText: {
-    color: '#0071CE',
+    // color: '#0071CE',
     fontWeight: 'bold',
     fontSize: 16,
   },

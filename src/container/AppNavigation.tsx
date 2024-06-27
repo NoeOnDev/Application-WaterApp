@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationContainer} from '@react-navigation/native';
+import {StackActions} from '@react-navigation/native';
 import {
   LoginScreen,
   RegisterScreen,
@@ -40,7 +41,19 @@ export function AppNavigation() {
         {userRole === null ? (
           <>
             <Stack.Screen name="Login" options={{headerShown: false}}>
-              {props => <LoginScreen {...props} setUserRole={setUserRole} />}
+              {props => (
+                <LoginScreen
+                  {...props}
+                  setUserRole={role => {
+                    setUserRole(role);
+                    props.navigation.dispatch(
+                      StackActions.replace(
+                        role === 'admin' ? 'HomeAdmin' : 'HomeUser',
+                      ),
+                    );
+                  }}
+                />
+              )}
             </Stack.Screen>
             <Stack.Screen
               name="ForgotPassword"

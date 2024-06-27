@@ -41,6 +41,9 @@ export const styles = StyleSheet.create({
   selectedDropdownItemText: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#0071CE',
+    // color: '#0071CE',
+  },
+  placeholderStyle: {
+    // color: '#999999',
   },
 });

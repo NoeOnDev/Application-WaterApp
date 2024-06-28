@@ -75,22 +75,11 @@ const mockNotifications: Notification[] = [
   },
 ];
 
-const getMessageColor = (message: string) => {
-  if (message.includes('suministrará agua')) {
-    return styles.greenText;
-  } else if (message.includes('corte de agua')) {
-    return styles.redText;
-  } else if (message.includes('suspenderá el servicio')) {
-    return styles.orangeText;
-  }
-  return styles.defaultText;
-};
-
 export function NotificationUserScreen() {
   const renderNotification = ({item}: {item: Notification}) => (
     <View style={styles.notificationContainer}>
       <Text style={styles.timestamp}>{item.timestamp.toString()}</Text>
-      <Text style={[styles.message, getMessageColor(item.message)]}>{item.message}</Text>
+      <Text style={styles.message}>{item.message}</Text>
       <Text style={styles.streets}>Calles: {item.streets.join(', ')}</Text>
     </View>
   );

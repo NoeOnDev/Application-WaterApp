@@ -14,12 +14,10 @@ export const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
-    color: '#000',
   },
   email: {
     fontSize: 16,
     marginBottom: 20,
-    // color: '#000',
   },
   logoutButton: {
     backgroundColor: '#f00',

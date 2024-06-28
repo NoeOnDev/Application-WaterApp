@@ -37,6 +37,8 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({setUserRole}) => {
   ];
 
   const handleLogin = async () => {
+    console.log('Email:', email);
+    console.log('Password:', password);
     if (email === 'admin@gmail.com' && password === 'admin') {
       setUserRole('admin');
       await AsyncStorage.setItem('userRole', 'admin');

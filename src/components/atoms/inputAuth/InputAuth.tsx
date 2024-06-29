@@ -32,7 +32,7 @@ export const InputAuth: React.FC<InputProps> = ({
         onChangeText={onChangeText}
         value={value}
         placeholder={placeholder}
-        placeholderTextColor="gray"
+        placeholderTextColor={styles.colorPlaceholder.color}
         secureTextEntry={secureTextEntry && !showPassword}
         onFocus={handleFocus}
         onBlur={handleBlur}
@@ -44,8 +44,8 @@ export const InputAuth: React.FC<InputProps> = ({
           style={styles.icon}>
           <Icon
             name={showPassword ? 'visibility' : 'visibility-off'}
-            size={24}
-            color="gray"
+            size={styles.icon.fontSize}
+            color={styles.icon.color}
           />
         </TouchableOpacity>
       ) : (
@@ -54,7 +54,11 @@ export const InputAuth: React.FC<InputProps> = ({
             onPress={clearText}
             activeOpacity={0.6}
             style={styles.icon}>
-            <Icon name="close" size={24} color="gray" />
+            <Icon
+              name="close"
+              size={styles.icon.fontSize}
+              color={styles.icon.color}
+            />
           </TouchableOpacity>
         )
       )}

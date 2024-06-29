@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import { colors } from '../../colors';
 
 export const styles = StyleSheet.create({
   suggestionBoxContainer: {
@@ -46,7 +47,7 @@ export const styles = StyleSheet.create({
     borderRadius: 5,
   },
   suggestionText: {
-    color: '#333',
+    color: 'black',
   },
   removeButton: {
     marginLeft: 10,

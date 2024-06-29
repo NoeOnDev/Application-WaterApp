@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {colors} from '../../colors';
 
 export const styles = StyleSheet.create({
   dropdownContainer: {
@@ -6,44 +7,43 @@ export const styles = StyleSheet.create({
     borderWidth: 1.3,
     padding: 5,
     borderRadius: 10,
-    borderColor: '#cccccc',
     marginVertical: 8,
+    borderColor: colors.greyLight,
   },
   dropdownContainerFocused: {
     height: 55,
     borderWidth: 1.3,
     padding: 5,
     borderRadius: 10,
-    borderColor: '#353535',
     marginVertical: 8,
+    borderColor: colors.greyMedium,
   },
   dropdown: {
     flex: 1,
     fontSize: 16,
   },
   dropdownMenu: {
-    borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20,
     marginTop: 5,
     elevation: 3,
-    shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
+    shadowOffset: {width: 0, height: 2},
     zIndex: 1000,
+    shadowColor: colors.black,
   },
   dropdownItemText: {
     fontSize: 16,
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    // color: '#353535',
+    color: colors.greyMedium,
   },
   selectedDropdownItemText: {
     fontSize: 16,
     fontWeight: 'bold',
-    // color: '#0071CE',
+    paddingHorizontal: 3,
+    color: colors.greyDark,
   },
   placeholderStyle: {
-    // color: '#999999',
+    color: colors.greyMedium,
   },
 });

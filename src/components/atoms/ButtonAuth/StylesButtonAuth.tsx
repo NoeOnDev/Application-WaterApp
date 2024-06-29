@@ -1,15 +1,16 @@
 import {StyleSheet} from 'react-native';
+import { colors } from '../../colors';
 
 export const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#0071CE',
     padding: 10,
     borderRadius: 20,
+    backgroundColor: colors.blueMain,
   },
   text: {
-    color: 'white',
     textAlign: 'center',
     fontSize: 16,
     fontWeight: '700',
+    color: colors.white,
   },
 });

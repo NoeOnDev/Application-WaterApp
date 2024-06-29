@@ -25,7 +25,7 @@ export function ForgotPasswordScreen() {
   };
 
   return (
-    <SafeArea backgroundColor="#0071CE">
+    <SafeArea>
       <View style={styles.container}>
         <AuthForm
           fields={fields}

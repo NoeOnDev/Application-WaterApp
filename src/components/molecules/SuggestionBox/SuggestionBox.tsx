@@ -31,10 +31,10 @@ export const SuggestionBox: React.FC<SuggestionBoxProps> = ({
       <InputAuth
         value={newSuggestion}
         onChangeText={setNewSuggestion}
-        placeholder="Añadir nueva sugerencia"
+        placeholder="Introduce una sugerencia"
       />
       <ButtonAuth
-        title="Añadir"
+        title="Añadir Sugerencia"
         onPress={handleAddSuggestion}
         buttonStyle={styles.addButton}
         textStyle={styles.addButtonText}

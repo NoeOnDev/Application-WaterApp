@@ -18,7 +18,7 @@ export const SendNoticesScreen: React.FC<SendNoticesScreenProps> = ({
   addNotification,
 }) => {
   return (
-    <SafeArea backgroundColor="#0071CE">
+    <SafeArea>
       <View style={styles.container}>
         <NotificationForm addNotification={addNotification} />
       </View>

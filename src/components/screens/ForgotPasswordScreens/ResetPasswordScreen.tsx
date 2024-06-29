@@ -39,7 +39,7 @@ export function ResetPasswordScreen() {
   };
 
   return (
-    <SafeArea backgroundColor="#0071CE">
+    <SafeArea>
       <View style={styles.container}>
         <AuthForm
           fields={fields}

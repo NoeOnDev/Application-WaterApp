@@ -25,7 +25,7 @@ export const HistoryScreen: React.FC<HistoryScreenProps> = ({
   );
 
   return (
-    <SafeArea backgroundColor="#0071CE">
+    <SafeArea>
       <View style={styles.container}>
         {notifications.length === 0 ? (
           <Text style={styles.noHistoryMessage}>

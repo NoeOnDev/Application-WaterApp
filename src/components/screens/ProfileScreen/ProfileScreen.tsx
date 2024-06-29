@@ -28,7 +28,7 @@ export const ProfileScreen = () => {
   };
 
   return (
-    <SafeArea backgroundColor="#0071CE">
+    <SafeArea>
       <View style={styles.container}>
         <Text style={styles.title}>Perfil</Text>
         {email && <Text style={styles.email}>Email: {email}</Text>}

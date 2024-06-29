@@ -83,7 +83,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({setUserRole}) => {
   }, []);
 
   return (
-    <SafeArea backgroundColor="#0071CE">
+    <SafeArea>
       {!isKeyboardVisible && <Logo style={styles.logo} />}
       <KeyboardAvoidingView
         style={styles.container}

@@ -25,7 +25,7 @@ export function VerificationCodeScreen() {
   };
 
   return (
-    <SafeArea backgroundColor="#0071CE">
+    <SafeArea>
       <View style={styles.container}>
         <AuthForm
           fields={fields}

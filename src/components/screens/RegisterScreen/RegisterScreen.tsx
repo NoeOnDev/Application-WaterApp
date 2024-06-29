@@ -88,7 +88,7 @@ export const RegisterScreen = () => {
   }, []);
 
   return (
-    <SafeArea backgroundColor="#0071CE">
+    <SafeArea>
       <KeyboardAvoidingView
         style={styles.container}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}

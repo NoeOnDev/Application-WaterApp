@@ -85,7 +85,7 @@ export function NotificationUserScreen() {
   );
 
   return (
-    <SafeArea backgroundColor="#0071CE">
+    <SafeArea>
       <View style={styles.container}>
         {mockNotifications.length === 0 ? (
           <Text style={styles.noNotificationsMessage}>

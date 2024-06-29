@@ -5,12 +5,12 @@ import {styles} from './StylesSafeArea';
 
 interface SafeAreaProps {
   children: React.ReactNode;
-  backgroundColor: string;
+  backgroundColor?: string;
 }
 
 export const SafeArea: React.FC<SafeAreaProps> = ({
   children,
-  backgroundColor,
+  backgroundColor = '#0071CE',
 }) => {
   return (
     <>

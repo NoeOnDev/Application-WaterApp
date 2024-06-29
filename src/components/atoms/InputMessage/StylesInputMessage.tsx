@@ -8,8 +8,8 @@ export const styles = StyleSheet.create({
     borderWidth: 1.3,
     padding: 5,
     borderRadius: 10,
-    borderColor: '#cccccc',
     marginVertical: 10,
+    borderColor: colors.greyLight,
   },
   inputContainerFocused: {
     flexDirection: 'row',
@@ -17,17 +17,22 @@ export const styles = StyleSheet.create({
     borderWidth: 1.3,
     padding: 5,
     borderRadius: 10,
-    borderColor: '#353535',
     marginVertical: 10,
+    borderColor: colors.greyMedium,
   },
   input: {
     flex: 1,
     fontSize: 16,
-    color: 'black',
     height: 100,
-    textAlignVertical: 'top',
+    color: colors.greyDark,
+  },
+  colorPlaceholder: {
+    color: colors.greyMedium,
   },
   icon: {
     marginRight: 10,
+    marginTop: 5,
+    fontSize: 24,
+    color: colors.greyMedium,
   },
 });

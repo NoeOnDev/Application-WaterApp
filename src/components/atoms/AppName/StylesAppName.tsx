@@ -8,9 +8,9 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   text: {
-    color: '#a9a9a9',
     textAlign: 'center',
     fontSize: 16,
     fontWeight: '700',
+    color: colors.greyMedium,
   },
 });

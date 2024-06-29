@@ -28,7 +28,7 @@ export const InputMessage: React.FC<InputMessageProps> = ({
         onChangeText={onChangeText}
         value={value}
         placeholder={placeholder}
-        placeholderTextColor="gray"
+        placeholderTextColor={styles.colorPlaceholder.color}
         multiline
         numberOfLines={4}
         onFocus={handleFocus}
@@ -38,9 +38,13 @@ export const InputMessage: React.FC<InputMessageProps> = ({
       {value ? (
         <TouchableOpacity
           onPress={clearText}
-          activeOpacity={0.6}
+          activeOpacity={0.7}
           style={styles.icon}>
-          <Icon name="close" size={24} color="gray" />
+          <Icon
+            name="close"
+            size={styles.icon.fontSize}
+            color={styles.icon.color}
+          />
         </TouchableOpacity>
       ) : null}
     </View>

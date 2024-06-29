@@ -18,18 +18,9 @@ export const styles = StyleSheet.create({
     marginBottom: 10,
   },
   addButton: {
-    backgroundColor: '#FFFFFF',
-    padding: 6,
-    borderRadius: 20,
-    borderWidth: 1.4,
-    borderColor: '#0071CE',
     marginBottom: 10,
   },
   addButtonText: {
-    color: '#0071CE',
-    textAlign: 'center',
-    fontSize: 16,
-    fontWeight: '600',
   },
   suggestionList: {
     flexGrow: 0,

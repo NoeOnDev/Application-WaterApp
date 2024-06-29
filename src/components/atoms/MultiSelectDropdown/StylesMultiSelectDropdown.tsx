@@ -1,28 +1,28 @@
 import {StyleSheet} from 'react-native';
-import { colors } from '../../colors';
+import {colors} from '../../colors';
 
 export const styles = StyleSheet.create({
   dropdown: {
     borderWidth: 1,
-    borderColor: '#ccc',
     padding: 10,
     borderRadius: 10,
     minHeight: 55,
     justifyContent: 'center',
     marginVertical: 8,
+    borderColor: colors.greyLight,
   },
   dropdownFocused: {
     borderWidth: 1.3,
-    borderColor: '#353535',
     padding: 10,
     borderRadius: 10,
     minHeight: 55,
     justifyContent: 'center',
     marginVertical: 8,
+    borderColor: colors.greyMedium,
   },
   dropdownText: {
     fontSize: 16,
-    // color: '#353535',
+    color: colors.greyMedium,
   },
   modalOverlay: {
     flex: 1,
@@ -32,14 +32,14 @@ export const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   boldDropdownText: {
-    // color: '#0071CE',
     fontWeight: 'bold',
+    color: colors.greyDark,
   },
   modalContent: {
-    backgroundColor: 'white',
     marginHorizontal: 20,
     borderRadius: 20,
     padding: 20,
+    backgroundColor: colors.white,
   },
   option: {
     flexDirection: 'row',
@@ -49,13 +49,16 @@ export const styles = StyleSheet.create({
   },
   optionText: {
     fontSize: 16,
-    // color: '#353535',
+    color: colors.greyMedium,
   },
   optionTextSelected: {
     fontWeight: 'bold',
+    color: colors.greyDark,
   },
   optionIcon: {
     marginLeft: 10,
+    fontSize: 20,
+    color: colors.blueMain,
   },
   closeButton: {
     marginTop: 20,
@@ -63,8 +66,8 @@ export const styles = StyleSheet.create({
     fontSize: 16,
   },
   closeButtonText: {
-    // color: '#0071CE',
     fontWeight: 'bold',
     fontSize: 16,
+    color: colors.blueMain,
   },
 });

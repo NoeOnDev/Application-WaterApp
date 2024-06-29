@@ -4,6 +4,6 @@ import { colors } from '../../colors';
 export const styles = StyleSheet.create({
   label: {
     fontSize: 16,
-    color: 'black',
+    color: colors.black,
   },
 });

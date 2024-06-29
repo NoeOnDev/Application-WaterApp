@@ -63,7 +63,7 @@ export const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
               keyExtractor={item => item.value}
               renderItem={({item}) => (
                 <TouchableOpacity
-                  activeOpacity={0.8}
+                  activeOpacity={0.7}
                   onPress={() => toggleSelect(item.value)}
                   style={styles.option}>
                   <Text
@@ -77,8 +77,8 @@ export const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
                   {selectedValues.includes(item.value) && (
                     <Icon
                       name="check-circle"
-                      size={20}
-                      color="green"
+                      size={styles.optionIcon.fontSize}
+                      color={styles.optionTextSelected.color}
                       style={styles.optionIcon}
                     />
                   )}

@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import { colors } from '../../colors';
+import {colors} from '../../colors';
 
 export const styles = StyleSheet.create({
   container: {
@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     borderTopRightRadius: 20,
     paddingHorizontal: 20,
     paddingTop: 20,
-    backgroundColor: 'white',
+    backgroundColor: colors.white,
   },
   content: {
     flex: 1,
@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
   },
   linkText: {
     textAlign: 'center',
-    color: '#0071CE',
     marginVertical: 20,
+    color: colors.blueMain,
   },
 });

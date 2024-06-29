@@ -5,18 +5,18 @@ import {LabelAndMultiSelect, SuggestionBox} from '../../molecules';
 import {styles} from './StylesNotificationForm';
 
 const streetOptions = [
-  {label: 'ARANDANOS', value: 'arandanos'},
-  {label: 'AZULEJO', value: 'azulejo'},
-  {label: 'BOSQUES', value: 'bosques'},
-  {label: 'CALLEJON', value: 'callejon'},
-  {label: 'CAMELIA', value: 'camelia'},
-  {label: 'CANELA', value: 'canela'},
-  {label: 'CEREZO', value: 'cerezo'},
-  {label: 'CIPRES', value: 'cipres'},
-  {label: 'COLIBRI', value: 'colibri'},
-  {label: 'DURAZNO', value: 'durazno'},
-  {label: 'ENCINO', value: 'encino'},
-  {label: 'ESMERALDA', value: 'esmeralda'},
+  {label: 'ARANDANOS', value: 'ARANDANOS'},
+  {label: 'AZULEJO', value: 'AZULEJO'},
+  {label: 'BOSQUES', value: 'BOSQUES'},
+  {label: 'CALLEJON', value: 'CALLEJON'},
+  {label: 'CAMELIA', value: 'CAMELIA'},
+  {label: 'CANELA', value: 'CANELA'},
+  {label: 'CEREZO', value: 'CEREZO'},
+  {label: 'CIPRES', value: 'CIPRES'},
+  {label: 'COLIBRI', value: 'COLIBRI'},
+  {label: 'DURAZNO', value: 'DURAZNO'},
+  {label: 'ENCINO', value: 'ENCINO'},
+  {label: 'ESMERALDA', value: 'ESMERALDA'},
 ];
 
 const initialMessageSuggestions = [

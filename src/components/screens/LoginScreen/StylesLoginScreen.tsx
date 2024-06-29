@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import { colors } from '../../colors';
+import {colors} from '../../colors';
 
 export const styles = StyleSheet.create({
   container: {
@@ -7,9 +7,9 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 15,
     justifyContent: 'space-between',
-    backgroundColor: 'white',
     borderTopStartRadius: 20,
     borderTopEndRadius: 20,
+    backgroundColor: colors.white,
   },
   logo: {
     width: 160,
@@ -22,16 +22,16 @@ export const styles = StyleSheet.create({
     gap: 10,
   },
   createAccountButton: {
-    backgroundColor: '#FFFFFF',
     padding: 8,
     borderRadius: 20,
     borderWidth: 1.4,
-    borderColor: '#0071CE',
+    borderColor: colors.blueMain,
+    backgroundColor: colors.white,
   },
   createAccountButtonText: {
-    color: '#0071CE',
     textAlign: 'center',
     fontSize: 16,
     fontWeight: '600',
+    color: colors.blueMain,
   },
 });

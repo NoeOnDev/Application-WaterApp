@@ -3,10 +3,12 @@ import {colors} from '../../colors';
 
 export const styles = StyleSheet.create({
   suggestionBoxContainer: {
-    marginVertical: 20,
+    marginVertical: 5,
     borderWidth: 1,
     borderRadius: 10,
-    padding: 15,
+    paddingBottom: 10,
+    paddingTop: 5,
+    paddingHorizontal: 15,
     maxHeight: 300,
     borderColor: colors.greyLight,
   },

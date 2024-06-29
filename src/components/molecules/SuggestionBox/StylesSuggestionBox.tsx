@@ -1,27 +1,19 @@
 import {StyleSheet} from 'react-native';
-import { colors } from '../../colors';
+import {colors} from '../../colors';
 
 export const styles = StyleSheet.create({
   suggestionBoxContainer: {
     marginVertical: 20,
     borderWidth: 1,
-    borderColor: '#ccc',
     borderRadius: 10,
     padding: 15,
     maxHeight: 300,
-  },
-  newSuggestionInput: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 5,
-    padding: 10,
-    marginBottom: 10,
+    borderColor: colors.greyLight,
   },
   addButton: {
     marginBottom: 10,
   },
-  addButtonText: {
-  },
+  addButtonText: {},
   suggestionList: {
     flexGrow: 0,
   },
@@ -34,14 +26,15 @@ export const styles = StyleSheet.create({
   suggestionItem: {
     flex: 1,
     padding: 10,
-    backgroundColor: '#f0f0f0',
-    borderRadius: 5,
+    borderRadius: 10,
+    backgroundColor: colors.whiteMedium,
   },
   suggestionText: {
-    color: 'black',
+    color: colors.greyDark,
   },
   removeButton: {
-    marginLeft: 10,
-    padding: 5,
+    marginLeft: 5,
+    fontSize: 20,
+    color: colors.red,
   },
 });

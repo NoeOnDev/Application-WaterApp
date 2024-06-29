@@ -31,7 +31,7 @@ export const styles = StyleSheet.create({
   },
   icon: {
     marginRight: 10,
-    marginTop: 5,
+    marginTop: 8,
     fontSize: 24,
     color: colors.greyMedium,
   },

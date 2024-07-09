@@ -1,3 +1,4 @@
+// src/components/atoms/MultiSelectDropdown/StylesMultiSelectDropdown.tsx
 import {StyleSheet} from 'react-native';
 import {colors} from '../../colors';
 

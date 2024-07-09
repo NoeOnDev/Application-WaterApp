@@ -1,3 +1,4 @@
+// src/components/atoms/CustomStatusBar/CustomStatusBar.tsx
 import React from 'react';
 import {StatusBar, StatusBarProps} from 'react-native';
 

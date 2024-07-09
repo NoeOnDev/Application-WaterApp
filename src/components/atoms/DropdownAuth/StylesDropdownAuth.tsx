@@ -1,3 +1,4 @@
+// src/components/atoms/DropdownAuth/StylesDropdownAuth.tsx
 import {StyleSheet} from 'react-native';
 import {colors} from '../../colors';
 

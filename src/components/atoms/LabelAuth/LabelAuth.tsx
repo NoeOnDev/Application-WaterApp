@@ -1,3 +1,4 @@
+// src/components/atoms/LabelAuth/LabelAuth.tsx
 import React from 'react';
 import {Text} from 'react-native';
 import {styles} from './StylesLabelAuth';

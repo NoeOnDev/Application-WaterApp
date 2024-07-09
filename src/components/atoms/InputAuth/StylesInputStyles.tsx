@@ -1,3 +1,4 @@
+// src/components/atoms/InputAuth/StylesInputStyles.tsx
 import {StyleSheet} from 'react-native';
 import {colors} from '../../colors';
 

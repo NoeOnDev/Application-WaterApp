@@ -1,3 +1,4 @@
+// src/components/atoms/InputAuth/InputAuth.tsx
 import React, {useState} from 'react';
 import {View, TextInput, TouchableOpacity} from 'react-native';
 import {styles} from './StylesInputStyles';

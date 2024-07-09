@@ -1,3 +1,4 @@
+// src/components/atoms/AppName/AppName.tsx
 import React from 'react';
 import {TextStyle, Text, View, ViewStyle} from 'react-native';
 import AppNameSVG from '../../../assets/name.svg';

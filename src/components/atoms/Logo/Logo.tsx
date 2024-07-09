@@ -1,3 +1,4 @@
+// src/components/atoms/Logo/Logo.tsx
 import React from 'react';
 import {View, ViewStyle} from 'react-native';
 import LogoSVG from '../../../assets/logo.svg';

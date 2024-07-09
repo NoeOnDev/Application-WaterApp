@@ -1,3 +1,4 @@
+// src/components/atoms/DropdownAuth/DropdownAuth.tsx
 import React, {useState} from 'react';
 import {View} from 'react-native';
 import {Dropdown} from 'react-native-element-dropdown';

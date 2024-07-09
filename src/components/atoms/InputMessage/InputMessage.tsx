@@ -1,3 +1,4 @@
+// src/components/atoms/InputMessage/InputMessage.tsx
 import React, {useState} from 'react';
 import {View, TextInput, TouchableOpacity} from 'react-native';
 import {styles} from './StylesInputMessage';

@@ -1,4 +1,4 @@
-// src/organism/AuthForm.tsx
+// src/components/organism/AuthForm/AuthForm.tsx
 import React from 'react';
 import {View, ViewStyle, TextStyle} from 'react-native';
 import {LabelAndInput, LabelAndDropdown} from '../../molecules';

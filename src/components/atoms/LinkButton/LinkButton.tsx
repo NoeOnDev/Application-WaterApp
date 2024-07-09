@@ -1,3 +1,4 @@
+// src/components/atoms/LinkButton/LinkButton.tsx
 import React from 'react';
 import {Text, TouchableOpacity, TextStyle} from 'react-native';
 import {styles} from './StylesLinkButton';

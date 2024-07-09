@@ -1,3 +1,4 @@
+// src/components/atoms/ButtonAuth/StylesButtonAuth.tsx
 import {StyleSheet} from 'react-native';
 import { colors } from '../../colors';
 

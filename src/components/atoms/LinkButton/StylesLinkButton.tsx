@@ -1,3 +1,4 @@
+// src/components/atoms/LinkButton/StylesLinkButton.tsx
 import {StyleSheet} from 'react-native';
 import { colors } from '../../colors';
 

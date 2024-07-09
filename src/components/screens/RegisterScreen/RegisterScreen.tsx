@@ -5,7 +5,7 @@ import {AuthForm, FormField, SafeArea} from '../../organism';
 import {LinkButton} from '../../atoms';
 import {useNavigation, NavigationProp} from '@react-navigation/native';
 import {RootStackParamList} from '../../../types/types';
-import {useStreets} from '../../hooks/GetStreets';
+import {useStreets} from '../../hooks/useStreets';
 import {styles} from './StylesRegisterScreen';
 
 export const RegisterScreen = () => {
@@ -17,14 +17,6 @@ export const RegisterScreen = () => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   const {data: streets, isLoading, isError} = useStreets();
-
-  useEffect(() => {
-    if (isError) {
-      console.error('Error fetching streets:', isError);
-    } else {
-      console.log('Successfully fetched streets');
-    }
-  }, [streets, isError]);
 
   const streetOptions =
     streets?.map(street => ({
@@ -65,12 +57,7 @@ export const RegisterScreen = () => {
     },
   ];
 
-  const handleRegister = () => {
-    console.log('Nombre Completo:', fullName);
-    console.log('Nombre de Calle:', street);
-    console.log('Email:', email);
-    console.log('Password:', password);
-  };
+  const handleRegister = () => {};
 
   useEffect(() => {
     const keyboardDidShowListener = Keyboard.addListener(

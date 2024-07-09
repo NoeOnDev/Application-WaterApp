@@ -1,3 +1,4 @@
+// src/organism/AuthForm.tsx
 import React from 'react';
 import {View, ViewStyle, TextStyle} from 'react-native';
 import {LabelAndInput, LabelAndDropdown} from '../../molecules';
@@ -10,7 +11,7 @@ export interface FormField {
   value: string;
   onChangeText?: (text: string) => void;
   onValueChange?: (itemValue: string) => void;
-  options?: {label: string, value: string}[];
+  options?: {label: string; value: string}[];
   placeholder?: string;
   secureTextEntry?: boolean;
 }

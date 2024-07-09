@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import {View, KeyboardAvoidingView, Platform, Keyboard} from 'react-native';
 import {AuthForm, FormField, SafeArea} from '../../organism';
-import { LinkButton } from '../../atoms';
+import {LinkButton} from '../../atoms';
 import {useNavigation, NavigationProp} from '@react-navigation/native';
 import {RootStackParamList} from '../../../types/types';
+import {useStreets} from '../../hooks/getStreets';
 import {styles} from './StylesRegisterScreen';
 
 export const RegisterScreen = () => {
@@ -13,6 +14,22 @@ export const RegisterScreen = () => {
   const [password, setPassword] = useState('');
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+
+  const {data: streets, isLoading, isError} = useStreets();
+
+  useEffect(() => {
+    if (isError) {
+      console.error('Error fetching streets:', isError);
+    } else {
+      console.log('Streets data:', streets);
+    }
+  }, [streets, isError]);
+
+  const streetOptions =
+    streets?.map(street => ({
+      label: street.name,
+      value: street.name.toLowerCase(),
+    })) || [];
 
   const fields: FormField[] = [
     {
@@ -27,20 +44,7 @@ export const RegisterScreen = () => {
       label: 'Nombre de la Calle',
       value: street,
       onValueChange: setStreet,
-      options: [
-        {label: 'ARANDANOS', value: 'arandanos'},
-        {label: 'AZULEJO', value: 'azulejo'},
-        {label: 'BOSQUES', value: 'bosques'},
-        {label: 'CALLEJON', value: 'callejon'},
-        {label: 'CAMELIA', value: 'camelia'},
-        {label: 'CANELA', value: 'canela'},
-        {label: 'CEREZO', value: 'cerezo'},
-        {label: 'CIPRES', value: 'cipres'},
-        {label: 'COLIBRI', value: 'colibri'},
-        {label: 'DURAZNO', value: 'durazno'},
-        {label: 'ENCINO', value: 'encino'},
-        {label: 'ESMERALDA', value: 'esmeralda'},
-      ],
+      options: streetOptions,
       placeholder: 'Selecciona tu calle',
     },
     {

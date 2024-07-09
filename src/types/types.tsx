@@ -1,3 +1,4 @@
+// src/types/types.tsx
 export type RootStackParamList = {
   Login: undefined;
   Register: undefined;

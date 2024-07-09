@@ -1,3 +1,4 @@
+// src/types/api.tsx
 export interface Street {
   id: number;
   name: string;

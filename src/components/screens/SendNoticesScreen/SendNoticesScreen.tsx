@@ -1,3 +1,4 @@
+// src/components/screens/SendNoticesScreen/SendNoticesScreen.tsx
 import React from 'react';
 import {View} from 'react-native';
 import {SafeArea} from '../../organism';

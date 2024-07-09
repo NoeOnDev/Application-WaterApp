@@ -1,3 +1,4 @@
+// src/components/screens/HistoryScreen/StylesHistoryScreen.tsx
 import {StyleSheet} from 'react-native';
 import {colors} from '../../colors';
 

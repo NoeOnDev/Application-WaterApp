@@ -1,3 +1,4 @@
+// src/components/screens/NotificationUserScreen/NotificationUserScreen.tsx
 import React from 'react';
 import {View, Text, FlatList} from 'react-native';
 import {SafeArea} from '../../organism';

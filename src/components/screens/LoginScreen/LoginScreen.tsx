@@ -1,3 +1,4 @@
+// src/components/screens/LoginScreen/LoginScreen.tsx
 import React, {useState, useEffect} from 'react';
 import {View, KeyboardAvoidingView, Platform, Keyboard} from 'react-native';
 import {AuthForm, FormField} from '../../organism';

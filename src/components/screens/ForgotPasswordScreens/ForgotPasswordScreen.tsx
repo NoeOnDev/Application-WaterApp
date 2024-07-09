@@ -1,3 +1,4 @@
+// src/components/screens/ForgotPasswordScreens/ForgotPasswordScreen.tsx
 import React, {useState} from 'react';
 import {View} from 'react-native';
 import {useNavigation, NavigationProp} from '@react-navigation/native';

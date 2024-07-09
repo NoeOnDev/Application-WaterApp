@@ -1,3 +1,4 @@
+// src/components/screens/ForgotPasswordScreens/StylesForgotPasswordScreens.tsx
 import {StyleSheet} from 'react-native';
 import { colors } from '../../colors';
 

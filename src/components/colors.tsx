@@ -1,3 +1,4 @@
+// src/components/colors.tsx
 export const colors = {
   blueMain: '#0071CE',
   white: '#FFFFFF',

@@ -1,10 +1,11 @@
-// src/components/hooks/getStreets.tsx
+// src/components/hooks/GetStreets.tsx
 import axios from 'axios';
 import {useQuery, UseQueryResult} from '@tanstack/react-query';
-import { Street } from '../../types/api';
+import {Street} from '../../types/api';
+import {API_URL} from '@env';
 
 const fetchStreets = async (): Promise<Street[]> => {
-  const {data} = await axios.get('http://192.168.178.30:9020/streets');
+  const {data} = await axios.get(`${API_URL}/streets`);
   return data;
 };
 

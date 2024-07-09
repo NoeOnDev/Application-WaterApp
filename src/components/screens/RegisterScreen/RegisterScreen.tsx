@@ -22,7 +22,7 @@ export const RegisterScreen = () => {
     if (isError) {
       console.error('Error fetching streets:', isError);
     } else {
-      console.log('Streets data:', streets);
+      console.log('Successfully fetched streets');
     }
   }, [streets, isError]);
 

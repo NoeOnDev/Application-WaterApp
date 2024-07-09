@@ -1,3 +1,4 @@
+// src/components/organism/SafeArea/SafeArea.tsx
 import React from 'react';
 import {SafeAreaView} from 'react-native';
 import {CustomStatusBar} from '../../atoms';

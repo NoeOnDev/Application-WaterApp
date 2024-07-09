@@ -4,7 +4,7 @@ import {AuthForm, FormField, SafeArea} from '../../organism';
 import {LinkButton} from '../../atoms';
 import {useNavigation, NavigationProp} from '@react-navigation/native';
 import {RootStackParamList} from '../../../types/types';
-import {useStreets} from '../../hooks/getStreets';
+import {useStreets} from '../../hooks/GetStreets';
 import {styles} from './StylesRegisterScreen';
 
 export const RegisterScreen = () => {

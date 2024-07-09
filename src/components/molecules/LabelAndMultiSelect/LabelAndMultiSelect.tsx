@@ -1,3 +1,4 @@
+// src/components/molecules/LabelAndMultiSelect/LabelAndMultiSelect.tsx
 import React from 'react';
 import {View} from 'react-native';
 import {LabelAuth, MultiSelectDropdown} from '../../atoms';

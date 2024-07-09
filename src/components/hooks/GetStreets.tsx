@@ -1,4 +1,4 @@
-// src/hooks/getStreets.ts
+// src/components/hooks/getStreets.tsx
 import axios from 'axios';
 import {useQuery, UseQueryResult} from '@tanstack/react-query';
 import { Street } from '../../types/api';

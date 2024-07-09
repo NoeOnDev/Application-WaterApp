@@ -1,3 +1,4 @@
+// src/components/molecules/SuggestionBox/SuggestionBox.tsx
 import React, {useState} from 'react';
 import {View, Text, TouchableOpacity, ScrollView} from 'react-native';
 import {ButtonAuth, InputAuth} from '../../atoms';

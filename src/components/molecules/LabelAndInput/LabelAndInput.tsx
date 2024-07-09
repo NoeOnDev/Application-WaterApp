@@ -1,3 +1,4 @@
+// src/components/molecules/LabelAndInput/LabelAndInput.tsx
 import React from 'react';
 import {View} from 'react-native';
 import {LabelAuth, InputAuth} from '../../atoms';

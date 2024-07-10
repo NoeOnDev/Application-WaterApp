@@ -1,4 +1,3 @@
-// src/components/screens/RegisterScreen/RegisterScreen.tsx
 import React, {useState, useEffect} from 'react';
 import {
   View,
@@ -26,20 +25,28 @@ export const RegisterScreen = () => {
   const {data: streets, isLoading, isError} = useStreets();
 
   useEffect(() => {
+    const keyboardDidShowListener = Keyboard.addListener(
+      'keyboardDidShow',
+      () => setKeyboardVisible(true),
+    );
+    const keyboardDidHideListener = Keyboard.addListener(
+      'keyboardDidHide',
+      () => setKeyboardVisible(false),
+    );
+
+    return () => {
+      keyboardDidHideListener.remove();
+      keyboardDidShowListener.remove();
+    };
+  }, []);
+
+  useEffect(() => {
     if (isError) {
       console.error('Error fetching streets:', isError);
     } else {
       console.log('Streets data:', streets);
     }
   }, [streets, isError]);
-
-  if (isLoading) {
-    return <ActivityIndicator />;
-  }
-
-  if (isError) {
-    return <Text>Error al cargar las calles</Text>;
-  }
 
   const streetOptions = streets || [];
 
@@ -78,26 +85,6 @@ export const RegisterScreen = () => {
 
   const handleRegister = () => {};
 
-  useEffect(() => {
-    const keyboardDidShowListener = Keyboard.addListener(
-      'keyboardDidShow',
-      () => {
-        setKeyboardVisible(true);
-      },
-    );
-    const keyboardDidHideListener = Keyboard.addListener(
-      'keyboardDidHide',
-      () => {
-        setKeyboardVisible(false);
-      },
-    );
-
-    return () => {
-      keyboardDidHideListener.remove();
-      keyboardDidShowListener.remove();
-    };
-  }, []);
-
   return (
     <SafeArea>
       <KeyboardAvoidingView
@@ -105,19 +92,27 @@ export const RegisterScreen = () => {
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 0}>
         <View style={styles.content}>
-          <AuthForm
-            fields={fields}
-            buttonTitle="Registrarse"
-            buttonOnPress={handleRegister}
-            linkText=""
-            linkOnPress={() => ({})}
-          />
-          {!isKeyboardVisible && (
-            <LinkButton
-              text="¿Ya tienes una cuenta?"
-              onPress={() => navigation.navigate('Login')}
-              style={styles.linkText}
-            />
+          {isLoading ? (
+            <ActivityIndicator />
+          ) : isError ? (
+            <Text>Error al cargar las calles</Text>
+          ) : (
+            <>
+              <AuthForm
+                fields={fields}
+                buttonTitle="Registrarse"
+                buttonOnPress={handleRegister}
+                linkText=""
+                linkOnPress={() => ({})}
+              />
+              {!isKeyboardVisible && (
+                <LinkButton
+                  text="¿Ya tienes una cuenta?"
+                  onPress={() => navigation.navigate('Login')}
+                  style={styles.linkText}
+                />
+              )}
+            </>
           )}
         </View>
       </KeyboardAvoidingView>

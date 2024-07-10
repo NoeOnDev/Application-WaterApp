@@ -18,6 +18,14 @@ export const RegisterScreen = () => {
 
   const {data: streets, isLoading, isError} = useStreets();
 
+  useEffect(() => {
+    if (isError) {
+      console.error('Error fetching streets:', isError);
+    } else {
+      console.log('Streets data:', streets);
+    }
+  }, [streets, isError]);
+
   const streetOptions =
     streets?.map(street => ({
       label: street.name,

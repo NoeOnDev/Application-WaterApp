@@ -1,6 +1,13 @@
 // src/components/screens/RegisterScreen/RegisterScreen.tsx
 import React, {useState, useEffect} from 'react';
-import {View, KeyboardAvoidingView, Platform, Keyboard} from 'react-native';
+import {
+  View,
+  KeyboardAvoidingView,
+  Platform,
+  Keyboard,
+  ActivityIndicator,
+  Text,
+} from 'react-native';
 import {AuthForm, FormField, SafeArea} from '../../organism';
 import {LinkButton} from '../../atoms';
 import {useNavigation, NavigationProp} from '@react-navigation/native';
@@ -26,11 +33,15 @@ export const RegisterScreen = () => {
     }
   }, [streets, isError]);
 
-  const streetOptions =
-    streets?.map(street => ({
-      label: street.name,
-      value: street.name.toLowerCase(),
-    })) || [];
+  if (isLoading) {
+    return <ActivityIndicator />;
+  }
+
+  if (isError) {
+    return <Text>Error al cargar las calles</Text>;
+  }
+
+  const streetOptions = streets || [];
 
   const fields: FormField[] = [
     {

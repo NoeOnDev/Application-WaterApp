@@ -1,7 +1,7 @@
 // src/hooks/useStreets.tsx
 import axios from 'axios';
 import {useQuery, UseQueryResult} from '@tanstack/react-query';
-import {Street} from '../../types/api';
+import {Street} from '../types/api';
 import {API_URL} from '@env';
 
 const fetchStreets = async (): Promise<Street[]> => {

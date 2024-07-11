@@ -1,4 +1,4 @@
-// src/
+// src/components/atoms/ButtonAuth/ButtonAuth.tsx
 import React, {useRef} from 'react';
 import {
   TouchableOpacity,

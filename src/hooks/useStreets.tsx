@@ -1,8 +1,12 @@
 // src/hooks/useStreets.tsx
 import axios from 'axios';
 import {useQuery, UseQueryResult} from '@tanstack/react-query';
-import {Street} from '../types/api';
 import {API_URL} from '@env';
+
+export interface Street {
+  id: number;
+  name: string;
+}
 
 const fetchStreets = async (): Promise<Street[]> => {
   const {data} = await axios.get(`${API_URL}/streets`);
@@ -19,7 +23,7 @@ export const useStreets = (): UseQueryResult<
     select: data =>
       data.map(street => ({
         label: street.name,
-        value: street.name.toLowerCase(),
+        value: street.name,
       })),
     staleTime: 1000 * 60 * 5,
     refetchInterval: 1000 * 60 * 10,

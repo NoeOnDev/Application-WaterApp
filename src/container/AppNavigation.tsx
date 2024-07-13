@@ -1,7 +1,6 @@
 // src/container/AppNavigation.tsx
 import React, {useState, useEffect} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {NavigationContainer} from '@react-navigation/native';
 import {
   LoginScreen,
   RegisterScreen,
@@ -36,158 +35,156 @@ export function AppNavigation() {
   }
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        {userRole === null ? (
-          <>
-            <Stack.Screen name="Login" options={{headerShown: false}}>
-              {props => <LoginScreen {...props} setUserRole={setUserRole} />}
-            </Stack.Screen>
-            <Stack.Screen
-              name="ForgotPassword"
-              component={ForgotPasswordScreen}
-              options={{
-                headerShadowVisible: false,
-                headerTitle: 'Recuperar contraseña',
-                headerStyle: {backgroundColor: '#0071CE'},
-                headerTintColor: 'white',
-              }}
-            />
-            <Stack.Screen
-              name="VerificationCode"
-              component={VerificationCodeScreen}
-              options={{
-                headerShadowVisible: false,
-                headerTitle: 'Código de verificación',
-                headerStyle: {backgroundColor: '#0071CE'},
-                headerTintColor: 'white',
-              }}
-            />
-            <Stack.Screen
-              name="ResetPassword"
-              component={ResetPasswordScreen}
-              options={{
-                headerShadowVisible: false,
-                headerTitle: 'Restablecer contraseña',
-                headerStyle: {backgroundColor: '#0071CE'},
-                headerTintColor: 'white',
-              }}
-            />
-            <Stack.Screen
-              name="Register"
-              component={RegisterScreen}
-              options={{
-                headerShadowVisible: false,
-                headerTitle: 'Registro de usuario',
-                headerStyle: {backgroundColor: '#0071CE'},
-                headerTintColor: 'white',
-              }}
-            />
-          </>
-        ) : userRole === 'admin' ? (
-          <>
-            <Stack.Screen
-              name="HomeAdmin"
-              component={HomeTabsAdmin}
-              options={{headerShown: false, headerShadowVisible: false}}
-            />
-            <Stack.Screen name="Login" options={{headerShown: false}}>
-              {props => <LoginScreen {...props} setUserRole={setUserRole} />}
-            </Stack.Screen>
-            <Stack.Screen
-              name="ForgotPassword"
-              component={ForgotPasswordScreen}
-              options={{
-                headerShadowVisible: false,
-                headerTitle: 'Recuperar contraseña',
-                headerStyle: {backgroundColor: '#0071CE'},
-                headerTintColor: 'white',
-              }}
-            />
-            <Stack.Screen
-              name="VerificationCode"
-              component={VerificationCodeScreen}
-              options={{
-                headerShadowVisible: false,
-                headerTitle: 'Código de verificación',
-                headerStyle: {backgroundColor: '#0071CE'},
-                headerTintColor: 'white',
-              }}
-            />
-            <Stack.Screen
-              name="ResetPassword"
-              component={ResetPasswordScreen}
-              options={{
-                headerShadowVisible: false,
-                headerTitle: 'Restablecer contraseña',
-                headerStyle: {backgroundColor: '#0071CE'},
-                headerTintColor: 'white',
-              }}
-            />
-            <Stack.Screen
-              name="Register"
-              component={RegisterScreen}
-              options={{
-                headerShadowVisible: false,
-                headerTitle: 'Registro de usuario',
-                headerStyle: {backgroundColor: '#0071CE'},
-                headerTintColor: 'white',
-              }}
-            />
-          </>
-        ) : (
-          <>
-            <Stack.Screen
-              name="HomeUser"
-              component={HomeTabsUser}
-              options={{headerShown: false, headerShadowVisible: false}}
-            />
-            <Stack.Screen name="Login" options={{headerShown: false}}>
-              {props => <LoginScreen {...props} setUserRole={setUserRole} />}
-            </Stack.Screen>
-            <Stack.Screen
-              name="ForgotPassword"
-              component={ForgotPasswordScreen}
-              options={{
-                headerShadowVisible: false,
-                headerTitle: 'Recuperar contraseña',
-                headerStyle: {backgroundColor: '#0071CE'},
-                headerTintColor: 'white',
-              }}
-            />
-            <Stack.Screen
-              name="VerificationCode"
-              component={VerificationCodeScreen}
-              options={{
-                headerShadowVisible: false,
-                headerTitle: 'Código de verificación',
-                headerStyle: {backgroundColor: '#0071CE'},
-                headerTintColor: 'white',
-              }}
-            />
-            <Stack.Screen
-              name="ResetPassword"
-              component={ResetPasswordScreen}
-              options={{
-                headerShadowVisible: false,
-                headerTitle: 'Restablecer contraseña',
-                headerStyle: {backgroundColor: '#0071CE'},
-                headerTintColor: 'white',
-              }}
-            />
-            <Stack.Screen
-              name="Register"
-              component={RegisterScreen}
-              options={{
-                headerShadowVisible: false,
-                headerTitle: 'Registro de usuario',
-                headerStyle: {backgroundColor: '#0071CE'},
-                headerTintColor: 'white',
-              }}
-            />
-          </>
-        )}
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Stack.Navigator>
+      {userRole === null ? (
+        <>
+          <Stack.Screen name="Login" options={{headerShown: false}}>
+            {props => <LoginScreen {...props} setUserRole={setUserRole} />}
+          </Stack.Screen>
+          <Stack.Screen
+            name="ForgotPassword"
+            component={ForgotPasswordScreen}
+            options={{
+              headerShadowVisible: false,
+              headerTitle: 'Recuperar contraseña',
+              headerStyle: {backgroundColor: '#0071CE'},
+              headerTintColor: 'white',
+            }}
+          />
+          <Stack.Screen
+            name="VerificationCode"
+            component={VerificationCodeScreen}
+            options={{
+              headerShadowVisible: false,
+              headerTitle: 'Código de verificación',
+              headerStyle: {backgroundColor: '#0071CE'},
+              headerTintColor: 'white',
+            }}
+          />
+          <Stack.Screen
+            name="ResetPassword"
+            component={ResetPasswordScreen}
+            options={{
+              headerShadowVisible: false,
+              headerTitle: 'Restablecer contraseña',
+              headerStyle: {backgroundColor: '#0071CE'},
+              headerTintColor: 'white',
+            }}
+          />
+          <Stack.Screen
+            name="Register"
+            component={RegisterScreen}
+            options={{
+              headerShadowVisible: false,
+              headerTitle: 'Registro de usuario',
+              headerStyle: {backgroundColor: '#0071CE'},
+              headerTintColor: 'white',
+            }}
+          />
+        </>
+      ) : userRole === 'admin' ? (
+        <>
+          <Stack.Screen
+            name="HomeAdmin"
+            component={HomeTabsAdmin}
+            options={{headerShown: false, headerShadowVisible: false}}
+          />
+          <Stack.Screen name="Login" options={{headerShown: false}}>
+            {props => <LoginScreen {...props} setUserRole={setUserRole} />}
+          </Stack.Screen>
+          <Stack.Screen
+            name="ForgotPassword"
+            component={ForgotPasswordScreen}
+            options={{
+              headerShadowVisible: false,
+              headerTitle: 'Recuperar contraseña',
+              headerStyle: {backgroundColor: '#0071CE'},
+              headerTintColor: 'white',
+            }}
+          />
+          <Stack.Screen
+            name="VerificationCode"
+            component={VerificationCodeScreen}
+            options={{
+              headerShadowVisible: false,
+              headerTitle: 'Código de verificación',
+              headerStyle: {backgroundColor: '#0071CE'},
+              headerTintColor: 'white',
+            }}
+          />
+          <Stack.Screen
+            name="ResetPassword"
+            component={ResetPasswordScreen}
+            options={{
+              headerShadowVisible: false,
+              headerTitle: 'Restablecer contraseña',
+              headerStyle: {backgroundColor: '#0071CE'},
+              headerTintColor: 'white',
+            }}
+          />
+          <Stack.Screen
+            name="Register"
+            component={RegisterScreen}
+            options={{
+              headerShadowVisible: false,
+              headerTitle: 'Registro de usuario',
+              headerStyle: {backgroundColor: '#0071CE'},
+              headerTintColor: 'white',
+            }}
+          />
+        </>
+      ) : (
+        <>
+          <Stack.Screen
+            name="HomeUser"
+            component={HomeTabsUser}
+            options={{headerShown: false, headerShadowVisible: false}}
+          />
+          <Stack.Screen name="Login" options={{headerShown: false}}>
+            {props => <LoginScreen {...props} setUserRole={setUserRole} />}
+          </Stack.Screen>
+          <Stack.Screen
+            name="ForgotPassword"
+            component={ForgotPasswordScreen}
+            options={{
+              headerShadowVisible: false,
+              headerTitle: 'Recuperar contraseña',
+              headerStyle: {backgroundColor: '#0071CE'},
+              headerTintColor: 'white',
+            }}
+          />
+          <Stack.Screen
+            name="VerificationCode"
+            component={VerificationCodeScreen}
+            options={{
+              headerShadowVisible: false,
+              headerTitle: 'Código de verificación',
+              headerStyle: {backgroundColor: '#0071CE'},
+              headerTintColor: 'white',
+            }}
+          />
+          <Stack.Screen
+            name="ResetPassword"
+            component={ResetPasswordScreen}
+            options={{
+              headerShadowVisible: false,
+              headerTitle: 'Restablecer contraseña',
+              headerStyle: {backgroundColor: '#0071CE'},
+              headerTintColor: 'white',
+            }}
+          />
+          <Stack.Screen
+            name="Register"
+            component={RegisterScreen}
+            options={{
+              headerShadowVisible: false,
+              headerTitle: 'Registro de usuario',
+              headerStyle: {backgroundColor: '#0071CE'},
+              headerTintColor: 'white',
+            }}
+          />
+        </>
+      )}
+    </Stack.Navigator>
   );
 }

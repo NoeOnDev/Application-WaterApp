@@ -11,11 +11,12 @@ import {AuthForm, FormField, SafeArea} from '../../organism';
 import {LinkButton} from '../../atoms';
 import {useNavigation, NavigationProp} from '@react-navigation/native';
 import {RootStackParamList} from '../../../types/types';
-import { useStreets } from '../../../hooks/useStreets';
+import {useStreets} from '../../../hooks/useStreets';
+import {useRegister} from '../../../hooks/useRegister';
 import {styles} from './StylesRegisterScreen';
 
 export const RegisterScreen = () => {
-  const [fullName, setFullName] = useState('');
+  const [username, setUsername] = useState('');
   const [street, setStreet] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -23,6 +24,7 @@ export const RegisterScreen = () => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   const {data: streets, isLoading, isError} = useStreets();
+  const {mutate: register} = useRegister();
 
   useEffect(() => {
     const keyboardDidShowListener = Keyboard.addListener(
@@ -54,8 +56,8 @@ export const RegisterScreen = () => {
     {
       type: 'input',
       label: 'Nombre Completo',
-      value: fullName,
-      onChangeText: setFullName,
+      value: username,
+      onChangeText: setUsername,
       placeholder: 'Introduce tu nombre completo',
     },
     {
@@ -83,7 +85,22 @@ export const RegisterScreen = () => {
     },
   ];
 
-  const handleRegister = () => {};
+  const handleRegister = () => {
+    const userData = {
+      username,
+      street,
+      email,
+      password,
+    };
+    register(userData, {
+      onSuccess: data => {
+        console.log('Registro exitoso', data);
+      },
+      onError: error => {
+        console.error('Error en el registro', error);
+      },
+    });
+  };
 
   return (
     <SafeArea>

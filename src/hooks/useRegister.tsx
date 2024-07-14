@@ -16,5 +16,12 @@ export const registerUser = async (userData: {
 export const useRegister = () => {
   return useMutation({
     mutationFn: registerUser,
+    onError: (error: any) => {
+      if (axios.isAxiosError(error) && error.response) {
+        throw new Error(error.response.data.message);
+      } else {
+        throw new Error('Error inesperado. Inténtalo de nuevo.');
+      }
+    },
   });
 };

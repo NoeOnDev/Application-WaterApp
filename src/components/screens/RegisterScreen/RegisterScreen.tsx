@@ -7,6 +7,11 @@ import {
   ActivityIndicator,
   Text,
 } from 'react-native';
+import {
+  ALERT_TYPE,
+  Dialog,
+  AlertNotificationRoot,
+} from 'react-native-alert-notification';
 import {AuthForm, FormField, SafeArea} from '../../organism';
 import {LinkButton} from '../../atoms';
 import {useNavigation, NavigationProp} from '@react-navigation/native';
@@ -24,7 +29,7 @@ export const RegisterScreen = () => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   const {data: streets, isLoading, isError} = useStreets();
-  const {mutate: register} = useRegister();
+  const {mutate: registerUser} = useRegister();
 
   useEffect(() => {
     const keyboardDidShowListener = Keyboard.addListener(
@@ -41,14 +46,6 @@ export const RegisterScreen = () => {
       keyboardDidShowListener.remove();
     };
   }, []);
-
-  useEffect(() => {
-    if (isError) {
-      console.error('Error fetching streets:', isError);
-    } else {
-      console.log('Streets data:', streets);
-    }
-  }, [streets, isError]);
 
   const streetOptions = streets || [];
 
@@ -92,47 +89,62 @@ export const RegisterScreen = () => {
       email,
       password,
     };
-    register(userData, {
+    registerUser(userData, {
       onSuccess: data => {
-        console.log('Registro exitoso', data);
+        Dialog.show({
+          type: ALERT_TYPE.SUCCESS,
+          title: 'Registro Exitoso',
+          textBody: 'Te has registrado exitosamente',
+          button: 'Aceptar',
+        });
       },
       onError: error => {
-        console.error('Error en el registro', error);
+        const errorMessage =
+          error.response?.data?.message ||
+          'Hubo un error al registrarte. Inténtalo de nuevo.';
+        Dialog.show({
+          type: ALERT_TYPE.DANGER,
+          title: 'Error en el Registro',
+          textBody: errorMessage,
+          button: 'Aceptar',
+        });
       },
     });
   };
 
   return (
-    <SafeArea>
-      <KeyboardAvoidingView
-        style={styles.container}
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 0}>
-        <View style={styles.content}>
-          {isLoading ? (
-            <ActivityIndicator />
-          ) : isError ? (
-            <Text>Error al cargar las calles</Text>
-          ) : (
-            <>
-              <AuthForm
-                fields={fields}
-                buttonTitle="Registrarse"
-                buttonOnPress={handleRegister}
-                linkText=""
-                linkOnPress={() => ({})}
-              />
-              {!isKeyboardVisible && (
-                <LinkButton
-                  text="¿Ya tienes una cuenta?"
-                  onPress={() => navigation.navigate('Login')}
-                  style={styles.linkText}
+    <AlertNotificationRoot>
+      <SafeArea>
+        <KeyboardAvoidingView
+          style={styles.container}
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+          keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 0}>
+          <View style={styles.content}>
+            {isLoading ? (
+              <ActivityIndicator />
+            ) : isError ? (
+              <Text>Error al cargar las calles</Text>
+            ) : (
+              <>
+                <AuthForm
+                  fields={fields}
+                  buttonTitle="Registrarse"
+                  buttonOnPress={handleRegister}
+                  linkText=""
+                  linkOnPress={() => ({})}
                 />
-              )}
-            </>
-          )}
-        </View>
-      </KeyboardAvoidingView>
-    </SafeArea>
+                {!isKeyboardVisible && (
+                  <LinkButton
+                    text="¿Ya tienes una cuenta?"
+                    onPress={() => navigation.navigate('Login')}
+                    style={styles.linkText}
+                  />
+                )}
+              </>
+            )}
+          </View>
+        </KeyboardAvoidingView>
+      </SafeArea>
+    </AlertNotificationRoot>
   );
 };

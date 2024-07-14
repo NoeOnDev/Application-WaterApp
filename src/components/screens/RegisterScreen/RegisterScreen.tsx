@@ -97,6 +97,7 @@ export const RegisterScreen = () => {
           title: 'Registro Exitoso',
           textBody: 'Te has registrado exitosamente',
           button: 'Aceptar',
+          onPressButton: () => navigation.navigate('Login'),
         });
       },
       onError: error => {

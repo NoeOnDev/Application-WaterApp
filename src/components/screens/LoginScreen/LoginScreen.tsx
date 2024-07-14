@@ -1,12 +1,17 @@
-// src/components/screens/LoginScreen/LoginScreen.tsx
 import React, {useState, useEffect} from 'react';
 import {View, KeyboardAvoidingView, Platform, Keyboard} from 'react-native';
+import {
+  ALERT_TYPE,
+  Dialog,
+  AlertNotificationRoot,
+} from 'react-native-alert-notification';
 import {AuthForm, FormField} from '../../organism';
 import {ButtonAuth, Logo, AppName} from '../../atoms';
 import {useNavigation, NavigationProp} from '@react-navigation/native';
 import {SafeArea} from '../../organism';
 import {RootStackParamList} from '../../../types/types';
 import {styles} from './StylesLoginScreen';
+import {useLogin} from '../../../hooks/useLogin';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface LoginScreenProps {
@@ -18,6 +23,8 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({setUserRole}) => {
   const [password, setPassword] = useState('');
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+
+  const {mutate: loginUser} = useLogin();
 
   const fields: FormField[] = [
     {
@@ -37,22 +44,45 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({setUserRole}) => {
     },
   ];
 
-  const handleLogin = async () => {
-    console.log('Email:', email);
-    console.log('Password:', password);
-    if (email === 'admin@gmail.com' && password === 'admin') {
-      setUserRole('admin');
-      await AsyncStorage.setItem('userRole', 'admin');
-      await AsyncStorage.setItem('userEmail', email);
-      navigation.navigate('HomeAdmin');
-    } else if (email === 'user@gmail.com' && password === 'user') {
-      setUserRole('user');
-      await AsyncStorage.setItem('userRole', 'user');
-      await AsyncStorage.setItem('userEmail', email);
-      navigation.navigate('HomeUser');
-    } else {
-      console.log('Credenciales incorrectas');
-    }
+  const handleLogin = () => {
+    const credentials = {
+      email,
+      password,
+    };
+    loginUser(credentials, {
+      onSuccess: async data => {
+        setUserRole(data.user.role);
+        await AsyncStorage.setItem('token', data.token);
+        await AsyncStorage.setItem('userRole', data.user.role);
+        await AsyncStorage.setItem('userEmail', data.user.email);
+        console.log(data);
+        Dialog.show({
+          type: ALERT_TYPE.SUCCESS,
+          title: 'Inicio de sesión exitoso',
+          textBody: 'Has iniciado sesión exitosamente.',
+          button: 'Aceptar',
+          onPressButton: () => {
+            navigation.reset({
+              index: 0,
+              routes: [
+                {name: data.user.role === 'Admin' ? 'HomeAdmin' : 'HomeUser'},
+              ],
+            });
+          },
+        });
+      },
+      onError: error => {
+        const errorMessage =
+          error.response?.data?.message ||
+          'Hubo un error al iniciar sesión. Inténtalo de nuevo.';
+        Dialog.show({
+          type: ALERT_TYPE.DANGER,
+          title: 'Error en el inicio de sesión',
+          textBody: errorMessage,
+          button: 'Aceptar',
+        });
+      },
+    });
   };
 
   const handleForgotPassword = () => {
@@ -84,31 +114,33 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({setUserRole}) => {
   }, []);
 
   return (
-    <SafeArea>
-      {!isKeyboardVisible && <Logo style={styles.logo} />}
-      <KeyboardAvoidingView
-        style={styles.container}
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 0}>
-        <AuthForm
-          fields={fields}
-          buttonTitle="Iniciar sesión"
-          buttonOnPress={handleLogin}
-          linkText="¿Olvidaste tu contraseña?"
-          linkOnPress={handleForgotPassword}
-        />
-        {!isKeyboardVisible && (
-          <View style={styles.bottomContainer}>
-            <ButtonAuth
-              title="Crear nueva cuenta"
-              onPress={handleCreateAccount}
-              buttonStyle={styles.createAccountButton}
-              textStyle={styles.createAccountButtonText}
-            />
-            <AppName />
-          </View>
-        )}
-      </KeyboardAvoidingView>
-    </SafeArea>
+    <AlertNotificationRoot>
+      <SafeArea>
+        {!isKeyboardVisible && <Logo style={styles.logo} />}
+        <KeyboardAvoidingView
+          style={styles.container}
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+          keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 0}>
+          <AuthForm
+            fields={fields}
+            buttonTitle="Iniciar sesión"
+            buttonOnPress={handleLogin}
+            linkText="¿Olvidaste tu contraseña?"
+            linkOnPress={handleForgotPassword}
+          />
+          {!isKeyboardVisible && (
+            <View style={styles.bottomContainer}>
+              <ButtonAuth
+                title="Crear nueva cuenta"
+                onPress={handleCreateAccount}
+                buttonStyle={styles.createAccountButton}
+                textStyle={styles.createAccountButtonText}
+              />
+              <AppName />
+            </View>
+          )}
+        </KeyboardAvoidingView>
+      </SafeArea>
+    </AlertNotificationRoot>
   );
 };

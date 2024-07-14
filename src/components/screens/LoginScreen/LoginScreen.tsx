@@ -1,13 +1,18 @@
 // src/components/screens/LoginScreen/LoginScreen.tsx
 import React, {useState, useEffect} from 'react';
 import {View, KeyboardAvoidingView, Platform, Keyboard} from 'react-native';
+import {
+  ALERT_TYPE,
+  Dialog,
+  AlertNotificationRoot,
+} from 'react-native-alert-notification';
 import {AuthForm, FormField} from '../../organism';
 import {ButtonAuth, Logo, AppName} from '../../atoms';
 import {useNavigation, NavigationProp} from '@react-navigation/native';
 import {SafeArea} from '../../organism';
 import {RootStackParamList} from '../../../types/types';
 import {styles} from './StylesLoginScreen';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useLogin} from '../../../hooks/useLogin';
 
 interface LoginScreenProps {
   setUserRole: (role: string) => void;
@@ -18,6 +23,8 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({setUserRole}) => {
   const [password, setPassword] = useState('');
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+
+  const {mutate: loginUser} = useLogin();
 
   const fields: FormField[] = [
     {
@@ -37,22 +44,19 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({setUserRole}) => {
     },
   ];
 
-  const handleLogin = async () => {
-    console.log('Email:', email);
-    console.log('Password:', password);
-    if (email === 'admin@gmail.com' && password === 'admin') {
-      setUserRole('admin');
-      await AsyncStorage.setItem('userRole', 'admin');
-      await AsyncStorage.setItem('userEmail', email);
-      navigation.navigate('HomeAdmin');
-    } else if (email === 'user@gmail.com' && password === 'user') {
-      setUserRole('user');
-      await AsyncStorage.setItem('userRole', 'user');
-      await AsyncStorage.setItem('userEmail', email);
-      navigation.navigate('HomeUser');
-    } else {
-      console.log('Credenciales incorrectas');
-    }
+  const handleLogin = () => {
+    const credentials = {
+      email,
+      password,
+    };
+    loginUser(credentials, {
+      onSuccess: async data => {
+        setUserRole(data.user.role);
+        navigation.navigate(
+          data.user.role === 'admin' ? 'HomeAdmin' : 'HomeUser',
+        );
+      },
+    });
   };
 
   const handleForgotPassword = () => {

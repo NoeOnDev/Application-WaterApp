@@ -11,6 +11,7 @@ import {
 import HomeTabsAdmin from './HomeTabsAdmin';
 import HomeTabsUser from './HomeTabsUser';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {colors} from '../components/colors';
 
 const Stack = createNativeStackNavigator();
 
@@ -47,8 +48,8 @@ export function AppNavigation() {
             options={{
               headerShadowVisible: false,
               headerTitle: 'Recuperar contraseña',
-              headerStyle: {backgroundColor: '#0071CE'},
-              headerTintColor: 'white',
+              headerStyle: {backgroundColor: colors.blueMain},
+              headerTintColor: colors.white,
             }}
           />
           <Stack.Screen
@@ -57,8 +58,8 @@ export function AppNavigation() {
             options={{
               headerShadowVisible: false,
               headerTitle: 'Código de verificación',
-              headerStyle: {backgroundColor: '#0071CE'},
-              headerTintColor: 'white',
+              headerStyle: {backgroundColor: colors.blueMain},
+              headerTintColor: colors.white,
             }}
           />
           <Stack.Screen
@@ -67,8 +68,8 @@ export function AppNavigation() {
             options={{
               headerShadowVisible: false,
               headerTitle: 'Restablecer contraseña',
-              headerStyle: {backgroundColor: '#0071CE'},
-              headerTintColor: 'white',
+              headerStyle: {backgroundColor: colors.blueMain},
+              headerTintColor: colors.white,
             }}
           />
           <Stack.Screen
@@ -77,8 +78,8 @@ export function AppNavigation() {
             options={{
               headerShadowVisible: false,
               headerTitle: 'Registro de usuario',
-              headerStyle: {backgroundColor: '#0071CE'},
-              headerTintColor: 'white',
+              headerStyle: {backgroundColor: colors.blueMain},
+              headerTintColor: colors.white,
             }}
           />
         </>
@@ -98,8 +99,8 @@ export function AppNavigation() {
             options={{
               headerShadowVisible: false,
               headerTitle: 'Recuperar contraseña',
-              headerStyle: {backgroundColor: '#0071CE'},
-              headerTintColor: 'white',
+              headerStyle: {backgroundColor: colors.blueMain},
+              headerTintColor: colors.white,
             }}
           />
           <Stack.Screen
@@ -108,8 +109,8 @@ export function AppNavigation() {
             options={{
               headerShadowVisible: false,
               headerTitle: 'Código de verificación',
-              headerStyle: {backgroundColor: '#0071CE'},
-              headerTintColor: 'white',
+              headerStyle: {backgroundColor: colors.blueMain},
+              headerTintColor: colors.white,
             }}
           />
           <Stack.Screen
@@ -118,8 +119,8 @@ export function AppNavigation() {
             options={{
               headerShadowVisible: false,
               headerTitle: 'Restablecer contraseña',
-              headerStyle: {backgroundColor: '#0071CE'},
-              headerTintColor: 'white',
+              headerStyle: {backgroundColor: colors.blueMain},
+              headerTintColor: colors.white,
             }}
           />
           <Stack.Screen
@@ -128,8 +129,8 @@ export function AppNavigation() {
             options={{
               headerShadowVisible: false,
               headerTitle: 'Registro de usuario',
-              headerStyle: {backgroundColor: '#0071CE'},
-              headerTintColor: 'white',
+              headerStyle: {backgroundColor: colors.blueMain},
+              headerTintColor: colors.white,
             }}
           />
         </>
@@ -149,8 +150,8 @@ export function AppNavigation() {
             options={{
               headerShadowVisible: false,
               headerTitle: 'Recuperar contraseña',
-              headerStyle: {backgroundColor: '#0071CE'},
-              headerTintColor: 'white',
+              headerStyle: {backgroundColor: colors.blueMain},
+              headerTintColor: colors.white,
             }}
           />
           <Stack.Screen
@@ -159,8 +160,8 @@ export function AppNavigation() {
             options={{
               headerShadowVisible: false,
               headerTitle: 'Código de verificación',
-              headerStyle: {backgroundColor: '#0071CE'},
-              headerTintColor: 'white',
+              headerStyle: {backgroundColor: colors.blueMain},
+              headerTintColor: colors.white,
             }}
           />
           <Stack.Screen
@@ -169,8 +170,8 @@ export function AppNavigation() {
             options={{
               headerShadowVisible: false,
               headerTitle: 'Restablecer contraseña',
-              headerStyle: {backgroundColor: '#0071CE'},
-              headerTintColor: 'white',
+              headerStyle: {backgroundColor: colors.blueMain},
+              headerTintColor: colors.white,
             }}
           />
           <Stack.Screen
@@ -179,8 +180,8 @@ export function AppNavigation() {
             options={{
               headerShadowVisible: false,
               headerTitle: 'Registro de usuario',
-              headerStyle: {backgroundColor: '#0071CE'},
-              headerTintColor: 'white',
+              headerStyle: {backgroundColor: colors.blueMain},
+              headerTintColor: colors.white,
             }}
           />
         </>

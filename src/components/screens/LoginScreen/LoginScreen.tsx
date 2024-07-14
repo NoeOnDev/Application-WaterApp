@@ -13,6 +13,7 @@ import {SafeArea} from '../../organism';
 import {RootStackParamList} from '../../../types/types';
 import {styles} from './StylesLoginScreen';
 import {useLogin} from '../../../hooks/useLogin';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface LoginScreenProps {
   setUserRole: (role: string) => void;
@@ -52,9 +53,35 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({setUserRole}) => {
     loginUser(credentials, {
       onSuccess: async data => {
         setUserRole(data.user.role);
-        navigation.navigate(
-          data.user.role === 'admin' ? 'HomeAdmin' : 'HomeUser',
-        );
+        await AsyncStorage.setItem('token', data.token);
+        await AsyncStorage.setItem('userRole', data.user.role);
+        await AsyncStorage.setItem('userEmail', data.user.email);
+        console.log(data);
+        Dialog.show({
+          type: ALERT_TYPE.SUCCESS,
+          title: 'Inicio de sesión exitoso',
+          textBody: 'Has iniciado sesión exitosamente.',
+          button: 'Aceptar',
+          onPressButton: () => {
+            navigation.reset({
+              index: 0,
+              routes: [
+                {name: data.user.role === 'Admin' ? 'HomeAdmin' : 'HomeUser'},
+              ],
+            });
+          },
+        });
+      },
+      onError: error => {
+        const errorMessage =
+          error.response?.data?.message ||
+          'Hubo un error al iniciar sesión. Inténtalo de nuevo.';
+        Dialog.show({
+          type: ALERT_TYPE.DANGER,
+          title: 'Error en el inicio de sesión',
+          textBody: errorMessage,
+          button: 'Aceptar',
+        });
       },
     });
   };
@@ -88,31 +115,33 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({setUserRole}) => {
   }, []);
 
   return (
-    <SafeArea>
-      {!isKeyboardVisible && <Logo style={styles.logo} />}
-      <KeyboardAvoidingView
-        style={styles.container}
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 0}>
-        <AuthForm
-          fields={fields}
-          buttonTitle="Iniciar sesión"
-          buttonOnPress={handleLogin}
-          linkText="¿Olvidaste tu contraseña?"
-          linkOnPress={handleForgotPassword}
-        />
-        {!isKeyboardVisible && (
-          <View style={styles.bottomContainer}>
-            <ButtonAuth
-              title="Crear nueva cuenta"
-              onPress={handleCreateAccount}
-              buttonStyle={styles.createAccountButton}
-              textStyle={styles.createAccountButtonText}
-            />
-            <AppName />
-          </View>
-        )}
-      </KeyboardAvoidingView>
-    </SafeArea>
+    <AlertNotificationRoot>
+      <SafeArea>
+        {!isKeyboardVisible && <Logo style={styles.logo} />}
+        <KeyboardAvoidingView
+          style={styles.container}
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+          keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 0}>
+          <AuthForm
+            fields={fields}
+            buttonTitle="Iniciar sesión"
+            buttonOnPress={handleLogin}
+            linkText="¿Olvidaste tu contraseña?"
+            linkOnPress={handleForgotPassword}
+          />
+          {!isKeyboardVisible && (
+            <View style={styles.bottomContainer}>
+              <ButtonAuth
+                title="Crear nueva cuenta"
+                onPress={handleCreateAccount}
+                buttonStyle={styles.createAccountButton}
+                textStyle={styles.createAccountButtonText}
+              />
+              <AppName />
+            </View>
+          )}
+        </KeyboardAvoidingView>
+      </SafeArea>
+    </AlertNotificationRoot>
   );
 };

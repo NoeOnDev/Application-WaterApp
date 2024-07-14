@@ -38,7 +38,6 @@ export const useLogin = () => {
       }
     },
     onSuccess: async (data: LoginResponse) => {
-      console.log('Inicio de sesión exitoso:', data);
       await AsyncStorage.setItem('token', data.token);
       await AsyncStorage.setItem('userRole', data.user.role);
       await AsyncStorage.setItem('userEmail', data.user.email);

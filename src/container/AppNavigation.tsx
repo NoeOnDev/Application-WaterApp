@@ -83,7 +83,7 @@ export function AppNavigation() {
             }}
           />
         </>
-      ) : userRole === 'admin' ? (
+      ) : userRole === 'Admin' ? (
         <>
           <Stack.Screen
             name="HomeAdmin"

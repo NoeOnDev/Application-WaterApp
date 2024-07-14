@@ -26,7 +26,6 @@ export const RegisterScreen = () => {
   const [street, setStreet] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
@@ -85,7 +84,6 @@ export const RegisterScreen = () => {
   ];
 
   const handleRegister = () => {
-    setIsSubmitting(true);
     const userData = {
       username,
       street,
@@ -100,7 +98,6 @@ export const RegisterScreen = () => {
           textBody: 'Te has registrado exitosamente',
           button: 'Aceptar',
         });
-        setIsSubmitting(false);
       },
       onError: error => {
         const errorMessage =
@@ -112,7 +109,6 @@ export const RegisterScreen = () => {
           textBody: errorMessage,
           button: 'Aceptar',
         });
-        setIsSubmitting(false);
       },
     });
   };
@@ -135,7 +131,6 @@ export const RegisterScreen = () => {
                   fields={fields}
                   buttonTitle="Registrarse"
                   buttonOnPress={handleRegister}
-                  buttonDisabled={isSubmitting}
                   linkText=""
                   linkOnPress={() => ({})}
                 />

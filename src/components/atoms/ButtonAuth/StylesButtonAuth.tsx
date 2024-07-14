@@ -1,5 +1,5 @@
 // src/components/atoms/ButtonAuth/StylesButtonAuth.tsx
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 import { colors } from '../../colors';
 
 export const styles = StyleSheet.create({
@@ -13,11 +13,5 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '700',
     color: colors.white,
-  },
-  disabledButton: {
-    backgroundColor: colors.greyLight
-  },
-  disabledText: {
-    color: colors.greyDark,
   },
 });

@@ -22,6 +22,7 @@ interface AuthFormProps {
   buttonOnPress: () => void;
   buttonStyle?: ViewStyle;
   buttonTextStyle?: TextStyle;
+  buttonDisabled?: boolean;
   linkText: string;
   linkOnPress: () => void;
 }
@@ -32,6 +33,7 @@ export const AuthForm: React.FC<AuthFormProps> = ({
   buttonOnPress,
   buttonStyle,
   buttonTextStyle,
+  buttonDisabled = false,
   linkText,
   linkOnPress,
 }) => {
@@ -68,6 +70,7 @@ export const AuthForm: React.FC<AuthFormProps> = ({
         onPress={buttonOnPress}
         buttonStyle={buttonStyle}
         textStyle={buttonTextStyle}
+        disabled={buttonDisabled}
       />
       <LinkButton text={linkText} onPress={linkOnPress} />
     </View>

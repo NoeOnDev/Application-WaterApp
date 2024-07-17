@@ -1,6 +1,10 @@
-// src/components/organism/NotificationForm/NotificationForm.tsx
 import React, {useState} from 'react';
-import {ScrollView, ActivityIndicator, Text} from 'react-native';
+import {
+  ScrollView,
+  ActivityIndicator,
+  Text,
+  RefreshControl,
+} from 'react-native';
 import {useQueryClient} from '@tanstack/react-query';
 import {ButtonAuth, InputMessage} from '../../atoms';
 import {LabelAndMultiSelect, SuggestionBox} from '../../molecules';
@@ -28,6 +32,7 @@ export const NotificationForm: React.FC<NotificationFormProps> = ({
 }) => {
   const [selectedStreets, setSelectedStreets] = useState<string[]>([]);
   const [message, setMessage] = useState('');
+  const [refreshing, setRefreshing] = useState(false);
 
   const queryClient = useQueryClient();
 
@@ -35,11 +40,13 @@ export const NotificationForm: React.FC<NotificationFormProps> = ({
     data: streets,
     isLoading: isLoadingStreets,
     isError: isErrorStreets,
+    refetch: refetchStreets,
   } = useStreets();
   const {
     data: suggestions,
     isLoading: isLoadingSuggestions,
     isError: isErrorSuggestions,
+    refetch: refetchSuggestions,
   } = useSuggestions();
   const createSuggestionMutation = useCreateSuggestion();
   const deleteSuggestionMutation = useDeleteSuggestion();
@@ -89,8 +96,19 @@ export const NotificationForm: React.FC<NotificationFormProps> = ({
     }
   };
 
+  const onRefresh = async () => {
+    setRefreshing(true);
+    await refetchStreets();
+    await refetchSuggestions();
+    setRefreshing(false);
+  };
+
   return (
-    <ScrollView contentContainerStyle={styles.formContainer}>
+    <ScrollView
+      contentContainerStyle={styles.formContainer}
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }>
       {isLoadingStreets || isLoadingSuggestions ? (
         <ActivityIndicator />
       ) : isErrorStreets || isErrorSuggestions ? (

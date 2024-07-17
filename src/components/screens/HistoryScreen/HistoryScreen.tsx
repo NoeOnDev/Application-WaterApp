@@ -1,12 +1,29 @@
-// src/components/screens/HistoryScreen/HistoryScreen.tsx
-import React from 'react';
-import {View, Text, FlatList, ActivityIndicator} from 'react-native';
+import React, {useState} from 'react';
+import {
+  View,
+  Text,
+  FlatList,
+  ActivityIndicator,
+  RefreshControl,
+} from 'react-native';
 import {useNotificationHistory} from '../../../hooks/useNotification';
 import {SafeArea} from '../../organism';
 import {styles} from './StylesHistoryScreen';
 
 export const HistoryScreen: React.FC = () => {
-  const {data: notifications, isLoading, isError} = useNotificationHistory();
+  const {
+    data: notifications,
+    isLoading,
+    isError,
+    refetch,
+  } = useNotificationHistory();
+  const [refreshing, setRefreshing] = useState(false);
+
+  const onRefresh = async () => {
+    setRefreshing(true);
+    await refetch();
+    setRefreshing(false);
+  };
 
   const renderNotification = ({item}: {item: any}) => (
     <View style={styles.notificationContainer}>
@@ -50,6 +67,9 @@ export const HistoryScreen: React.FC = () => {
             data={notifications}
             renderItem={renderNotification}
             keyExtractor={(item, index) => index.toString()}
+            refreshControl={
+              <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+            }
           />
         )}
       </View>

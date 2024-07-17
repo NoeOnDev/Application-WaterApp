@@ -11,6 +11,7 @@ import {
   useCreateSuggestion,
   useDeleteSuggestion,
 } from '../../../hooks/useSuggestions';
+import {useSendNotification} from '../../../hooks/userNotification';
 
 interface Notification {
   streets: string[];
@@ -42,16 +43,25 @@ export const NotificationForm: React.FC<NotificationFormProps> = ({
   } = useSuggestions();
   const createSuggestionMutation = useCreateSuggestion();
   const deleteSuggestionMutation = useDeleteSuggestion();
+  const sendNotificationMutation = useSendNotification();
 
-  const handleSendNotification = () => {
-    const notification = {
-      streets: selectedStreets,
-      message,
-      timestamp: new Date(),
-    };
-    addNotification(notification);
-    console.log('Calles seleccionadas:', selectedStreets);
-    console.log('Mensaje:', message);
+  const handleSendNotification = async () => {
+    try {
+      await sendNotificationMutation.mutateAsync({
+        message,
+        streets: selectedStreets,
+      });
+      const notification = {
+        streets: selectedStreets,
+        message,
+        timestamp: new Date(),
+      };
+      addNotification(notification);
+      console.log('Calles seleccionadas:', selectedStreets);
+      console.log('Mensaje:', message);
+    } catch (error) {
+      console.error('Error al enviar la notificación:', error);
+    }
   };
 
   const handleSelectSuggestion = (suggestion: string) => {

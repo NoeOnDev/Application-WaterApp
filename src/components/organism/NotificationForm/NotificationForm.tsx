@@ -1,24 +1,10 @@
 // src/components/organism/NotificationForm/NotificationForm.tsx
 import React, {useState} from 'react';
-import {ScrollView} from 'react-native';
+import {ScrollView, ActivityIndicator, Text} from 'react-native';
 import {ButtonAuth, InputMessage} from '../../atoms';
 import {LabelAndMultiSelect, SuggestionBox} from '../../molecules';
 import {styles} from './StylesNotificationForm';
-
-const streetOptions = [
-  {label: 'ARANDANOS', value: 'ARANDANOS'},
-  {label: 'AZULEJO', value: 'AZULEJO'},
-  {label: 'BOSQUES', value: 'BOSQUES'},
-  {label: 'CALLEJON', value: 'CALLEJON'},
-  {label: 'CAMELIA', value: 'CAMELIA'},
-  {label: 'CANELA', value: 'CANELA'},
-  {label: 'CEREZO', value: 'CEREZO'},
-  {label: 'CIPRES', value: 'CIPRES'},
-  {label: 'COLIBRI', value: 'COLIBRI'},
-  {label: 'DURAZNO', value: 'DURAZNO'},
-  {label: 'ENCINO', value: 'ENCINO'},
-  {label: 'ESMERALDA', value: 'ESMERALDA'},
-];
+import {useStreets} from '../../../hooks/useStreets';
 
 const initialMessageSuggestions = [
   'A tu calle se le suministrará agua el próximo lunes.',
@@ -47,6 +33,8 @@ export const NotificationForm: React.FC<NotificationFormProps> = ({
     initialMessageSuggestions,
   );
 
+  const {data: streets, isLoading, isError} = useStreets();
+
   const handleSendNotification = () => {
     const notification = {
       streets: selectedStreets,
@@ -74,28 +62,36 @@ export const NotificationForm: React.FC<NotificationFormProps> = ({
 
   return (
     <ScrollView contentContainerStyle={styles.formContainer}>
-      <LabelAndMultiSelect
-        label="Calles"
-        options={streetOptions}
-        selectedValues={selectedStreets}
-        onValueChange={setSelectedStreets}
-        placeholder="Selecciona las calles"
-      />
-      <SuggestionBox
-        suggestions={messageSuggestions}
-        onSelectSuggestion={handleSelectSuggestion}
-        onAddSuggestion={handleAddSuggestion}
-        onRemoveSuggestion={handleRemoveSuggestion}
-      />
-      <InputMessage
-        value={message}
-        onChangeText={setMessage}
-        placeholder="Introduce el mensaje"
-      />
-      <ButtonAuth
-        title="Enviar Notificación"
-        onPress={handleSendNotification}
-      />
+      {isLoading ? (
+        <ActivityIndicator />
+      ) : isError ? (
+        <Text>Error al cargar las calles</Text>
+      ) : (
+        <>
+          <LabelAndMultiSelect
+            label="Calles"
+            options={streets || []}
+            selectedValues={selectedStreets}
+            onValueChange={setSelectedStreets}
+            placeholder="Selecciona las calles"
+          />
+          <SuggestionBox
+            suggestions={messageSuggestions}
+            onSelectSuggestion={handleSelectSuggestion}
+            onAddSuggestion={handleAddSuggestion}
+            onRemoveSuggestion={handleRemoveSuggestion}
+          />
+          <InputMessage
+            value={message}
+            onChangeText={setMessage}
+            placeholder="Introduce el mensaje"
+          />
+          <ButtonAuth
+            title="Enviar Notificación"
+            onPress={handleSendNotification}
+          />
+        </>
+      )}
     </ScrollView>
   );
 };

@@ -41,6 +41,7 @@ export const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 20,
     backgroundColor: colors.white,
+    maxHeight: '80%',
   },
   option: {
     flexDirection: 'row',

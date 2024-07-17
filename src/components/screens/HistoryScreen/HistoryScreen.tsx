@@ -11,7 +11,7 @@ export const HistoryScreen: React.FC = () => {
   const renderNotification = ({item}: {item: any}) => (
     <View style={styles.notificationContainer}>
       <Text style={styles.timestamp}>
-        {new Date(item.timestamp).toString()}
+        {new Date(item.created_at).toLocaleString()}
       </Text>
       <Text style={styles.message}>{item.message}</Text>
       <Text style={styles.streets}>Calles: {item.streets.join(', ')}</Text>

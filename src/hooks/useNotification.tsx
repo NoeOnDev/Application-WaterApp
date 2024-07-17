@@ -10,9 +10,10 @@ interface NotificationPayload {
 }
 
 interface Notification {
-  streets: string[];
+  notification_id: number;
   message: string;
-  timestamp: Date;
+  created_at: string;
+  streets: string[];
 }
 
 const sendNotification = async (notification: NotificationPayload) => {

@@ -16,6 +16,11 @@ import {
   useDeleteSuggestion,
 } from '../../../hooks/useSuggestions';
 import {useSendNotification} from '../../../hooks/useNotification';
+import {
+  ALERT_TYPE,
+  Dialog,
+  AlertNotificationRoot,
+} from 'react-native-alert-notification';
 
 interface Notification {
   streets: string[];
@@ -64,10 +69,27 @@ export const NotificationForm: React.FC<NotificationFormProps> = ({
         timestamp: new Date(),
       };
       addNotification(notification);
-      console.log('Calles seleccionadas:', selectedStreets);
-      console.log('Mensaje:', message);
+
+      // Mostrar alerta de éxito
+      Dialog.show({
+        type: ALERT_TYPE.SUCCESS,
+        title: 'Notificación enviada',
+        textBody: 'La notificación se ha enviado correctamente.',
+        button: 'Cerrar',
+      });
+
+      // Limpiar campos
+      setSelectedStreets([]);
+      setMessage('');
     } catch (error) {
       console.error('Error al enviar la notificación:', error);
+      // Mostrar alerta de error
+      Dialog.show({
+        type: ALERT_TYPE.DANGER,
+        title: 'Error',
+        textBody: 'Hubo un problema al enviar la notificación.',
+        button: 'Cerrar',
+      });
     }
   };
 
@@ -104,41 +126,43 @@ export const NotificationForm: React.FC<NotificationFormProps> = ({
   };
 
   return (
-    <ScrollView
-      contentContainerStyle={styles.formContainer}
-      refreshControl={
-        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-      }>
-      {isLoadingStreets || isLoadingSuggestions ? (
-        <ActivityIndicator />
-      ) : isErrorStreets || isErrorSuggestions ? (
-        <Text>Error al cargar los datos</Text>
-      ) : (
-        <>
-          <LabelAndMultiSelect
-            label="Calles"
-            options={streets || []}
-            selectedValues={selectedStreets}
-            onValueChange={setSelectedStreets}
-            placeholder="Selecciona las calles"
-          />
-          <SuggestionBox
-            suggestions={suggestions || []}
-            onSelectSuggestion={handleSelectSuggestion}
-            onAddSuggestion={handleAddSuggestion}
-            onRemoveSuggestion={id => handleRemoveSuggestion(id)}
-          />
-          <InputMessage
-            value={message}
-            onChangeText={setMessage}
-            placeholder="Introduce el mensaje"
-          />
-          <ButtonAuth
-            title="Enviar Notificación"
-            onPress={handleSendNotification}
-          />
-        </>
-      )}
-    </ScrollView>
+    <AlertNotificationRoot>
+      <ScrollView
+        contentContainerStyle={styles.formContainer}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }>
+        {isLoadingStreets || isLoadingSuggestions ? (
+          <ActivityIndicator />
+        ) : isErrorStreets || isErrorSuggestions ? (
+          <Text>Error al cargar los datos</Text>
+        ) : (
+          <>
+            <LabelAndMultiSelect
+              label="Calles"
+              options={streets || []}
+              selectedValues={selectedStreets}
+              onValueChange={setSelectedStreets}
+              placeholder="Selecciona las calles"
+            />
+            <SuggestionBox
+              suggestions={suggestions || []}
+              onSelectSuggestion={handleSelectSuggestion}
+              onAddSuggestion={handleAddSuggestion}
+              onRemoveSuggestion={id => handleRemoveSuggestion(id)}
+            />
+            <InputMessage
+              value={message}
+              onChangeText={setMessage}
+              placeholder="Introduce el mensaje"
+            />
+            <ButtonAuth
+              title="Enviar Notificación"
+              onPress={handleSendNotification}
+            />
+          </>
+        )}
+      </ScrollView>
+    </AlertNotificationRoot>
   );
 };

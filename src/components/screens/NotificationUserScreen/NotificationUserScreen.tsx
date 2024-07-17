@@ -1,44 +1,62 @@
 // src/components/screens/NotificationUserScreen/NotificationUserScreen.tsx
 import React from 'react';
-import {View, Text, FlatList} from 'react-native';
+import {View, Text, FlatList, ActivityIndicator} from 'react-native';
 import {SafeArea} from '../../organism';
 import {styles} from './StylesNotificationUserScreen';
+import {useUserNotifications} from '../../../hooks/useNotification';
 
-interface Notification {
-  streets: string[];
+interface UserNotification {
+  notification_id: number;
   message: string;
-  timestamp: Date;
+  created_at: string;
+  street: string;
 }
 
-const mockNotifications: Notification[] = [
-  {
-    streets: ['ARANDANOS'],
-    message: 'A tu calle se le suministrará agua el próximo lunes.',
-    timestamp: new Date(),
-  },
-];
-
 export function NotificationUserScreen() {
-  const renderNotification = ({item}: {item: Notification}) => (
+  const {data: notifications, isLoading, isError} = useUserNotifications();
+
+  const renderNotification = ({item}: {item: UserNotification}) => (
     <View style={styles.notificationContainer}>
-      <Text style={styles.timestamp}>{item.timestamp.toString()}</Text>
+      <Text style={styles.timestamp}>
+        {new Date(item.created_at).toLocaleString()}
+      </Text>
       <Text style={styles.message}>{item.message}</Text>
-      <Text style={styles.streets}>Calles: {item.streets.join(', ')}</Text>
+      <Text style={styles.streets}>Calle: {item.street}</Text>
     </View>
   );
+
+  if (isLoading) {
+    return (
+      <SafeArea>
+        <View style={styles.container}>
+          <ActivityIndicator />
+        </View>
+      </SafeArea>
+    );
+  }
+
+  if (isError) {
+    return (
+      <SafeArea>
+        <View style={styles.container}>
+          <Text>Error al cargar las notificaciones</Text>
+        </View>
+      </SafeArea>
+    );
+  }
 
   return (
     <SafeArea>
       <View style={styles.container}>
-        {mockNotifications.length === 0 ? (
+        {!notifications || notifications.length === 0 ? (
           <Text style={styles.noNotificationsMessage}>
             No hay notificaciones
           </Text>
         ) : (
           <FlatList
-            data={mockNotifications}
+            data={notifications}
             renderItem={renderNotification}
-            keyExtractor={(item, index) => index.toString()}
+            keyExtractor={item => item.notification_id.toString()}
           />
         )}
       </View>

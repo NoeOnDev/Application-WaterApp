@@ -16,6 +16,13 @@ interface Notification {
   streets: string[];
 }
 
+interface UserNotification {
+  notification_id: number;
+  message: string;
+  created_at: string;
+  street: string;
+}
+
 const sendNotification = async (notification: NotificationPayload) => {
   const token = await AsyncStorage.getItem('token');
   const {data} = await axios.post(
@@ -57,6 +64,25 @@ export const useNotificationHistory = () => {
   return useQuery({
     queryKey: ['notifications'],
     queryFn: fetchNotificationHistory,
+    staleTime: 1000 * 60 * 5,
+    refetchInterval: 1000 * 60 * 10,
+  });
+};
+
+const fetchUserNotifications = async (): Promise<UserNotification[]> => {
+  const token = await AsyncStorage.getItem('token');
+  const {data} = await axios.get(`${API_URL}/notifications/user`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return data;
+};
+
+export const useUserNotifications = () => {
+  return useQuery<UserNotification[], Error>({
+    queryKey: ['userNotifications'],
+    queryFn: fetchUserNotifications,
     staleTime: 1000 * 60 * 5,
     refetchInterval: 1000 * 60 * 10,
   });

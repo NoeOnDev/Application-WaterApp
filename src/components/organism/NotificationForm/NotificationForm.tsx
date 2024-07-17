@@ -1,11 +1,16 @@
 // src/components/organism/NotificationForm/NotificationForm.tsx
 import React, {useState} from 'react';
 import {ScrollView, ActivityIndicator, Text} from 'react-native';
+import {useQueryClient} from '@tanstack/react-query';
 import {ButtonAuth, InputMessage} from '../../atoms';
 import {LabelAndMultiSelect, SuggestionBox} from '../../molecules';
 import {styles} from './StylesNotificationForm';
 import {useStreets} from '../../../hooks/useStreets';
-import {useSuggestions} from '../../../hooks/useSuggestions';
+import {
+  useSuggestions,
+  useCreateSuggestion,
+  useDeleteSuggestion,
+} from '../../../hooks/useSuggestions';
 
 interface Notification {
   streets: string[];
@@ -23,6 +28,8 @@ export const NotificationForm: React.FC<NotificationFormProps> = ({
   const [selectedStreets, setSelectedStreets] = useState<string[]>([]);
   const [message, setMessage] = useState('');
 
+  const queryClient = useQueryClient();
+
   const {
     data: streets,
     isLoading: isLoadingStreets,
@@ -33,6 +40,8 @@ export const NotificationForm: React.FC<NotificationFormProps> = ({
     isLoading: isLoadingSuggestions,
     isError: isErrorSuggestions,
   } = useSuggestions();
+  const createSuggestionMutation = useCreateSuggestion();
+  const deleteSuggestionMutation = useDeleteSuggestion();
 
   const handleSendNotification = () => {
     const notification = {
@@ -49,12 +58,25 @@ export const NotificationForm: React.FC<NotificationFormProps> = ({
     setMessage(suggestion);
   };
 
-  const handleAddSuggestion = (suggestion: string) => {
-    // This logic remains unchanged
+  const handleAddSuggestion = async (suggestion: string) => {
+    try {
+      await createSuggestionMutation.mutateAsync({message: suggestion});
+      queryClient.invalidateQueries({queryKey: ['suggestions']});
+    } catch (error) {
+      console.error('Error al crear la sugerencia:', error);
+    }
   };
 
-  const handleRemoveSuggestion = (index: number) => {
-    // This logic remains unchanged
+  const handleRemoveSuggestion = async (index: number) => {
+    if (suggestions && suggestions[index]) {
+      const suggestionToDelete = suggestions[index];
+      try {
+        await deleteSuggestionMutation.mutateAsync(suggestionToDelete.id);
+        queryClient.invalidateQueries({queryKey: ['suggestions']});
+      } catch (error) {
+        console.error('Error al eliminar la sugerencia:', error);
+      }
+    }
   };
 
   return (
@@ -73,10 +95,10 @@ export const NotificationForm: React.FC<NotificationFormProps> = ({
             placeholder="Selecciona las calles"
           />
           <SuggestionBox
-            suggestions={suggestions?.map(s => s.label) || []}
+            suggestions={suggestions || []}
             onSelectSuggestion={handleSelectSuggestion}
             onAddSuggestion={handleAddSuggestion}
-            onRemoveSuggestion={handleRemoveSuggestion}
+            onRemoveSuggestion={id => handleRemoveSuggestion(id)}
           />
           <InputMessage
             value={message}

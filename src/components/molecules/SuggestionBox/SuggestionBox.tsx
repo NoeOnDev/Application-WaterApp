@@ -6,10 +6,10 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import {styles} from './StylesSuggestionBox';
 
 interface SuggestionBoxProps {
-  suggestions: string[];
+  suggestions: {id: number; label: string; value: string}[];
   onSelectSuggestion: (suggestion: string) => void;
   onAddSuggestion: (suggestion: string) => void;
-  onRemoveSuggestion: (index: number) => void;
+  onRemoveSuggestion: (id: number) => void;
 }
 
 export const SuggestionBox: React.FC<SuggestionBoxProps> = ({
@@ -46,8 +46,8 @@ export const SuggestionBox: React.FC<SuggestionBoxProps> = ({
             <TouchableOpacity
               activeOpacity={0.7}
               style={styles.suggestionItem}
-              onPress={() => onSelectSuggestion(suggestion)}>
-              <Text style={styles.suggestionText}>{suggestion}</Text>
+              onPress={() => onSelectSuggestion(suggestion.value)}>
+              <Text style={styles.suggestionText}>{suggestion.label}</Text>
             </TouchableOpacity>
             <TouchableOpacity
               activeOpacity={0.7}

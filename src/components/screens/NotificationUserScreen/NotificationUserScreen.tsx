@@ -16,64 +16,6 @@ const mockNotifications: Notification[] = [
     message: 'A tu calle se le suministrará agua el próximo lunes.',
     timestamp: new Date(),
   },
-  {
-    streets: ['ARANDANOS'],
-    message:
-      'Por problemas de mantenimiento, se suspenderá el servicio de agua el día de mañana.',
-    timestamp: new Date(),
-  },
-  {
-    streets: ['ARANDANOS'],
-    message: 'Se le está suministrando agua a tu calle.',
-    timestamp: new Date(),
-  },
-  {
-    streets: ['ARANDANOS'],
-    message: 'Se ha reportado un corte de agua para mañana en tu calle.',
-    timestamp: new Date(),
-  },
-  {
-    streets: ['ARANDANOS'],
-    message: 'Se ha reportado un corte de agua para hoy en tu calle.',
-    timestamp: new Date(),
-  },
-  {
-    streets: ['ARANDANOS'],
-    message: 'A tu calle se le suministrará agua el próximo lunes.',
-    timestamp: new Date(),
-  },
-  {
-    streets: ['ARANDANOS'],
-    message:
-      'Por problemas de mantenimiento, se suspenderá el servicio de agua el día de mañana.',
-    timestamp: new Date(),
-  },
-  {
-    streets: ['ARANDANOS'],
-    message: 'Se le está suministrando agua a tu calle.',
-    timestamp: new Date(),
-  },
-  {
-    streets: ['ARANDANOS'],
-    message: 'Se ha reportado un corte de agua para mañana en tu calle.',
-    timestamp: new Date(),
-  },
-  {
-    streets: ['ARANDANOS'],
-    message: 'Se ha reportado un corte de agua para hoy en tu calle.',
-    timestamp: new Date(),
-  },
-  {
-    streets: ['ARANDANOS'],
-    message: 'A tu calle se le suministrará agua el próximo lunes.',
-    timestamp: new Date(),
-  },
-  {
-    streets: ['ARANDANOS'],
-    message:
-      'Por problemas de mantenimiento, se suspenderá el servicio de agua el día de mañana.',
-    timestamp: new Date(),
-  },
 ];
 
 export function NotificationUserScreen() {

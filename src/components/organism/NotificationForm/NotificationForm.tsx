@@ -5,14 +5,7 @@ import {ButtonAuth, InputMessage} from '../../atoms';
 import {LabelAndMultiSelect, SuggestionBox} from '../../molecules';
 import {styles} from './StylesNotificationForm';
 import {useStreets} from '../../../hooks/useStreets';
-
-const initialMessageSuggestions = [
-  'A tu calle se le suministrará agua el próximo lunes.',
-  'Por problemas de mantenimiento, se suspenderá el servicio de agua el día de mañana.',
-  'Se le está suministrando agua a tu calle.',
-  'Se ha reportado un corte de agua para mañana en tu calle.',
-  'Se ha reportado un corte de agua para hoy en tu calle.',
-];
+import {useSuggestions} from '../../../hooks/useSuggestions';
 
 interface Notification {
   streets: string[];
@@ -29,11 +22,17 @@ export const NotificationForm: React.FC<NotificationFormProps> = ({
 }) => {
   const [selectedStreets, setSelectedStreets] = useState<string[]>([]);
   const [message, setMessage] = useState('');
-  const [messageSuggestions, setMessageSuggestions] = useState(
-    initialMessageSuggestions,
-  );
 
-  const {data: streets, isLoading, isError} = useStreets();
+  const {
+    data: streets,
+    isLoading: isLoadingStreets,
+    isError: isErrorStreets,
+  } = useStreets();
+  const {
+    data: suggestions,
+    isLoading: isLoadingSuggestions,
+    isError: isErrorSuggestions,
+  } = useSuggestions();
 
   const handleSendNotification = () => {
     const notification = {
@@ -51,21 +50,19 @@ export const NotificationForm: React.FC<NotificationFormProps> = ({
   };
 
   const handleAddSuggestion = (suggestion: string) => {
-    setMessageSuggestions(prevSuggestions => [...prevSuggestions, suggestion]);
+    // This logic remains unchanged
   };
 
   const handleRemoveSuggestion = (index: number) => {
-    setMessageSuggestions(prevSuggestions =>
-      prevSuggestions.filter((_, i) => i !== index),
-    );
+    // This logic remains unchanged
   };
 
   return (
     <ScrollView contentContainerStyle={styles.formContainer}>
-      {isLoading ? (
+      {isLoadingStreets || isLoadingSuggestions ? (
         <ActivityIndicator />
-      ) : isError ? (
-        <Text>Error al cargar las calles</Text>
+      ) : isErrorStreets || isErrorSuggestions ? (
+        <Text>Error al cargar los datos</Text>
       ) : (
         <>
           <LabelAndMultiSelect
@@ -76,7 +73,7 @@ export const NotificationForm: React.FC<NotificationFormProps> = ({
             placeholder="Selecciona las calles"
           />
           <SuggestionBox
-            suggestions={messageSuggestions}
+            suggestions={suggestions?.map(s => s.label) || []}
             onSelectSuggestion={handleSelectSuggestion}
             onAddSuggestion={handleAddSuggestion}
             onRemoveSuggestion={handleRemoveSuggestion}

@@ -1,12 +1,18 @@
 // src/hooks/useNotification.tsx
 import axios from 'axios';
-import {useMutation} from '@tanstack/react-query';
+import {useMutation, useQuery} from '@tanstack/react-query';
 import {API_URL} from '@env';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface NotificationPayload {
   message: string;
   streets: string[];
+}
+
+interface Notification {
+  streets: string[];
+  message: string;
+  timestamp: Date;
 }
 
 const sendNotification = async (notification: NotificationPayload) => {
@@ -33,5 +39,24 @@ export const useSendNotification = () => {
         throw new Error('Error inesperado. Inténtalo de nuevo.');
       }
     },
+  });
+};
+
+const fetchNotificationHistory = async (): Promise<Notification[]> => {
+  const token = await AsyncStorage.getItem('token');
+  const {data} = await axios.get(`${API_URL}/notifications/history`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return data;
+};
+
+export const useNotificationHistory = () => {
+  return useQuery({
+    queryKey: ['notifications'],
+    queryFn: fetchNotificationHistory,
+    staleTime: 1000 * 60 * 5,
+    refetchInterval: 1000 * 60 * 10,
   });
 };

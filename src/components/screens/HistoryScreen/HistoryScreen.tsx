@@ -1,29 +1,42 @@
 // src/components/screens/HistoryScreen/HistoryScreen.tsx
 import React from 'react';
-import {View, Text, FlatList} from 'react-native';
+import {View, Text, FlatList, ActivityIndicator} from 'react-native';
+import {useNotificationHistory} from '../../../hooks/useNotification';
 import {SafeArea} from '../../organism';
 import {styles} from './StylesHistoryScreen';
 
-interface Notification {
-  streets: string[];
-  message: string;
-  timestamp: Date;
-}
+export const HistoryScreen: React.FC = () => {
+  const {data: notifications, isLoading, isError} = useNotificationHistory();
 
-interface HistoryScreenProps {
-  notifications: Notification[];
-}
-
-export const HistoryScreen: React.FC<HistoryScreenProps> = ({
-  notifications,
-}) => {
-  const renderNotification = ({item}: {item: Notification}) => (
+  const renderNotification = ({item}: {item: any}) => (
     <View style={styles.notificationContainer}>
-      <Text style={styles.timestamp}>{item.timestamp.toString()}</Text>
+      <Text style={styles.timestamp}>
+        {new Date(item.timestamp).toString()}
+      </Text>
       <Text style={styles.message}>{item.message}</Text>
       <Text style={styles.streets}>Calles: {item.streets.join(', ')}</Text>
     </View>
   );
+
+  if (isLoading) {
+    return (
+      <SafeArea>
+        <View style={styles.container}>
+          <ActivityIndicator />
+        </View>
+      </SafeArea>
+    );
+  }
+
+  if (isError || !notifications) {
+    return (
+      <SafeArea>
+        <View style={styles.container}>
+          <Text>Error al cargar el historial de notificaciones</Text>
+        </View>
+      </SafeArea>
+    );
+  }
 
   return (
     <SafeArea>

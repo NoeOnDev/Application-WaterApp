@@ -11,7 +11,7 @@ import {
   useCreateSuggestion,
   useDeleteSuggestion,
 } from '../../../hooks/useSuggestions';
-import {useSendNotification} from '../../../hooks/userNotification';
+import {useSendNotification} from '../../../hooks/useNotification';
 
 interface Notification {
   streets: string[];

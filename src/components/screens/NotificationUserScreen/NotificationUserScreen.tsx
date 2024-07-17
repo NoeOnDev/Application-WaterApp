@@ -1,6 +1,11 @@
-// src/components/screens/NotificationUserScreen/NotificationUserScreen.tsx
-import React from 'react';
-import {View, Text, FlatList, ActivityIndicator} from 'react-native';
+import React, {useState} from 'react';
+import {
+  View,
+  Text,
+  FlatList,
+  ActivityIndicator,
+  RefreshControl,
+} from 'react-native';
 import {SafeArea} from '../../organism';
 import {styles} from './StylesNotificationUserScreen';
 import {useUserNotifications} from '../../../hooks/useNotification';
@@ -13,7 +18,19 @@ interface UserNotification {
 }
 
 export function NotificationUserScreen() {
-  const {data: notifications, isLoading, isError} = useUserNotifications();
+  const {
+    data: notifications,
+    isLoading,
+    isError,
+    refetch,
+  } = useUserNotifications();
+  const [refreshing, setRefreshing] = useState(false);
+
+  const onRefresh = async () => {
+    setRefreshing(true);
+    await refetch();
+    setRefreshing(false);
+  };
 
   const renderNotification = ({item}: {item: UserNotification}) => (
     <View style={styles.notificationContainer}>
@@ -57,6 +74,9 @@ export function NotificationUserScreen() {
             data={notifications}
             renderItem={renderNotification}
             keyExtractor={item => item.notification_id.toString()}
+            refreshControl={
+              <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+            }
           />
         )}
       </View>

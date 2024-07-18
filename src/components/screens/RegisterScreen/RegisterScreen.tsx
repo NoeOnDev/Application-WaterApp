@@ -7,12 +7,8 @@ import {
   Keyboard,
   ActivityIndicator,
   Text,
+  Alert,
 } from 'react-native';
-import {
-  ALERT_TYPE,
-  Dialog,
-  AlertNotificationRoot,
-} from 'react-native-alert-notification';
 import {AuthForm, FormField, SafeArea} from '../../organism';
 import {LinkButton} from '../../atoms';
 import {useNavigation, NavigationProp} from '@react-navigation/native';
@@ -92,61 +88,53 @@ export const RegisterScreen = () => {
     };
     registerUser(userData, {
       onSuccess: data => {
-        Dialog.show({
-          type: ALERT_TYPE.SUCCESS,
-          title: 'Registro Exitoso',
-          textBody: 'Te has registrado exitosamente',
-          button: 'Aceptar',
-          onPressButton: () => navigation.navigate('Login'),
-        });
+        Alert.alert('Registro Exitoso', 'Te has registrado exitosamente', [
+          {
+            text: 'Aceptar',
+            onPress: () => navigation.navigate('Login'),
+          },
+        ]);
       },
       onError: error => {
         const errorMessage =
           error.response?.data?.message ||
           'Hubo un error al registrarte. Inténtalo de nuevo.';
-        Dialog.show({
-          type: ALERT_TYPE.DANGER,
-          title: 'Error en el Registro',
-          textBody: errorMessage,
-          button: 'Aceptar',
-        });
+        Alert.alert('Error en el Registro', errorMessage, [{text: 'Aceptar'}]);
       },
     });
   };
 
   return (
-    <AlertNotificationRoot>
-      <SafeArea>
-        <KeyboardAvoidingView
-          style={styles.container}
-          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-          keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 0}>
-          <View style={styles.content}>
-            {isLoading ? (
-              <ActivityIndicator />
-            ) : isError ? (
-              <Text>Error al cargar las calles</Text>
-            ) : (
-              <>
-                <AuthForm
-                  fields={fields}
-                  buttonTitle="Registrarse"
-                  buttonOnPress={handleRegister}
-                  linkText=""
-                  linkOnPress={() => ({})}
+    <SafeArea>
+      <KeyboardAvoidingView
+        style={styles.container}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 0}>
+        <View style={styles.content}>
+          {isLoading ? (
+            <ActivityIndicator />
+          ) : isError ? (
+            <Text>Error al cargar las calles</Text>
+          ) : (
+            <>
+              <AuthForm
+                fields={fields}
+                buttonTitle="Registrarse"
+                buttonOnPress={handleRegister}
+                linkText=""
+                linkOnPress={() => ({})}
+              />
+              {!isKeyboardVisible && (
+                <LinkButton
+                  text="¿Ya tienes una cuenta?"
+                  onPress={() => navigation.navigate('Login')}
+                  style={styles.linkText}
                 />
-                {!isKeyboardVisible && (
-                  <LinkButton
-                    text="¿Ya tienes una cuenta?"
-                    onPress={() => navigation.navigate('Login')}
-                    style={styles.linkText}
-                  />
-                )}
-              </>
-            )}
-          </View>
-        </KeyboardAvoidingView>
-      </SafeArea>
-    </AlertNotificationRoot>
+              )}
+            </>
+          )}
+        </View>
+      </KeyboardAvoidingView>
+    </SafeArea>
   );
 };

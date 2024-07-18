@@ -1,4 +1,3 @@
-// src/components/screens/LoginScreen/LoginScreen.tsx
 import React, {useState, useEffect} from 'react';
 import {View, KeyboardAvoidingView, Platform, Keyboard} from 'react-native';
 import {
@@ -57,19 +56,11 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({setUserRole}) => {
         await AsyncStorage.setItem('userRole', data.user.role);
         await AsyncStorage.setItem('userEmail', data.user.email);
 
-        Dialog.show({
-          type: ALERT_TYPE.SUCCESS,
-          title: 'Inicio de Sesión Exitoso',
-          textBody: 'Has iniciado sesión correctamente',
-          button: 'Aceptar',
-          onPressButton: () => {
-            navigation.reset({
-              index: 0,
-              routes: [
-                {name: data.user.role === 'Admin' ? 'HomeAdmin' : 'HomeUser'},
-              ],
-            });
-          },
+        navigation.reset({
+          index: 0,
+          routes: [
+            {name: data.user.role === 'Admin' ? 'HomeAdmin' : 'HomeUser'},
+          ],
         });
       },
       onError: error => {

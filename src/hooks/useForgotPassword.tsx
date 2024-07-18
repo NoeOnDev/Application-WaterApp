@@ -2,6 +2,7 @@
 import {useMutation} from '@tanstack/react-query';
 import axios from 'axios';
 import {API_URL} from '@env';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface VerifyCodePayload {
   userId: number;
@@ -14,9 +15,10 @@ interface ResetPasswordPayload {
 }
 
 export const requestVerificationCode = async (email: string): Promise<void> => {
-  const {data} = await axios.post(`${API_URL}/request-verification-code`, {
+  const {data} = await axios.post(`${API_URL}/users/request-verification-code`, {
     email,
   });
+  await AsyncStorage.setItem('userId', data.userId.toString());
   return data;
 };
 
@@ -37,7 +39,8 @@ export const verifyCode = async ({
   userId,
   code,
 }: VerifyCodePayload): Promise<void> => {
-  const {data} = await axios.post(`${API_URL}/verify-code`, {userId, code});
+  console.log(`Verificando código para userId: ${userId}`);
+  const {data} = await axios.post(`${API_URL}/users/verify-code`, {userId, code});
   return data;
 };
 
@@ -58,7 +61,8 @@ export const resetPassword = async ({
   userId,
   newPassword,
 }: ResetPasswordPayload): Promise<void> => {
-  const {data} = await axios.post(`${API_URL}/reset-password`, {
+  console.log(`Reseteando contraseña para userId: ${userId}`);
+  const {data} = await axios.post(`${API_URL}/users/reset-password`, {
     userId,
     newPassword,
   });

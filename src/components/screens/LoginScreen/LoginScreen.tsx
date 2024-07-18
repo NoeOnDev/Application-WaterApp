@@ -1,11 +1,11 @@
+// src/components/screens/LoginScreen/LoginScreen.tsx
 import React, {useState, useEffect} from 'react';
+import {View, KeyboardAvoidingView, Platform, Keyboard} from 'react-native';
 import {
-  View,
-  KeyboardAvoidingView,
-  Platform,
-  Keyboard,
-  Text,
-} from 'react-native';
+  ALERT_TYPE,
+  Dialog,
+  AlertNotificationRoot,
+} from 'react-native-alert-notification';
 import {AuthForm, FormField} from '../../organism';
 import {ButtonAuth, Logo, AppName} from '../../atoms';
 import {useNavigation, NavigationProp} from '@react-navigation/native';
@@ -23,7 +23,6 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({setUserRole}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   const {mutate: loginUser} = useLogin();
@@ -58,18 +57,31 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({setUserRole}) => {
         await AsyncStorage.setItem('userRole', data.user.role);
         await AsyncStorage.setItem('userEmail', data.user.email);
 
-        navigation.reset({
-          index: 0,
-          routes: [
-            {name: data.user.role === 'Admin' ? 'HomeAdmin' : 'HomeUser'},
-          ],
+        Dialog.show({
+          type: ALERT_TYPE.SUCCESS,
+          title: 'Inicio de Sesión Exitoso',
+          textBody: 'Has iniciado sesión correctamente',
+          button: 'Aceptar',
+          onPressButton: () => {
+            navigation.reset({
+              index: 0,
+              routes: [
+                {name: data.user.role === 'Admin' ? 'HomeAdmin' : 'HomeUser'},
+              ],
+            });
+          },
         });
       },
       onError: error => {
-        const errorMsg =
+        const errorMessage =
           error.response?.data?.message ||
           'Hubo un error al iniciar sesión. Inténtalo de nuevo.';
-        setErrorMessage(errorMsg);
+        Dialog.show({
+          type: ALERT_TYPE.DANGER,
+          title: 'Error en el Inicio de Sesión',
+          textBody: errorMessage,
+          button: 'Aceptar',
+        });
       },
     });
   };
@@ -103,31 +115,33 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({setUserRole}) => {
   }, []);
 
   return (
-    <SafeArea>
-      {!isKeyboardVisible && <Logo style={styles.logo} />}
-      <KeyboardAvoidingView
-        style={styles.container}
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 0}>
-        <AuthForm
-          fields={fields}
-          buttonTitle="Iniciar sesión"
-          buttonOnPress={handleLogin}
-          linkText="¿Olvidaste tu contraseña?"
-          linkOnPress={handleForgotPassword}
-        />
-        {!isKeyboardVisible && (
-          <View style={styles.bottomContainer}>
-            <ButtonAuth
-              title="Crear nueva cuenta"
-              onPress={handleCreateAccount}
-              buttonStyle={styles.createAccountButton}
-              textStyle={styles.createAccountButtonText}
-            />
-            <AppName />
-          </View>
-        )}
-      </KeyboardAvoidingView>
-    </SafeArea>
+    <AlertNotificationRoot>
+      <SafeArea>
+        {!isKeyboardVisible && <Logo style={styles.logo} />}
+        <KeyboardAvoidingView
+          style={styles.container}
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+          keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 0}>
+          <AuthForm
+            fields={fields}
+            buttonTitle="Iniciar sesión"
+            buttonOnPress={handleLogin}
+            linkText="¿Olvidaste tu contraseña?"
+            linkOnPress={handleForgotPassword}
+          />
+          {!isKeyboardVisible && (
+            <View style={styles.bottomContainer}>
+              <ButtonAuth
+                title="Crear nueva cuenta"
+                onPress={handleCreateAccount}
+                buttonStyle={styles.createAccountButton}
+                textStyle={styles.createAccountButtonText}
+              />
+              <AppName />
+            </View>
+          )}
+        </KeyboardAvoidingView>
+      </SafeArea>
+    </AlertNotificationRoot>
   );
 };

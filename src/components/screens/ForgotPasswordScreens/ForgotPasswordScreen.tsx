@@ -1,11 +1,11 @@
+// src/components/screens/ForgotPasswordScreens/ForgotPasswordScreen.tsx
 import React, {useState} from 'react';
-import {View} from 'react-native';
+import {View, Alert} from 'react-native';
 import {useNavigation, NavigationProp} from '@react-navigation/native';
 import {AuthForm, FormField, SafeArea} from '../../organism';
 import {RootStackParamList} from '../../../types/types';
 import {styles} from './StylesForgotPasswordScreens';
 import {useRequestVerificationCode} from '../../../hooks/useForgotPassword';
-import {Dialog, ALERT_TYPE} from 'react-native-alert-notification';
 
 export function ForgotPasswordScreen() {
   const [email, setEmail] = useState('');
@@ -25,23 +25,11 @@ export function ForgotPasswordScreen() {
   const handleSendVerificationCode = () => {
     sendVerificationCode(email, {
       onSuccess: () => {
-        Dialog.show({
-          type: ALERT_TYPE.SUCCESS,
-          title: 'Éxito',
-          textBody: 'Código de verificación enviado',
-          button: 'Ok',
-          onHide: () => {
-            navigation.navigate('VerificationCode');
-          },
-        });
+        Alert.alert('Éxito', 'Código de verificación enviado');
+        navigation.navigate('VerificationCode');
       },
       onError: error => {
-        Dialog.show({
-          type: ALERT_TYPE.DANGER,
-          title: 'Error',
-          textBody: error.message,
-          button: 'Ok',
-        });
+        Alert.alert('Error', error.message);
       },
     });
   };

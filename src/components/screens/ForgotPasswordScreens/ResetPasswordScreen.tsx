@@ -1,12 +1,12 @@
+// src/components/screens/ForgotPasswordScreens/ResetPasswordScreen.tsx
 import React, {useState} from 'react';
-import {View} from 'react-native';
+import {View, Alert} from 'react-native';
 import {useNavigation, NavigationProp} from '@react-navigation/native';
 import {AuthForm, FormField, SafeArea} from '../../organism';
 import {RootStackParamList} from '../../../types/types';
 import {styles} from './StylesForgotPasswordScreens';
 import {useResetPassword} from '../../../hooks/useForgotPassword';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {Dialog, ALERT_TYPE} from 'react-native-alert-notification';
 
 export function ResetPasswordScreen() {
   const [newPassword, setNewPassword] = useState('');
@@ -43,50 +43,23 @@ export function ResetPasswordScreen() {
           {userId: Number(userId), newPassword},
           {
             onSuccess: () => {
-              Dialog.show({
-                type: ALERT_TYPE.SUCCESS,
-                title: 'Éxito',
-                textBody: 'Contraseña restablecida',
-                button: 'Ok',
-                onHide: () => {
-                  navigation.navigate('Login');
-                },
-              });
+              Alert.alert('Éxito', 'Contraseña restablecida');
+              navigation.navigate('Login');
             },
             onError: error => {
-              Dialog.show({
-                type: ALERT_TYPE.DANGER,
-                title: 'Error',
-                textBody: error.message,
-                button: 'Ok',
-              });
+              Alert.alert('Error', error.message);
             },
           },
         );
       } catch (error) {
         if (error instanceof Error) {
-          Dialog.show({
-            type: ALERT_TYPE.DANGER,
-            title: 'Error',
-            textBody: error.message,
-            button: 'Ok',
-          });
+          Alert.alert('Error', error.message);
         } else {
-          Dialog.show({
-            type: ALERT_TYPE.DANGER,
-            title: 'Error',
-            textBody: 'Ocurrió un error desconocido',
-            button: 'Ok',
-          });
+          Alert.alert('Error', 'Ocurrió un error desconocido');
         }
       }
     } else {
-      Dialog.show({
-        type: ALERT_TYPE.DANGER,
-        title: 'Error',
-        textBody: 'Las contraseñas no coinciden',
-        button: 'Ok',
-      });
+      Alert.alert('Error', 'Las contraseñas no coinciden');
     }
   };
 
